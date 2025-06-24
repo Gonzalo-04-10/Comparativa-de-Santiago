@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fotos por Santiago</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        header {
+            background-color: #4a6fa5;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        nav {
+            background-color: #333;
+            padding: 10px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+        
+        .gallery img {
+            width: 100%;
+            border: 1px solid #ddd;
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+        }
+        
+        .price-list {
+            margin-left: 20px;
+        }
+        
+        .contact-info {
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Fotos por Santiago</h1>
+    </header>
+    
+    <nav>
+        <a href="#inicio">Inicio</a>
+        <a href="#fotos">Mis Fotos</a>
+        <a href="#precios">Precios</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
+    
+    <div class="container" id="inicio">
+        <h2>Bienvenidos a mi página</h2>
+        <p>Soy Santiago, fotógrafo aficionado que está comenzando en este mundo. Me encanta capturar momentos especiales.</p>
+        <p>Ofrezco mis servicios para eventos pequeños, cumpleaños y sesiones sencillas.</p>
+    </div>
+    
+    <div class="container" id="fotos">
+        <h2>Algunos de mis trabajos</h2>
+        <div class="gallery">
+            <img src="https://source.unsplash.com/random/300x300?portrait" alt="Retrato">
+            <img src="https://source.unsplash.com/random/300x300?nature" alt="Naturaleza">
+            <img src="https://source.unsplash.com/random/300x300?event" alt="Evento">
+            <img src="https://source.unsplash.com/random/300x300?city" alt="Ciudad">
+            <img src="https://source.unsplash.com/random/300x300?animal" alt="Animal">
+            <img src="https://source.unsplash.com/random/300x300?food" alt="Comida">
+        </div>
+    </div>
+    
+    <div class="container" id="precios">
+        <h2>Mis precios</h2>
+        <ul class="price-list">
+            <li>Sesión básica (1 hora): $3,000</li>
+            <li>Sesión extendida (2 horas): $5,000</li>
+            <li>Eventos (por hora): $2,500/hora</li>
+            <li>Fotos editadas (c/u): $200</li>
+        </ul>
+    </div>
+    
+    <div class="container" id="contacto">
+        <h2>Contactame</h2>
+        <div class="contact-info">
+            <p><strong>Teléfono:</strong> 11-2345-6789</p>
+            <p><strong>Email:</strong> santiago.fotos@gmail.com</p>
+            <p><strong>Instagram:</strong> @santiagofotos</p>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2023 Fotos por Santiago</p>
+    </footer>
+</body>
+</html>
