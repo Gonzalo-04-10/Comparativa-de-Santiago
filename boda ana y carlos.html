@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fiesta de 30 Años</title>
+    <title>Boda de Ana & Carlos</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Playfair Display', serif;
         }
         
         body {
-            background-color: #f5f7fa;
+            background-color: #f8f5f2;
             color: #333;
             line-height: 1.6;
         }
@@ -30,23 +30,22 @@
         }
         
         .header h1 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             margin-bottom: 10px;
-            color: #4a6fa5;
-            font-weight: 600;
+            color: #7a6a5f;
+            font-weight: 400;
         }
         
         .header p {
             font-size: 1.1rem;
             color: #666;
+            font-style: italic;
         }
         
-        .birthday-age {
-            font-size: 5rem;
-            font-weight: 700;
-            color: #4a6fa5;
+        .couple-names {
+            font-size: 1.8rem;
             margin: 20px 0;
-            line-height: 1;
+            color: #b38b6d;
         }
         
         .hero-image {
@@ -57,8 +56,6 @@
             background-size: cover;
             background-position: center;
             position: relative;
-            border-radius: 8px;
-            overflow: hidden;
         }
         
         .hero-image::after {
@@ -68,7 +65,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.3));
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.2));
         }
         
         .event-details {
@@ -88,7 +85,7 @@
         .detail-item i {
             font-size: 1.5rem;
             margin-right: 15px;
-            color: #4a6fa5;
+            color: #b38b6d;
         }
         
         .buttons {
@@ -108,14 +105,14 @@
         }
         
         .btn-primary {
-            background-color: #4a6fa5;
+            background-color: #b38b6d;
             color: white;
         }
         
         .btn-outline {
             background-color: transparent;
-            border: 1px solid #4a6fa5;
-            color: #4a6fa5;
+            border: 1px solid #b38b6d;
+            color: #b38b6d;
         }
         
         .btn:hover {
@@ -132,8 +129,8 @@
         
         .form-container h2 {
             margin-bottom: 20px;
-            color: #4a6fa5;
-            font-weight: 600;
+            color: #b38b6d;
+            font-weight: 400;
             text-align: center;
         }
         
@@ -158,7 +155,7 @@
         .submit-btn {
             width: 100%;
             padding: 12px;
-            background-color: #4a6fa5;
+            background-color: #b38b6d;
             color: white;
             border: none;
             border-radius: 4px;
@@ -168,7 +165,7 @@
         }
         
         .submit-btn:hover {
-            background-color: #3a5a8a;
+            background-color: #a07c61;
         }
         
         @media (max-width: 768px) {
@@ -176,8 +173,8 @@
                 font-size: 2rem;
             }
             
-            .birthday-age {
-                font-size: 4rem;
+            .couple-names {
+                font-size: 1.4rem;
             }
             
             .hero-image {
@@ -189,25 +186,25 @@
             }
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>Fiesta de Cumpleaños</h1>
-            <div class="birthday-age">30</div>
-            <p>¡Celebra conmigo este momento especial!</p>
+            <h1>Nos Casamos</h1>
+            <div class="couple-names">Ana & Carlos</div>
+            <p>Queremos compartir este día especial contigo</p>
         </div>
         
-        <div class="hero-image" style="background-image: url('https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+        <div class="hero-image" style="background-image: url('https://images.unsplash.com/photo-1523438885200-e635ba2c371e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
         
         <div class="event-details">
             <div class="detail-item">
                 <i class="fas fa-calendar-alt"></i>
                 <div>
                     <h3>Fecha</h3>
-                    <p>Viernes, 28 de Julio 2023</p>
+                    <p>Sábado, 12 de Agosto 2023</p>
                 </div>
             </div>
             
@@ -215,7 +212,7 @@
                 <i class="fas fa-clock"></i>
                 <div>
                     <h3>Hora</h3>
-                    <p>9:00 PM hasta tarde</p>
+                    <p>Ceremonia: 4:00 PM | Recepción: 6:00 PM</p>
                 </div>
             </div>
             
@@ -223,26 +220,26 @@
                 <i class="fas fa-map-marker-alt"></i>
                 <div>
                     <h3>Lugar</h3>
-                    <p>Rooftop Bar "La Terraza", Calle Morelos 256, Col. Centro, CDMX</p>
+                    <p>Hacienda San Gabriel, Carretera a Tepic Km 12.5, Jalisco</p>
                 </div>
             </div>
             
             <div class="detail-item">
-                <i class="fas fa-glass-cheers"></i>
+                <i class="fas fa-info-circle"></i>
                 <div>
-                    <h3>Incluye</h3>
-                    <p>Barra libre y bocadillos hasta la 1:00 AM</p>
+                    <h3>Código de Vestimenta</h3>
+                    <p>Formal - Etiqueta</p>
                 </div>
             </div>
         </div>
         
         <div class="buttons">
-            <button class="btn btn-primary">Ver Fotos de Años Anteriores</button>
-            <button class="btn btn-outline">Sugerencias de Regalo</button>
+            <button class="btn btn-primary">Ver Nuestra Historia</button>
+            <button class="btn btn-outline">Registro de Regalos</button>
         </div>
         
         <div class="form-container">
-            <h2>¿Vienes a la fiesta?</h2>
+            <h2>RSVP</h2>
             <form id="rsvpForm">
                 <div class="form-group">
                     <label for="name">Nombre Completo</label>
@@ -255,20 +252,32 @@
                 </div>
                 
                 <div class="form-group">
-                    <label for="guests">¿Vendrás con alguien más?</label>
+                    <label>¿Asistirás?</label>
+                    <div style="display: flex; gap: 15px;">
+                        <label style="display: flex; align-items: center;">
+                            <input type="radio" name="attending" value="yes" required style="margin-right: 5px;"> Sí, con gusto asistiré
+                        </label>
+                        <label style="display: flex; align-items: center;">
+                            <input type="radio" name="attending" value="no" required style="margin-right: 5px;"> Lamentablemente no podré asistir
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="guests">Número de Acompañantes</label>
                     <select id="guests" class="form-control" required>
-                        <option value="0">Vendré solo/a</option>
-                        <option value="1">1 acompañante</option>
-                        <option value="2">2 acompañantes</option>
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
                     </select>
                 </div>
                 
                 <div class="form-group">
-                    <label for="song">Canción que no puede faltar (Opcional)</label>
-                    <input type="text" id="song" class="form-control">
+                    <label for="message">Mensaje para los novios (Opcional)</label>
+                    <textarea id="message" class="form-control" rows="3"></textarea>
                 </div>
                 
-                <button type="submit" class="submit-btn">Confirmar Asistencia</button>
+                <button type="submit" class="submit-btn">Enviar Respuesta</button>
             </form>
         </div>
     </div>
@@ -276,7 +285,14 @@
     <script>
         document.getElementById('rsvpForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('¡Gracias por confirmar! Nos vemos en la fiesta.');
+            const attending = document.querySelector('input[name="attending"]:checked').value;
+            
+            if (attending === 'yes') {
+                alert('¡Gracias por confirmar tu asistencia! Nos alegra que puedas acompañarnos en nuestro día especial.');
+            } else {
+                alert('Lamentamos que no puedas acompañarnos. Agradecemos tu respuesta y te enviaremos fotos del evento.');
+            }
+            
             this.reset();
         });
         
@@ -287,26 +303,6 @@
                 alert('Esta funcionalidad estará disponible pronto.');
             });
         });
-        
-        // Efecto de conteo para la edad
-        const ageElement = document.querySelector('.birthday-age');
-        let currentNumber = 0;
-        const targetNumber = 30;
-        const duration = 2000; // 2 segundos
-        const increment = targetNumber / (duration / 16); // 60fps
-        
-        const animateAge = () => {
-            currentNumber += increment;
-            if (currentNumber < targetNumber) {
-                ageElement.textContent = Math.floor(currentNumber);
-                requestAnimationFrame(animateAge);
-            } else {
-                ageElement.textContent = targetNumber;
-            }
-        };
-        
-        // Iniciar animación cuando la página carga
-        window.addEventListener('load', animateAge);
     </script>
 </body>
 </html>
