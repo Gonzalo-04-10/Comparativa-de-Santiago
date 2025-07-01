@@ -1,0 +1,124 @@
+<!-- Tarjeta 3: Fondo fijo con parallax y texto flotante -->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XV Invitación</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Playfair Display', serif;
+      color: #fff;
+      background: #fef8f5;
+    }
+
+    .hero {
+      background: url('bg.jpg') no-repeat center center/cover;
+      height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 2rem;
+      animation: fadeInUp 2s ease;
+    }
+
+    .hero-content h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: 2px;
+    }
+
+    .hero-content h2 {
+      font-size: 4rem;
+      color: #f8d6d1;
+      margin-bottom: 1rem;
+    }
+
+    .hero-content p {
+      font-size: 1.1rem;
+      color: #fdfdfd;
+    }
+
+    .image-block {
+      margin: 2rem auto;
+      max-width: 300px;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    }
+
+    .image-block img {
+      width: 100%;
+      display: block;
+    }
+
+    .gift-section {
+      background: #fff3f1;
+      color: #4c4c4c;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    .gift-section h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #bb7f77;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Te invito a mis</h1>
+      <h2>XV</h2>
+      <p>Nos vemos el viernes 22 de noviembre<br>21:00 hs – Salón Gardenia</p>
+    </div>
+  </section>
+
+  <div class="image-block">
+    <!-- ACA VA LA IMAGEN -->
+    <img src="foto3.jpg" alt="Foto XV">
+  </div>
+
+  <section class="gift-section">
+    <h3>Regalos 💕</h3>
+    <p>Si querés regalarme algo, este es mi alias:<br><strong>xv.solangel</strong></p>
+  </section>
+
+</body>
+</html>
