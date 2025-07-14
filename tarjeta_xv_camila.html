@@ -1,0 +1,656 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mis XV - Camila</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Playfair Display', serif;
+      background: #fffaf9;
+      color: #4e3d3c;
+      scroll-behavior: smooth;
+    }
+    header {
+      background: url('xv3.jpg') center/cover no-repeat;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+    }
+    header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+    }
+    .hero {
+      position: relative;
+      z-index: 2;
+      color: #fff;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      letter-spacing: 2px;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+    }
+    section {
+      padding: 4rem 2rem;
+      max-width: 900px;
+      margin: 3rem auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    .bg-rosa       { background: #fce4ec; border-left: 5px solid #e8b1c5; }
+    .bg-beige      { background: #f8f1e4; border-left: 5px solid #dfcbb5; }
+    .bg-rosado     { background: #fce8e8; border-left: 5px solid #e7aeb1; }
+    .bg-rosa-palo  { background: #fddede; border-left: 5px solid #e7a6a6; }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    p {
+      font-size: 1.2rem;
+      line-height: 1.7;
+      text-align: center;
+    }
+    .galeria-popup,
+    .juego-popup,
+    .form-popup {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      z-index: 999;
+      justify-content: center;
+      align-items: center;
+    }
+    .galeria-popup img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 10px;
+    }
+    .popup-contenido {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      max-width: 90%;
+      max-height: 90%;
+      overflow: auto;
+    }
+    .cerrar-btn {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 2rem;
+      color: white;
+      cursor: pointer;
+    }
+    .menciones {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: space-around;
+    }
+    .mencion {
+      background: #fff;
+      border-radius: 10px;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+    .mencion img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .slider {
+      height: 700px;
+      overflow: hidden;
+      position: relative;
+      border-radius: 10px;
+    }
+    .slider img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      left: 100%;
+      opacity: 0;
+      transition: left 1s, opacity 1s;
+    }
+    .slider img.active {
+      left: 0;
+      opacity: 1;
+    }
+    .galeria-popup {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+}
+
+.galeria-contenedor {
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.galeria-img {
+  max-width: 100%;
+  max-height: 80vh;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  transition: opacity 0.4s ease;
+}
+
+.flecha {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 3rem;
+  color: white;
+  background: rgba(0,0,0,0.4);
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 10px;
+  user-select: none;
+  transition: background 0.3s ease;
+}
+
+.flecha:hover {
+  background: rgba(0,0,0,0.6);
+}
+
+.flecha.izquierda { left: -60px; }
+.flecha.derecha { right: -60px; }
+
+    .btn-juego {
+  padding: 0.7rem 2rem;
+  background-color: #b06b77;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.btn-juego:hover {
+  background-color: #944e5f;
+}
+
+.btn-respuesta {
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  background-color: #ffe4ed;
+  border: 2px solid #f5b0c2;
+  color: rgb(78, 61, 60);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.btn-respuesta:hover {
+  background-color: #f5b0c2;
+  color: white;
+  transform: scale(1.03);
+}
+.btn-respuesta:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.diamante {
+  width: 60px;
+  animation: girar 4s linear infinite;
+}
+@keyframes girar {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.icon {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 1rem;
+      animation: bounce 2s infinite;
+    
+  animation: flotar 3s ease-in-out infinite;
+}
+@keyframes flotar {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+.countdown {
+      text-align: center;
+      font-size: 1.5rem;
+      margin-top: 1rem;
+      font-weight: bold;
+      color: rgb(78, 61, 60);
+    }
+
+.mapa-container {
+  margin-top: 2rem;
+  width: 100%;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.animar-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+.animado {
+  opacity: 1;
+  transform: translateY(0);
+}
+.icono-decorativo {
+  font-size: 3rem;
+  display: block;
+  text-align: center;
+  margin-bottom: 1rem;
+  animation: flotar 3s ease-in-out infinite;
+}
+.whatsapp {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 999;
+    }
+    .whatsapp img {
+      width: 60px;
+      height: 60px;
+    }
+  </style>
+
+<body>
+
+  <header>
+    <div class="hero">
+      <h1>Mis XV - Camila</h1>
+      <p>14 de Diciembre, 2025 - Salón Magnolia</p>
+    </div>
+  </header>
+
+  <audio autoplay loop>
+    <source src="Coldplay - Viva La Vida (Official Video)-yt.savetube.me.mp3" type="audio/mp3">
+  </audio>
+
+  <section class="bg-rosa countdown">
+      <h2>Cuenta Regresiva</h2>
+      <div id="countdown">Cargando...</div>
+      <div class="icono-decorativo">⏰</div>
+  </section>
+
+    
+  <section class="bg-beige">
+    <h2>Frases Inspiradoras</h2>
+    <p>“Y sobre todas estas cosas, vestíos de amor, que es el vínculo perfecto.” – Colosenses 3:14</p>
+    <p>“La vida no se mide por los años, sino por los momentos que nos dejan sin aliento.”</p>
+    <p>“La belleza es una luz en el corazón.” – Khalil Gibran</p>
+    <p>“No hay elegancia sin fragilidad.” – Jane Austen</p>
+    <div class="icono-decorativo">🕊️</div>
+  </section>
+
+
+  
+  <section class="bg-rosa">
+    <h2>La Historia de Camila</h2>
+    <p>Desde sus primeros pasos hasta este gran día, Camila ha sido una luz en la vida de quienes la rodean. Alegre, soñadora y con un
+       corazón gigante, hoy celebra un nuevo capítulo lleno de amor, esperanza y sueños por cumplir.</p>
+       <div class="icono-decorativo">❤️</div>
+  </section>
+  
+
+  
+  <section class="bg-beige">
+    <h2>Menciones Especiales</h2>
+    <div class="menciones">
+      <div class="mencion">
+        <img src="papa.jpg" alt="Papá">
+        <div><strong>Mi Papá</strong><br>Gracias por enseñarme con tu ejemplo y estar siempre ahí para mí.</div>
+      </div>
+      <div class="mencion">
+        <img src="mama.jpg" alt="Mamá">
+        <div><strong>Mi Mamá</strong><br>Tu ternura y fuerza me inspiran cada día. Te amo.</div>
+      </div>
+      <div class="mencion">
+        <img src="tio.jpg" alt="Tío 1">
+        <div><strong>Mi Tío Luis</strong><br>Siempre presente con alegría y sabiduría. Gracias por tanto.</div>
+      </div>
+      <div class="mencion">
+        <img src="tia1.jpg" alt="Tía">
+        <div><strong>Mi Tía Rosa</strong><br>Tu abrazo es hogar. Sos parte de este día inolvidable.</div>
+      </div>
+    </div>
+  </section>
+  
+
+
+  <section class="bg-rosa-palo">
+    <h2>Álbum</h2>
+    <div class="slider" id="slider">
+      <img src="xv2.jpg" class="active">
+      <img src="xv3.jpg">
+      <img src="xv4.jpg">
+      <img src="xv5.jpg">
+    </div>
+    <div style="text-align:center; margin-top:1.5rem;">
+      <button onclick="abrirGaleria()" style="padding:0.7rem 2rem; background-color:#b06b77; color:white; border:none; border-radius:8px; font-size:1rem; cursor:pointer;">Ver Álbum</button>
+    </div>
+  </section>
+  
+  <section class="bg-beige">
+    <h2>Código de Vestimenta</h2>
+    <div class="icon">💎</div>
+    <p>Vestimenta elegante. Sugerimos colores suaves: rosa pastel, nude o blanco roto.</p>
+  </section>
+  
+<div class="whatsapp">
+    <a href="https://wa.me/5491123456789?text=¡Hola! Confirmo mi asistencia a los XV de Camila 🎉" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/124/124034.png" alt="WhatsApp">
+    </a>
+  </div>
+  
+  <section class="bg-rosa">
+  <h2>¿Dónde es el evento?</h2>
+  <p>Te esperamos en el Salón Magnolia, en un lugar soñado para una noche inolvidable.</p>
+  <div class="mapa-container">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=TU_LINK_DE_MAPA"
+      width="100%"
+      height="400"
+      style="border:0; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</section>
+  
+
+
+  <section class="bg-beige">
+    <h2>Juego Interactivo</h2>
+    <p>¿Cuánto sabés de Camila? ¡Descubrilo jugando!</p>
+    <div style="text-align:center;">
+      <button onclick="document.getElementById('juegoModal').style.display='flex'" style="padding: 0.7rem 2rem; background-color:#ff69b4; color:white; border:none; border-radius:8px; font-size:1rem; cursor:pointer;">Jugar Ahora 🎮</button>
+    </div>
+  </section>
+
+
+
+  <section class="bg-rosado">
+    <h2>Dejá tu Mensaje 💌</h2>
+    <p>Camila va a leer cada palabra con una sonrisa.</p>
+    <div style="text-align:center;">
+      <button onclick="document.getElementById('formModal').style.display='flex'" style="padding: 0.7rem 2rem; background-color:#6a5acd; color:white; border:none; border-radius:8px; font-size:1rem; cursor:pointer;">Abrir Formulario</button>
+    </div>
+  </section>
+
+  
+  <!-- Popup Juego -->
+  <div class="juego-popup" id="juegoModal">
+    <div class="cerrar-btn" onclick="this.parentElement.style.display='none'">&times;</div>
+    <div class="popup-contenido">
+    </div>
+  </div>
+  
+
+
+  <!-- Popup Formulario -->
+  <div class="form-popup" id="formModal">
+    <div class="cerrar-btn" onclick="this.parentElement.style.display='none'">&times;</div>
+    <div class="popup-contenido">
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScAJ24C2E0A7k6Tej4wSjU8MAxjfTm82s4CmKT7rmfU2rH7GQ/viewform?embedded=true" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe>
+    </div>
+  </div>
+</div>
+
+
+<!-- Popup Galería Mejorada -->
+<div class="galeria-popup" id="galeriaPopup">
+  <div class="cerrar-btn" onclick="document.getElementById('galeriaPopup').style.display='none'">&times;</div>
+  <div class="galeria-contenedor">
+    <button class="flecha izquierda" onclick="cambiarFoto(-1)">&#10094;</button>
+    <img src="xv2.jpg" id="galeriaImg" class="galeria-img">
+    <button class="flecha derecha" onclick="cambiarFoto(1)">&#10095;</button>
+  </div>
+</div>
+
+<section class="bg-beige">
+    <h2>Regalos🎁</h2>
+    <p>Alias: camigonzalez.mp</p>
+    <p>CBU: 2850590940090412345678</p>
+    <div class="slider">
+     <img src="chica2.jpg" class="active">
+     </div>
+  </section>
+
+ <footer>
+    Con mucho amor @mitarjetaonline_ Para: Camila © 2025
+  </footer>
+  <script>
+  const questions = [
+    {
+      question: "¿Cuál es el color favorito de la cumpleañera?",
+      answers: ["Rosa", "Celeste", "Negro", "Verde"],
+      correct: 0
+    },
+    {
+      question: "¿Qué comida ama?",
+      answers: ["Pizza", "Sushi", "Hamburguesas", "Empanadas"],
+      correct: 1
+    },
+    {
+      question: "¿Qué red social usa más?",
+      answers: ["TikTok", "Instagram", "Twitter", "Facebook"],
+      correct: 0
+    },
+    {
+      question: "¿Qué tipo de música prefiere?",
+      answers: ["Reggaetón", "Pop", "Rock", "Cumbia"],
+      correct: 3
+    },
+    {
+      question: "¿Cómo se llama su mascota (si tiene)?",
+      answers: ["Luna", "Tobi", "Milo", "No tiene"],
+      correct: 2
+    },
+    {
+      question: "¿Cuál es su signo del zodiaco?",
+      answers: ["Libra", "Piscis", "Leo", "Géminis"],
+      correct: 1
+    }
+  ];
+
+  let currentQuestion = 0;
+  let score = 0;
+  let answerChosen = false;
+
+  function crearJuego() {
+    const container = document.querySelector('#juegoModal .popup-contenido');
+    container.innerHTML = `
+      <h2 id="question-container" style="font-size:1.5rem; margin-bottom:1.2rem; text-align:center; color:#b06b77;"></h2>
+      <div id="answers-container" style="display: flex; flex-direction: column; gap: 10px;"></div>
+      <button id="next-btn" class="btn-juego" style="display:none;">Siguiente</button>
+      <div id="result" class="hidden" style="margin-top: 1.5rem; text-align:center; font-size:1.1rem; white-space: pre-line; color:#4e3d3c;"></div>
+      <button id="restart-btn" class="btn-juego" style="display:none;">Reiniciar</button>
+    `;
+
+    currentQuestion = 0;
+    score = 0;
+    showQuestion();
+
+    document.getElementById("next-btn").addEventListener("click", () => {
+      currentQuestion++;
+      if (currentQuestion < questions.length) {
+        showQuestion();
+      } else {
+        showResult();
+      }
+    });
+
+    document.getElementById("restart-btn").addEventListener("click", () => {
+      currentQuestion = 0;
+      score = 0;
+      document.getElementById("result").classList.add("hidden");
+      document.getElementById("restart-btn").style.display = "none";
+      showQuestion();
+    });
+  }
+
+  function showQuestion() {
+    const q = questions[currentQuestion];
+    const questionContainer = document.getElementById("question-container");
+    const answersContainer = document.getElementById("answers-container");
+    const nextBtn = document.getElementById("next-btn");
+
+    questionContainer.innerText = q.question;
+    answersContainer.innerHTML = "";
+    answerChosen = false;
+
+    q.answers.forEach((answer, index) => {
+      const btn = document.createElement("button");
+      btn.innerText = answer;
+      btn.classList.add("btn-respuesta");
+      btn.addEventListener("click", () => {
+        if (!answerChosen) {
+          if (index === q.correct) score++;
+          answerChosen = true;
+          nextBtn.style.display = "inline-block";
+          Array.from(answersContainer.children).forEach(b => b.disabled = true);
+        }
+      });
+      answersContainer.appendChild(btn);
+    });
+
+    nextBtn.style.display = "none";
+  }
+
+  function showResult() {
+    const resultContainer = document.getElementById("result");
+    const nextBtn = document.getElementById("next-btn");
+    const answersContainer = document.getElementById("answers-container");
+    const questionContainer = document.getElementById("question-container");
+    const restartBtn = document.getElementById("restart-btn");
+
+    questionContainer.innerText = "";
+    answersContainer.innerHTML = "";
+    nextBtn.style.display = "none";
+
+    let message = "";
+    if (score === questions.length) {
+      message = "💖 ¡La conocés mejor que nadie! Sos su alma gemela.";
+    } else if (score >= 4) {
+      message = "🎉 ¡Muy bien! Se nota que la querés mucho.";
+    } else if (score >= 2) {
+      message = "😉 Bien, pero podrías espiarla un poco más jeje.";
+    } else {
+      message = "🤭 Ups... ¡menos mal que no hay castigo por esto!";
+    }
+
+    resultContainer.innerText = `Tu puntaje: ${score}/${questions.length}\n\n${message}`;
+    resultContainer.classList.remove("hidden");
+    restartBtn.style.display = "inline-block";
+  }
+
+  // Lanzar el juego al hacer click en el botón
+  document.querySelector('button[onclick*="juegoModal"]').addEventListener("click", () => {
+    document.getElementById('juegoModal').style.display = 'flex';
+    crearJuego();
+  });
+
+  let currentSlide = 0;
+const sliderImages = document.querySelectorAll("#slider img");
+
+function showSlide(index) {
+  sliderImages.forEach((img, i) => {
+    img.classList.toggle("active", i === index);
+  });
+}
+
+setInterval(() => {
+  currentSlide = (currentSlide + 1) % sliderImages.length;
+  showSlide(currentSlide);
+}, 3000);
+
+let galeriaIndex = 0;
+const imagenesGaleria = ["xv2.jpg", "xv3.jpg", "xv4.jpg", "xv5.jpg"];
+const galeriaImg = document.getElementById("galeriaImg");
+
+function abrirGaleria() {
+  galeriaIndex = 0;
+  galeriaImg.src = imagenesGaleria[galeriaIndex];
+  document.getElementById("galeriaPopup").style.display = "flex";
+}
+
+function cambiarFoto(direccion) {
+  galeriaIndex += direccion;
+  if (galeriaIndex < 0) galeriaIndex = imagenesGaleria.length - 1;
+  if (galeriaIndex >= imagenesGaleria.length) galeriaIndex = 0;
+  galeriaImg.src = imagenesGaleria[galeriaIndex];
+}
+// Countdown con segundos
+    const countdown = document.getElementById('countdown');
+    const targetDate = new Date('2025-12-14T21:00:00');
+    setInterval(() => {
+      const now = new Date();
+      let diff = targetDate - now;
+      if (diff <= 0) {
+        countdown.textContent = "¡Llegó el gran día!";
+        return;
+      }
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const mins = Math.floor((diff / (1000 * 60)) % 60);
+      const secs = Math.floor((diff / 1000) % 60);
+      countdown.textContent = `Faltan ${days} días, ${hours}h ${mins}m ${secs}s`;
+    }, 1000);
+
+ // Aplicar clase automáticamente
+const todasLasSecciones = document.querySelectorAll('section');
+todasLasSecciones.forEach(sec => sec.classList.add('animar-scroll'));
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('animado');
+      observer.unobserve(entry.target); // Animar solo una vez
+    }
+  });
+}, {
+  threshold: 0.1
+});
+
+todasLasSecciones.forEach(sec => observer.observe(sec));
+
+
+</script>
+</body>
+</html>

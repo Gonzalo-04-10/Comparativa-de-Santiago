@@ -236,17 +236,237 @@
     <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d13119.671148026711!2d-58.4515826!3d-34.7072535!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sar!4v1752450714230!5m2!1ses!2sar" loading="lazy"></iframe>
   </section>
 
-  <section class="bg-rosado">
-    <h2>Regalos</h2>
-    <p>Alias: camila.xv.mp</p>
-    <p>CBU: 0000003100123456789012</p>
-  </section>
+
+  <section id="formulario" style="padding: 20px;">
+  <h2>Dejá tu mensaje para la cumpleañera 🎉</h2>
+  <p>Podés escribir de forma anónima si querés. Mensajes ofensivos serán descartados.</p>
+
+  <iframe 
+    src="https://docs.google.com/forms/d/e/1FAIpQLScAJ24C2E0A7k6Tej4wSjU8MAxjfTm82s4CmKT7rmfU2rH7GQ/viewform?embedded=true" width="300" height="820" frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe>
+    
+  </iframe>
+
+</section>
 
   <div class="whatsapp">
     <a href="https://wa.me/5491123456789?text=¡Hola! Confirmo mi asistencia a los XV de Camila 🎉" target="_blank">
       <img src="https://cdn-icons-png.flaticon.com/512/124/124034.png" alt="WhatsApp">
     </a>
   </div>
+<!-- JUEGO INTERACTIVO -->
+<div class="quiz-container">
+  <h2>🎉 ¿Qué tanto conocés a la cumpleañera?</h2>
+  <div id="quiz">
+    <div id="question-container"></div>
+    <div id="answers-container"></div>
+    <button id="next-btn">Siguiente</button>
+    <button id="restart-btn" style="display:none;">Volver a jugar</button>
+    <div id="result" class="hidden"></div>
+  </div>
+</div>
+
+<style>
+  .quiz-container {
+    max-width: 500px;
+    margin: 30px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    font-family: sans-serif;
+    text-align: center;
+  }
+  #answers-container button {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 16px;
+    background: #f0f0f0;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  #answers-container button:hover {
+    background: #dcdcdc;
+  }
+  #next-btn, #restart-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #ff69b4;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+  }
+  #result {
+    font-size: 18px;
+    margin-top: 20px;
+  }
+  .hidden {
+    display: none;
+  }
+</style>
+
+<div class="quiz-container">
+  <h2>🎉 ¿Qué tanto conocés a la cumpleañera?</h2>
+  <div id="quiz">
+    <div id="question-container"></div>
+    <div id="answers-container"></div>
+    <button id="next-btn" style="display: none;">Siguiente</button>
+    <button id="restart-btn" style="display: none;">Volver a jugar</button>
+    <div id="result" class="hidden"></div>
+  </div>
+</div>
+
+<style>
+  .quiz-container {
+    max-width: 500px;
+    margin: 30px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    font-family: sans-serif;
+    text-align: center;
+  }
+  #answers-container button {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 16px;
+    background: #f0f0f0;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  #answers-container button:hover {
+    background: #dcdcdc;
+  }
+  #next-btn, #restart-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #ff69b4;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+  }
+  #result {
+    font-size: 18px;
+    margin-top: 20px;
+  }
+  .hidden {
+    display: none;
+  }
+</style>
+
+<script>
+  const questions = [
+    {
+      question: "¿Cuál es el color favorito de la cumpleañera?",
+      answers: ["Rosa", "Celeste", "Negro", "Verde"],
+      correct: 0
+    },
+    {
+      question: "¿Qué comida ama?",
+      answers: ["Pizza", "Sushi", "Hamburguesas", "Empanadas"],
+      correct: 1
+    },
+    {
+      question: "¿Qué red social usa más?",
+      answers: ["TikTok", "Instagram", "Twitter", "Facebook"],
+      correct: 0
+    },
+    {
+      question: "¿Qué tipo de música prefiere?",
+      answers: ["Reggaetón", "Pop", "Rock", "Cumbia"],
+      correct: 3
+    },
+    {
+      question: "¿Cómo se llama su mascota (si tiene)?",
+      answers: ["Luna", "Tobi", "Milo", "No tiene"],
+      correct: 2
+    },
+    {
+      question: "¿Cuál es su signo del zodiaco?",
+      answers: ["Libra", "Piscis", "Leo", "Géminis"],
+      correct: 1
+    }
+  ];
+
+  let currentQuestion = 0;
+  let score = 0;
+  let answerChosen = false;
+
+  const questionContainer = document.getElementById("question-container");
+  const answersContainer = document.getElementById("answers-container");
+  const nextBtn = document.getElementById("next-btn");
+  const resultContainer = document.getElementById("result");
+  const restartBtn = document.getElementById("restart-btn");
+
+  function showQuestion() {
+    const q = questions[currentQuestion];
+    questionContainer.innerText = q.question;
+    answersContainer.innerHTML = "";
+    answerChosen = false;
+
+    q.answers.forEach((answer, index) => {
+      const btn = document.createElement("button");
+      btn.innerText = answer;
+      btn.addEventListener("click", () => {
+        if (!answerChosen) {
+          if(index === q.correct) score++;
+          answerChosen = true;
+          nextBtn.style.display = "inline-block";
+          Array.from(answersContainer.children).forEach(b => b.disabled = true);
+        }
+      });
+      answersContainer.appendChild(btn);
+    });
+
+    nextBtn.style.display = "none";
+  }
+
+  nextBtn.addEventListener("click", () => {
+    currentQuestion++;
+    if(currentQuestion < questions.length){
+      showQuestion();
+    } else {
+      showResult();
+    }
+  });
+
+  restartBtn.addEventListener("click", () => {
+    currentQuestion = 0;
+    score = 0;
+    resultContainer.classList.add("hidden");
+    restartBtn.style.display = "none";
+    showQuestion();
+  });
+
+  function showResult() {
+    questionContainer.innerText = "";
+    answersContainer.innerHTML = "";
+    nextBtn.style.display = "none";
+
+    let message = "";
+    if(score === questions.length){
+      message = "💖 ¡La conocés mejor que nadie! Sos su alma gemela.";
+    } else if(score >= 4){
+      message = "🎉 ¡Muy bien! Se nota que la querés mucho.";
+    } else if(score >= 2){
+      message = "😉 Bien, pero podrías espiarla un poco más jeje.";
+    } else {
+      message = "🤭 Ups... ¡menos mal que no hay castigo por esto!";
+    }
+
+    resultContainer.innerText = `Tu puntaje: ${score}/${questions.length}\n\n${message}`;
+    resultContainer.classList.remove("hidden");
+    restartBtn.style.display = "inline-block";
+  }
+
+  showQuestion();
+</script>
 
   <footer>
     Con mucho amor — Camila © 2025
