@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mi Tarjeta Online</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --rosa: #f7d4cf;
+      --marron: #c8a79b;
+      --blanco: #fffaf9;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      background: var(--blanco);
+      color: #4e3d3c;
+      line-height: 1.6;
+    }
+    header {
+      background: var(--rosa);
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    header p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+    .cta-btn {
+      padding: 1rem 2rem;
+      background: var(--marron);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    section {
+      padding: 5rem 2rem;
+      max-width: 1100px;
+      margin: auto;
+    }
+    .galeria {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    .tarjeta {
+      background: #fff;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .tarjeta:hover {
+      transform: scale(1.02);
+    }
+    .tarjeta img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+    .tarjeta p {
+      padding: 1rem;
+      font-size: 1rem;
+    }
+    .caracteristicas, .beneficios {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+    .caracteristica, .beneficio {
+      background: #fff;
+      border-radius: 10px;
+      padding: 1.5rem;
+      box-shadow: 0 0 5px rgba(0,0,0,0.03);
+    }
+    .caracteristica h4, .beneficio h4 {
+      margin-bottom: 0.5rem;
+      color: var(--marron);
+    }
+    .testimonios {
+      background: var(--blanco);
+      padding: 6rem 2rem;
+    }
+    .testimonios h2 {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    .testimonios-contenido {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    .testimonio {
+      background: #fff;
+      border-left: 5px solid var(--rosa);
+      padding: 1.5rem;
+      border-radius: 10px;
+    }
+    .testimonio p {
+      font-style: italic;
+    }
+    .testimonio span {
+      display: block;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+    footer {
+      background: var(--rosa);
+      padding: 2rem;
+      text-align: center;
+      color: #4e3d3c;
+      margin-top: 4rem;
+    }
+    .wsp-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25d366;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+    .wsp-btn img {
+      width: 32px;
+      height: 32px;
+    }
+    @media (max-width: 600px) {
+      header h1 { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="https://wa.me/5491134570167" class="wsp-btn" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+  </a>
+
+  <header>
+    <h1>Diseñamos tu Tarjeta Digital Ideal</h1>
+    <p>Una forma moderna, personalizada y única de invitar y emocionar</p>
+    <button class="cta-btn" onclick="window.location.href='https://wa.me/5491134570167'">Solicitar la tuya</button>
+  </header>
+
+  <section>
+    <h2 style="text-align:center; margin-bottom:3rem;">Algunos de nuestros diseños</h2>
+    <div class="galeria">
+      <div class="tarjeta" onclick="location.href='xv-camila.html'">
+        <img src="preview-xv-camila.jpg" alt="XV Camila">
+        <p>Invitación XV elegante y animada.</p>
+      </div>
+      <div class="tarjeta">
+        <img src="preview-xv-sole.jpg" alt="XV Sole">
+        <p>Diseño floral, interactivo y con galería de fotos.</p>
+      </div>
+      <div class="tarjeta">
+        <img src="preview-xv-manu.jpg" alt="XV Manu">
+        <p>Minimalista, con música de fondo y cuenta regresiva.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 style="text-align:center; margin-bottom:3rem;">¿Qué incluye tu tarjeta?</h2>
+    <div class="caracteristicas">
+      <div class="caracteristica"><h4>Confirmación</h4><p>Permití que tus invitados confirmen asistencia con un solo clic.</p></div>
+      <div class="caracteristica"><h4>Cuenta regresiva</h4><p>Un reloj que genera expectativa y emoción para tu día especial.</p></div>
+      <div class="caracteristica"><h4>Ubicación</h4><p>Link directo con mapa para que nadie se pierda.</p></div>
+      <div class="caracteristica"><h4>Juego interactivo</h4><p>Un detalle divertido para que tus invitados participen.</p></div>
+      <div class="caracteristica"><h4>Bienvenida animada</h4><p>Impresioná desde el primer segundo con una entrada mágica.</p></div>
+      <div class="caracteristica"><h4>Canciones sugeridas</h4><p>Compartí tus temas favoritos para que suene tu esencia.</p></div>
+      <div class="caracteristica"><h4>Dress code</h4><p>Mostrá los colores o estilo con los que querés que vayan.</p></div>
+      <div class="caracteristica"><h4>Regalos</h4><p>Alias de transferencia para facilitar cualquier obsequio.</p></div>
+      <div class="caracteristica"><h4>Álbum de fotos</h4><p>Incluí tus mejores recuerdos para emocionar a todos.</p></div>
+      <div class="caracteristica"><h4>Música de fondo</h4><p>Una melodía suave que acompaña la experiencia completa.</p></div>
+      <div class="caracteristica"><h4>Historia o frases</h4><p>Frases especiales o tu historia para dar un toque único.</p></div>
+      <div class="caracteristica"><h4>Menciones especiales</h4><p>Destacá a tus padres, padrinos o personas importantes.</p></div>
+      <div class="caracteristica"><h4>Código QR</h4><p>Escaneable desde el celular para compartir rápidamente.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2 style="text-align:center; margin-bottom:3rem;">Beneficios que hacen la diferencia</h2>
+    <div class="beneficios">
+      <div class="beneficio"><h4>Fácil de compartir</h4><p>Enviá por WhatsApp, redes o mail sin límites.</p></div>
+      <div class="beneficio"><h4>Envíos ilimitados</h4><p>No importa si son 10 o 1000 personas, ¡llegás a todos!</p></div>
+      <div class="beneficio"><h4>Rápido y económico</h4><p>Soluciones modernas que se entregan en tiempo récord.</p></div>
+      <div class="beneficio"><h4>100% personalizadas</h4><p>Diseños únicos, hechos a tu medida y con tu estilo.</p></div>
+      <div class="beneficio"><h4>Funcionales</h4><p>Todo lo que necesitás, en un solo lugar. Sin complicaciones.</p></div>
+    </div>
+  </section>
+
+  <section class="testimonios">
+    <h2>Lo que dicen nuestros clientes</h2>
+    <div class="testimonios-contenido">
+      <div class="testimonio">
+        <p>"No sabía que una tarjeta podía emocionarme tanto. Todos me felicitaron por lo original que fue. ¡Gracias!"</p>
+        <span>- Martina R.</span>
+      </div>
+      <div class="testimonio">
+        <p>"La atención fue excelente, y quedó hermosa. La música, las fotos, ¡todo impecable!"</p>
+        <span>- Julieta F.</span>
+      </div>
+      <div class="testimonio">
+        <p>"Muy profesional. Lo envié por WhatsApp y todos mis invitados lo recibieron al instante."</p>
+        <span>- Carolina T.</span>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Mi Tarjeta Online · Todos los derechos reservados
+  </footer>
+
+</body>
+</html>
+
+

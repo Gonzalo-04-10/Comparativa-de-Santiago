@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Bienvenida XV</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+  <title>¡Estás Invitado!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Quicksand&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -12,15 +12,19 @@
       box-sizing: border-box;
     }
     body {
-      font-family: 'Playfair Display', serif;
-      background: url('fotoxv2.jpg') center/cover no-repeat;
-      background-color: #ddd;
+      font-family: 'Quicksand', sans-serif;
+      background: url('casados5.jpg') center/cover no-repeat;
       height: 100vh;
+      color: #fff;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
+      justify-content: center;
+      text-align: center;
       position: relative;
+      overflow: hidden;
     }
+
     body::before {
       content: "";
       position: absolute;
@@ -28,54 +32,66 @@
       background: rgba(0, 0, 0, 0.4);
       z-index: 0;
     }
-    .contenedor {
-      position: relative;
-      z-index: 2;
-      color: #fff;
-      text-align: center;
-      padding: 2rem;
-      background: rgba(255, 250, 249, 0.1);
-      border-radius: 20px;
-    }
+
     h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1.5rem;
-      color: #ffe7e3;
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      z-index: 1;
+      animation: fadeInDown 1.5s ease forwards;
     }
+
     p {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       margin-bottom: 2rem;
-      color: #fff4e5;
+      z-index: 1;
+      animation: fadeInUp 2s ease forwards;
     }
-    .boton-ingresar {
-      padding: 0.9rem 2rem;
-      font-size: 1.2rem;
-      border: none;
-      border-radius: 12px;
-      background-color: #c08b84;
+
+    a {
+      text-decoration: none;
+      padding: 1rem 2rem;
+      background: #d7a4a4;
       color: white;
-      cursor: pointer;
-      transition: background 0.3s ease;
+      border-radius: 10px;
+      font-size: 1.2rem;
+      transition: transform 0.3s ease, background 0.3s ease;
+      z-index: 1;
+      animation: fadeInUp 2.5s ease forwards;
     }
-    .boton-ingresar:hover {
-      background-color: #a7746e;
+
+    a:hover {
+      background: #b87b7b;
+      transform: scale(1.05);
     }
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 2rem;
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
       }
-      p {
-        font-size: 1rem;
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
     }
   </style>
 </head>
 <body>
-  <div class="contenedor">
-    <h1>¡Estás invitado a mis XV!</h1>
-    <p>Estás por compartir un momento especial de mi vida💖</p>
-    <button class="boton-ingresar" onclick="window.location.href='inicio.html'">Ingresar</button>
-  </div>
+  <h1>💒 Estás invitado a nuestra boda</h1>
+  <p>Nos llena de alegría que seas parte de este momento tan especial 💍</p>
+  <a href="Ejemplo bodas estandar.html">✨ Ingresar a la invitación</a>
 </body>
 </html>
 
