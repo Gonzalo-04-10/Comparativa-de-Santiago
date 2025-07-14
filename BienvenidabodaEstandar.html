@@ -3,13 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mis XV Años</title>
+  <title>¡Estás Invitado!</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Quicksand&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
     body {
       font-family: 'Quicksand', sans-serif;
-      background: url('xv6.jpg') center/cover no-repeat;
+      background: url('casados5.jpg') center/cover no-repeat;
       height: 100vh;
       color: #fff;
       display: flex;
@@ -20,6 +24,7 @@
       position: relative;
       overflow: hidden;
     }
+
     body::before {
       content: "";
       position: absolute;
@@ -27,6 +32,7 @@
       background: rgba(0, 0, 0, 0.4);
       z-index: 0;
     }
+
     h1 {
       font-family: 'Playfair Display', serif;
       font-size: 3rem;
@@ -34,16 +40,18 @@
       z-index: 1;
       animation: fadeInDown 1.5s ease forwards;
     }
+
     p {
       font-size: 1.3rem;
       margin-bottom: 2rem;
       z-index: 1;
       animation: fadeInUp 2s ease forwards;
     }
+
     a {
       text-decoration: none;
       padding: 1rem 2rem;
-      background: #e4a6b0;
+      background: #d7a4a4;
       color: white;
       border-radius: 10px;
       font-size: 1.2rem;
@@ -51,23 +59,39 @@
       z-index: 1;
       animation: fadeInUp 2.5s ease forwards;
     }
+
     a:hover {
-      background: #cd8e99;
+      background: #b87b7b;
       transform: scale(1.05);
     }
+
     @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-30px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
+
     @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
 <body>
-  <h1>🎉 ¡Estás invitado a mis XV!</h1>
-  <p>Me haría muy feliz que me acompañes en este día tan especial 💖</p>
-  <a href="EjemploxvEstandar.html">✨ Ingresar a la invitación</a>
+  <h1>💒 Estás invitado a nuestra boda</h1>
+  <p>Nos llena de alegría que seas parte de este momento tan especial 💍</p>
+  <a href="Ejemplo bodas estandar.html">✨ Ingresar a la invitación</a>
 </body>
 </html>
+
