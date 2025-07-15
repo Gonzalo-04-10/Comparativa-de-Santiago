@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mis XV Años</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Quicksand&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family:Arial, Helvetica, sans-serif;
+      background: url('chica.jpg') center/cover no-repeat;
+      height: 100vh;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    body::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 0;
+    }
+    h1 {
+      font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      z-index: 1;
+      animation: fadeInDown 1.5s ease forwards;
+    }
+    p {
+      font-size: 1rem;
+      margin-bottom: 2rem;
+      z-index: 1;
+      animation: fadeInUp 2s ease forwards;
+    }
+    a {
+      text-decoration: none;
+      padding: 1rem 2rem;
+      background: #e4a6b0;
+      color: white;
+      border-radius: 10px;
+      font-size: 1rem;
+      transition: transform 0.3s ease, background 0.3s ease;
+      z-index: 1;
+      animation: fadeInUp 2.5s ease forwards;
+    }
+    a:hover {
+      background: #cd8e99;
+      transform: scale(1.05);
+    }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <h1>¡Estás invitado a mis XV!</h1>
+  <p>Me haría muy feliz que me acompañes en este día tan especial 💖</p>
+  <a href="EjemploxvEstandar.html">✨ Ingresar a la invitación</a>
+</body>
+</html>

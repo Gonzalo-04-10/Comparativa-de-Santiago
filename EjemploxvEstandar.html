@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -97,29 +96,7 @@
       color: white;
       cursor: pointer;
     }
-    .menciones {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: space-around;
-    }
-    .mencion {
-      background: #fff;
-      border-radius: 10px;
-      padding: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      width: 100%;
-      max-width: 400px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    }
-    .mencion img {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      object-fit: cover;
-    }
+  
     .slider {
       height: 700px;
       overflow: hidden;
@@ -344,59 +321,11 @@
     </section> 
 
   <section class="bg-rosa">
-    <h2>Conocé más sobre Camila</h2>
-    <p>Hay una historia que vale la pena leer...</p>
-    <div style="text-align:center; margin-top:1rem;">
-      <button onclick="document.getElementById('historiaModal').style.display='flex'" style="padding: 0.7rem 2rem; background-color:#b06b77; color:white; border:none; border-radius:8px; font-size:1rem; cursor:pointer;">
-        Leer Historia 📖
-      </button>
-    </div>
-  </section>
-  <!-- Popup Historia de Camila -->
-  <div class="galeria-popup" id="historiaModal">
-    <div class="cerrar-btn" onclick="document.getElementById('historiaModal').style.display='none'">&times;</div>
-    <div class="popup-contenido" style="max-width: 700px; text-align: center;">
-      <img src="camila1.jpg" alt="Camila" style="width: 100%; border-radius: 10px; margin-bottom: 1rem;">
-      <h2 style="color:#b06b77;">La Historia de Camila</h2>
-      <p style="font-size:1.1rem; line-height:1.7; text-align: justify;">
-        Camila nació un día lleno de sol y esperanza. Desde pequeña, mostró una luz especial que la hacía única. Su sonrisa contagiosa y su amor por la vida iluminaron los caminos de quienes la rodeaban. Fue creciendo entre risas, juegos, abrazos y aprendizajes. Siempre con un corazón gigante, dispuesto a escuchar, ayudar y soñar en grande.
-
-        Hoy, al cumplir 15 años, mira atrás con gratitud por cada momento vivido y hacia adelante con ilusión por lo que vendrá. Este no es solo su cumpleaños, es la celebración de una historia hermosa que recién empieza.
-
-        Gracias por formar parte de esta etapa tan especial. 💖
-      </p>
-    </div>
-  </div>
-
-  <section class="bg-beige">
     <h2>Frases Inspiradoras</h2>
     <p>“Y sobre todas estas cosas, vestíos de amor, que es el vínculo perfecto.” – Colosenses 3:14</p>
     <p>“La vida no se mide por los años, sino por los momentos que nos dejan sin aliento.”</p>
     <div class="icono-decorativo">🕊️</div>
   </section>
-  
-  <section class="bg-rosa-palo">
-    <h2>Menciones Especiales</h2>
-    <div class="menciones">
-      <div class="mencion">
-        <img src="papa.jpg" alt="Papá">
-        <div><strong>Mi Papá</strong><br>Gracias por enseñarme con tu ejemplo y estar siempre ahí para mí.</div>
-      </div>
-      <div class="mencion">
-        <img src="mama.jpg" alt="Mamá">
-        <div><strong>Mi Mamá</strong><br>Tu ternura y fuerza me inspiran cada día. Te amo.</div>
-      </div>
-      <div class="mencion">
-        <img src="tio.jpg" alt="Tío 1">
-        <div><strong>Mi Tío Luis</strong><br>Siempre presente con alegría y sabiduría. Gracias por tanto.</div>
-      </div>
-      <div class="mencion">
-        <img src="tia1.jpg" alt="Tía">
-        <div><strong>Mi Tía Rosa</strong><br>Tu abrazo es hogar. Sos parte de este día inolvidable.</div>
-      </div>
-    </div>
-  </section>
-  
   
   <section class="bg-beige">
     <h2>Código de Vestimenta</h2>
@@ -425,65 +354,6 @@
     </iframe>
   </div>
 </section>
-  
-  <section class="bg-beige">
-    <h2>Juego Interactivo</h2>
-    <p>¿Cuánto sabés de Camila? ¡Descubrilo jugando!</p>
-    <div style="text-align:center;">
-      <button onclick="document.getElementById('juegoModal').style.display='flex'" style="padding: 0.7rem 2rem; background-color:#ff69b4; color:white; border:none; border-radius:8px; font-size:1rem; cursor:pointer;">Jugar Ahora 🎮</button>
-    </div>
-  </section>
-
- <section class="bg-beige">
-  <h2>Fotos casuales 🤪</h2>
-  <div class="slider" id="slider-casual">
-    <img src="chica4.jpg" class="active">
-    <img src="chica.jpg">
-  </div>
-  <div style="text-align:center; margin-top:1.5rem;">
-    <button onclick="abrirGaleriaCasual()" style="padding:0.7rem 2rem; background-color:#b06b77; color:white; border:none; border-radius:8px; font-size:1rem; cursor:pointer;">
-  Ver Fotos
-</button>
-  </div>
-</section>
-
-<!-- Popup Galería Fotos Casual -->
-<div class="galeria-popup" id="galeriaCasualPopup">
-  <div class="cerrar-btn" onclick="document.getElementById('galeriaCasualPopup').style.display='none'">&times;</div>
-  <div class="galeria-contenedor">
-    <button class="flecha izquierda" onclick="cambiarFotoCasual(-1)">&#10094;</button>
-    <img src="chica4.jpg" id="galeriaImgCasual" class="galeria-img">
-    <button class="flecha derecha" onclick="cambiarFotoCasual(1)">&#10095;</button>
-  </div>
-</div>
-
-
-  <section class="bg-rosado">
-    <h2>Dejá tu Mensaje 💌</h2>
-    <p>Camila va a leer cada palabra con una sonrisa.</p>
-    <div style="text-align:center;">
-      <button onclick="document.getElementById('formModal').style.display='flex'" style="padding: 0.7rem 2rem; background-color:#6a5acd; color:white; border:none; border-radius:8px; font-size:1rem; cursor:pointer;">Abrir Formulario</button>
-    </div>
-  </section>
-
-  
-  <!-- Popup Juego -->
-  <div class="juego-popup" id="juegoModal">
-    <div class="cerrar-btn" onclick="this.parentElement.style.display='none'">&times;</div>
-    <div class="popup-contenido">
-    </div>
-  </div>
-  
-
-
-  <!-- Popup Formulario -->
-  <div class="form-popup" id="formModal">
-    <div class="cerrar-btn" onclick="this.parentElement.style.display='none'">&times;</div>
-    <div class="popup-contenido">
-      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScAJ24C2E0A7k6Tej4wSjU8MAxjfTm82s4CmKT7rmfU2rH7GQ/viewform?embedded=true" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe>
-    </div>
-  </div>
-</div>
 
 
 <!-- Popup Galería Mejorada -->
@@ -496,16 +366,7 @@
   </div>
 </div>
 
-<section class="bg-beige">
-    <h2>Regalos🎁</h2>
-    <p>Alias: camigonzalez.mp</p>
-    <p>CBU: 2850590940090412345678</p>
-    <div class="slider">
-     <img src="chica2.jpg" class="active">
-     </div>
-  </section>
-
-  <section class="bg-rosa-palo">
+  <section class="bg-beige">
     <h2>¡Te esperamos!</h2>
     <div class="icono-decorativo">💌</div>
   </section>
@@ -514,135 +375,6 @@
     Con mucho amor @mitarjetaonline_ Para: Camila © 2025
   </footer>
   <script>
-  const questions = [
-    {
-      question: "¿Cuál es el color favorito de la cumpleañera?",
-      answers: ["Rosa", "Celeste", "Negro", "Verde"],
-      correct: 0
-    },
-    {
-      question: "¿Qué comida ama?",
-      answers: ["Pizza", "Sushi", "Hamburguesas", "Empanadas"],
-      correct: 1
-    },
-    {
-      question: "¿Qué red social usa más?",
-      answers: ["TikTok", "Instagram", "Twitter", "Facebook"],
-      correct: 0
-    },
-    {
-      question: "¿Qué tipo de música prefiere?",
-      answers: ["Reggaetón", "Pop", "Rock", "Cumbia"],
-      correct: 3
-    },
-    {
-      question: "¿Cómo se llama su mascota (si tiene)?",
-      answers: ["Luna", "Tobi", "Milo", "No tiene"],
-      correct: 2
-    },
-    {
-      question: "¿Cuál es su signo del zodiaco?",
-      answers: ["Libra", "Piscis", "Leo", "Géminis"],
-      correct: 1
-    }
-  ];
-
-  let currentQuestion = 0;
-  let score = 0;
-  let answerChosen = false;
-
-  function crearJuego() {
-    const container = document.querySelector('#juegoModal .popup-contenido');
-    container.innerHTML = `
-      <h2 id="question-container" style="font-size:1.5rem; margin-bottom:1.2rem; text-align:center; color:#b06b77;"></h2>
-      <div id="answers-container" style="display: flex; flex-direction: column; gap: 10px;"></div>
-      <button id="next-btn" class="btn-juego" style="display:none;">Siguiente</button>
-      <div id="result" class="hidden" style="margin-top: 1.5rem; text-align:center; font-size:1.1rem; white-space: pre-line; color:#4e3d3c;"></div>
-      <button id="restart-btn" class="btn-juego" style="display:none;">Reiniciar</button>
-    `;
-
-    currentQuestion = 0;
-    score = 0;
-    showQuestion();
-
-    document.getElementById("next-btn").addEventListener("click", () => {
-      currentQuestion++;
-      if (currentQuestion < questions.length) {
-        showQuestion();
-      } else {
-        showResult();
-      }
-    });
-
-    document.getElementById("restart-btn").addEventListener("click", () => {
-      currentQuestion = 0;
-      score = 0;
-      document.getElementById("result").classList.add("hidden");
-      document.getElementById("restart-btn").style.display = "none";
-      showQuestion();
-    });
-  }
-
-  function showQuestion() {
-    const q = questions[currentQuestion];
-    const questionContainer = document.getElementById("question-container");
-    const answersContainer = document.getElementById("answers-container");
-    const nextBtn = document.getElementById("next-btn");
-
-    questionContainer.innerText = q.question;
-    answersContainer.innerHTML = "";
-    answerChosen = false;
-
-    q.answers.forEach((answer, index) => {
-      const btn = document.createElement("button");
-      btn.innerText = answer;
-      btn.classList.add("btn-respuesta");
-      btn.addEventListener("click", () => {
-        if (!answerChosen) {
-          if (index === q.correct) score++;
-          answerChosen = true;
-          nextBtn.style.display = "inline-block";
-          Array.from(answersContainer.children).forEach(b => b.disabled = true);
-        }
-      });
-      answersContainer.appendChild(btn);
-    });
-
-    nextBtn.style.display = "none";
-  }
-
-  function showResult() {
-    const resultContainer = document.getElementById("result");
-    const nextBtn = document.getElementById("next-btn");
-    const answersContainer = document.getElementById("answers-container");
-    const questionContainer = document.getElementById("question-container");
-    const restartBtn = document.getElementById("restart-btn");
-
-    questionContainer.innerText = "";
-    answersContainer.innerHTML = "";
-    nextBtn.style.display = "none";
-
-    let message = "";
-    if (score === questions.length) {
-      message = "💖 ¡La conocés mejor que nadie! Sos su alma gemela.";
-    } else if (score >= 4) {
-      message = "🎉 ¡Muy bien! Se nota que la querés mucho.";
-    } else if (score >= 2) {
-      message = "😉 Bien, pero podrías espiarla un poco más jeje.";
-    } else {
-      message = "🤭 Ups... ¡menos mal que no hay castigo por esto!";
-    }
-
-    resultContainer.innerText = `Tu puntaje: ${score}/${questions.length}\n\n${message}`;
-    resultContainer.classList.remove("hidden");
-    restartBtn.style.display = "inline-block";
-  }
-
-  // Lanzar el juego al hacer click en el botón
-  document.querySelector('button[onclick*="juegoModal"]').addEventListener("click", () => {
-    document.getElementById('juegoModal').style.display = 'flex';
-    crearJuego();
-  });
 
   let currentSlide = 0;
 const sliderImages = document.querySelectorAll("#slider img");
