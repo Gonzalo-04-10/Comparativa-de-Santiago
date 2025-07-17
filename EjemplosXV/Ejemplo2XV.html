@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>XV de Camila</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #e6f4ea;
+  color: #2d4f3a;
+}
+header {
+  background: url('imaXV1/3chica\ \(5\).jpg') center/cover no-repeat;
+  height: 200vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+.hero {
+  position: relative;
+  z-index: 2;
+  color: white;
+}
+.hero h1 {
+  font-size: 3rem;
+  font-family: 'Great Vibes', cursive;
+  letter-spacing: 1px;
+}
+.hero p {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+}
+.hero h1 {
+  animation: aparecerNombre 1.5s ease-out forwards;
+  opacity: 0;
+}
+@keyframes aparecerNombre {
+  from {
+    opacity: 0;
+    transform: scale(0.8) rotate(-5deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+/* Secciones principales */
+section {
+  width: 100%;
+  padding: 3rem 1.5rem;
+  background-color: #99fab5;
+  border-radius: 0;
+  border-top: 1px solid #e0e0e0;
+}
+section:nth-child(even) {
+  background-color: #e6f4ea;
+}
+
+h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #2d4f3a;
+}
+p {
+  text-align: center;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.center-btn {
+  text-align: center;
+  margin-top: 1rem;
+}
+.center-btn button {
+  padding: 0.7rem 2rem;
+  font-size: 1rem;
+  background-color: #64b687;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.center-btn button:hover {
+  background-color: #4fa371;
+}
+
+/* Slider */
+.slider {
+  position: relative;
+  height: 900px;
+  overflow: hidden;
+}
+.slider img {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: left 1s ease, opacity 1s ease;
+}
+.slider img.active {
+  left: 0;
+  opacity: 1;
+}
+.flecha {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  z-index: 2;
+}
+.flecha.izquierda { left: 10px; }
+.flecha.derecha   { right: 10px; }
+
+/* Audio */
+.musica-seccion audio {
+  display: block;
+  margin: 1rem auto;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .hero h1 { font-size: 2.2rem; }
+  .hero p  { font-size: 1rem; }
+  h2       { font-size: 1.6rem; }
+}
+.contador-header {
+  margin-top: 1rem;
+  font-size: 1.4rem;
+  font-weight: bold;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+  </style>
+</head>
+<body>
+
+<header>
+ <div class="hero">
+  <h1>Sabrina - Mis XV</h1>
+  <p>22 de Noviembre, 2026 - Salón Jardín Esmeralda</p>
+  <div id="countdown" class="contador-header">Cargando cuenta regresiva...</div>
+</div>
+</header>
+
+<section class="ubicacion-seccion">
+  <h2>📍 Ubicación</h2>
+  <p>Salón Jardín Esmeralda - Av. Siempreviva 1234, Buenos Aires</p>
+</section>
+
+<section class="horario-seccion">
+  <h2>🕒 Horario</h2>
+  <p>Llegar 20:45 hs. 🎊 Recepción a las 21:00 hs. 🎂 Brindis 23:30 hs.</p>
+</section>
+
+
+<section class="musica-seccion">
+  <h2>🎵 Música</h2>
+  <audio controls loop>
+    <source src="musica.mp3" type="audio/mp3">
+    Tu navegador no soporta audio.
+  </audio>
+</section>
+
+<section class="album-seccion">
+  <h2>Álbum de Fotos 📸</h2>
+  <div class="slider" id="slider">
+    <img src="imaXV1/3chica (2).jpg" class="active">
+    <img src="imaXV1/3chica (3).jpg">
+    <img src="imaXV1/3chica (4).jpg">
+    <button class="flecha izquierda" onclick="cambiarSlide(-1)">‹</button>
+    <button class="flecha derecha" onclick="cambiarSlide(1)">›</button>
+  </div>
+  <div class="center-btn">
+    <button onclick="abrirGaleria()">Ver Álbum</button>
+  </div>
+</section>
+
+<section class="dresscode-seccion">
+  <h2>Dress Code 👗</h2>
+  <p>Formal elegante. Verde, blanco o beige. ¡Coordinemos con estilo!</p>
+</section>
+
+<section class="sugerencia-seccion">
+  <h2>Sugerir canciones 🎶</h2>
+  <div class="center-btn">
+    <button>Sugerir una canción</button>
+  </div>
+</section>
+
+<section class="regalo-seccion">
+  <h2>🎁 Regalo</h2>
+  <div class="center-btn">
+    <button>Ver información para regalar</button>
+  </div>
+</section>
+
+<script>
+  // Cuenta regresiva
+  const countdown = document.getElementById('countdown');
+  const targetDate = new Date('2026-11-22T21:00:00');
+
+  setInterval(() => {
+    const now = new Date();
+    let diff = targetDate - now;
+
+    if (diff <= 0) {
+      countdown.textContent = "¡Llegó el gran día!";
+      return;
+    }
+
+    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const m = Math.floor((diff / (1000 * 60)) % 60);
+    const s = Math.floor((diff / 1000) % 60);
+
+    countdown.textContent = `Faltan ${d} días, ${h}h ${m}m ${s}s`;
+  }, 1000);
+
+  // Slider de imágenes
+  const sliderImgs = document.querySelectorAll("#slider img");
+  let currentSlide = 0;
+
+  function showSlide(i) {
+    sliderImgs.forEach((img, idx) => {
+      img.classList.toggle("active", idx === i);
+    });
+  }
+
+  function cambiarSlide(dir) {
+    currentSlide = (currentSlide + dir + sliderImgs.length) % sliderImgs.length;
+    showSlide(currentSlide);
+  }
+
+  setInterval(() => {
+    cambiarSlide(1);
+  }, 4000);
+
+  // Modal Galería
+  function abrirGaleria() {
+    alert("Aquí podrías abrir una galería de imágenes (solo visual)");
+  }
+</script>
+
