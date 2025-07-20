@@ -73,3 +73,26 @@ function cambiarFoto(dir) {
   galeriaIndex = (galeriaIndex + dir + imagenes.length) % imagenes.length;
   galeriaImg.src = imagenes[galeriaIndex];
 }
+
+  const audio = document.getElementById('miAudio');
+  const btn = document.getElementById('btnPlayPause');
+
+  // Iniciar el audio en el segundo 3 con volumen al 40%
+  audio.volume = 0.4;
+  audio.currentTime = 3;
+
+  audio.play().catch(() => {
+    // Algunos navegadores requieren interacción del usuario
+    btn.textContent = '▶';
+  });
+
+  btn.addEventListener('click', () => {
+    if (audio.paused) {
+      audio.play();
+      btn.textContent = '⏸';
+    } else {
+      audio.pause();
+      btn.textContent = '▶';
+    }
+  });
+
