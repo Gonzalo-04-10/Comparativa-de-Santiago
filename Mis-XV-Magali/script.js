@@ -36,17 +36,6 @@ const audio = document.getElementById("miAudio");
 
 audio.volume = 0.4; // volumen al 40%
 
-audio.addEventListener("canplay", () => {
-  audio.currentTime = 3; // empezamos en el segundo 3
-  audio.play();
-});
-
-// Cuando termina, vuelve a empezar desde el segundo 3
-audio.addEventListener("ended", () => {
-  audio.currentTime = 3;
-  audio.play();
-});
-
 
 // SLIDER PRINCIPAL
 const sliderContenedor = document.getElementById("sliderContenedor");
