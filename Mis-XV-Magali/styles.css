@@ -25,7 +25,7 @@ body {
 header {
   background: url('ImagenesMagali/Portada.jpg') no-repeat;
   background-size: cover;
-  background-position: center 55%;
+  background-position: center 60%;
   height: 120vh;
   display: flex;
   align-items: center;
