@@ -92,5 +92,3 @@ playPauseBtn.addEventListener("click", () => {
     reproduciendo = false;
   }
 });
-
-
