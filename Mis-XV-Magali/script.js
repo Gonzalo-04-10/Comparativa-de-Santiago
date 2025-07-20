@@ -74,25 +74,23 @@ function cambiarFoto(dir) {
   galeriaImg.src = imagenes[galeriaIndex];
 }
 
-  const audio = document.getElementById('miAudio');
-  const btn = document.getElementById('btnPlayPause');
+const audio = document.getElementById("miAudio");
+const playPauseBtn = document.getElementById("playPauseBtn");
 
-  // Iniciar el audio en el segundo 3 con volumen al 40%
-  audio.volume = 0.4;
-  audio.currentTime = 3;
+let reproduciendo = false;
 
-  audio.play().catch(() => {
-    // Algunos navegadores requieren interacción del usuario
-    btn.textContent = '▶';
-  });
+playPauseBtn.addEventListener("click", () => {
+  if (!reproduciendo) {
+    audio.volume = 0.4;
+    audio.currentTime = 3;
+    audio.play();
+    playPauseBtn.textContent = "⏸️";
+    reproduciendo = true;
+  } else {
+    audio.pause();
+    playPauseBtn.textContent = "🎵";
+    reproduciendo = false;
+  }
+});
 
-  btn.addEventListener('click', () => {
-    if (audio.paused) {
-      audio.play();
-      btn.textContent = '⏸';
-    } else {
-      audio.pause();
-      btn.textContent = '▶';
-    }
-  });
 

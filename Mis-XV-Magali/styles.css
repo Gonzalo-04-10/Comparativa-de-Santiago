@@ -341,3 +341,27 @@ footer {
     font-size: 0.8rem;
   }
 }
+.boton-musica {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background-color: #ff6f91;
+  color: white;
+  font-size: 1.5rem;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  cursor: pointer;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+
+.boton-musica:hover {
+  background-color: #e85c80;
+}
+
