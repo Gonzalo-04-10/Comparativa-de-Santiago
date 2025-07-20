@@ -15,8 +15,15 @@ body {
   letter-spacing: 1px;
 }
 
+.titulo-principal {
+  font-family: 'Great Vibes', cursive;
+  font-size: 3rem;
+  letter-spacing: 1px;
+  color: #fff;
+  text-shadow: 3px 3px 7px rgba(0, 0, 0, 0.4); /* sombra elegante */
+}
 header {
-  background: url('ImagenesMagali/Picsart_25-07-20_00-58-00-609.png') no-repeat;
+  background: url('ImagenesMagali/Portada.jpg') no-repeat;
   background-size: cover;
   background-position: center 47%;
   height: 120vh;
@@ -81,8 +88,8 @@ header::before {
   animation-delay: 0.5s;
 }
 section {
-  padding: 2rem 1rem;
-  max-width: 900px;
+  padding: 1.6rem 1rem;
+  max-width: 800px;
   margin: 2rem auto;
   background: #ffe8ee; /* rosa más fuerte */
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
@@ -102,9 +109,11 @@ section:hover {
 h2 {
   text-align: center;
   margin-bottom: 1rem;
+  font-size: 1.3rem;
   color: #6b1027; /* vino oscuro */
 }
 p {
+  font-size: 0.9rem;
   text-align: center;
   line-height: 1.5;
 }

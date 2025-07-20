@@ -1,130 +1,112 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mis XV - Magalí</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora&display=swap" rel="stylesheet">
+<style>
+    .bienvenida {
+  height: 100vh;
+  background: #f8f6f4; /* blanco sucio elegante */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+}
 
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+.contenido-bienvenida {
+  max-width: 600px;
+  padding: 2rem;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+}
 
-<header>
-  <div class="hero">
-    <h1 class="titulo-principal animar">Mis XV-Magalí</h1>
-    <p class="animar">5 de Octubre, 2025 - Janos Boutique Ramos Mejía</p>
-    
-    <div class="contador-header animar">
-      <h2>Cuenta Regresiva</h2>
-      <div id="countdown">Cargando...</div>
-      <div class="icono-decorativo">⏳</div>
-    </div>
+.contenido-bienvenida:hover {
+  transform: translateY(-5px);
+}
+
+.contenido-bienvenida h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2rem;
+  color: #4a1f2f;
+  margin-bottom: 1rem;
+}
+
+.contenido-bienvenida p {
+  font-size: 1rem;
+  color: #6a4f57;
+  margin-bottom: 2rem;
+}
+
+.contenido-bienvenida button {
+  background: #ff4f87;
+  color: white;
+  border: none;
+  padding: 0.9rem 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s ease;
+  box-shadow: 0 4px 12px rgba(255, 79, 135, 0.4);
+}
+
+.contenido-bienvenida button:hover {
+  background: #e04478;
+}
+
+/* Animación de entrada opcional */
+.animar {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s ease forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .contenido-bienvenida h1 {
+    font-size: 2rem;
+  }
+
+  .contenido-bienvenida p {
+    font-size: 1rem;
+  }
+
+  .contenido-bienvenida button {
+    width: 100%;
+  }
+}
+
+/* Animación flotante sutil para el botón */
+@keyframes flotarSutil {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-5px); }
+  100% { transform: translateY(0); }
+}
+
+.contenido-bienvenida button {
+  /* ya tenés estilos, agregamos esto */
+  animation: flotarSutil 3s ease-in-out infinite;
+}
+
+
+</style>
+<div class="bienvenida">
+  <div class="contenido-bienvenida animar">
+    <h1>Bienvenid@ a Mis XV</h1>
+    <p>Gracias por ser parte de este momento tan especial✨</p>
+    <button id="btnRedirigir">
+     Ingresar
+    </button>
   </div>
-</header>
-
-
-
-<div class="barra-musica">
-  <button id="playPauseBtn">🎵</button>
-  <div class="titulo-musica">Taylor Swift - All You Had To Do Was Stay</div>
 </div>
 
-<audio id="miAudio">
-  <source src="Taylor-allyouhad.mp3" type="audio/mp3">
-</audio>
+<script>
+  document.getElementById("btnRedirigir").addEventListener("click", function () {
+    window.location.href = "index2.html"; // Redirige al HTML principal
+  });
+</script>
 
-
-
-<section class="bg-verde-claro">
-  <h2>Mis fotos🥰</h2>
-  <div class="slider" id="slider">
-    <button class="flecha-slider izquierda" onclick="cambiarSlide(-1)">‹</button>
-    <div class="slider-contenedor" id="sliderContenedor">
-      <img src="ImagenesMagali/IMG-20250719-WA0001.jpg" class="active">
-      <img src="ImagenesMagali/IMG-20250719-WA0002.jpg">
-      <img src="ImagenesMagali/IMG-20250719-WA0003.jpg">
-      <img src="ImagenesMagali/IMG-20250719-WA0004.jpg">
-      <img src="ImagenesMagali/IMG-20250719-WA0005.jpg">
-      <img src="ImagenesMagali/IMG-20250719-WA0006.jpg">
-    </div>
-    <button class="flecha-slider derecha" onclick="cambiarSlide(1)">›</button>
-  </div>
-  <div class="center-btn">
-    <button onclick="abrirGaleria()">Ver Fotos 📸</button>
-  </div>
-</section>
-
-<div class="galeria-popup" id="galeriaPopup">
-  <div class="cerrar-btn" onclick="cerrarGaleria()">&times;</div>
-  <div class="popup-contenido galeria-fondo">
-    <button class="flecha-slider izquierda" onclick="cambiarFoto(-1)">‹</button>
-    <img src="" id="galeriaImg" class="galeria-img">
-    <button class="flecha-slider derecha" onclick="cambiarFoto(1)">›</button>
-  </div>
-</div>
-
-
-
-<section class="bg-verde animar">
-  <h2>¿Dónde es la fiesta? 📍</h2>
-  <p>📌 <strong>Janos Boutique Ramos Mejía</strong> — Alvear 508 esquina Castelli</p>
-  <p>🕑 <strong>14 Hrs puntual </strong></p>
-  <p>🚗 El lugar posee estacionamiento. Al llegar, anunciáte en la puerta del salón para recibir instrucciones.</p>
-  <div class="mapa-container">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d105017.78315212182!2d-58.71436930273436!3d-34.659609!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcc7b1e2f94925%3A0x462f17377652797b!2sJanos%20Ramos%20Mej%C3%ADa!5e0!3m2!1ses!2sar!4v1752975337408!5m2!1ses!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-  </div>
-</section>
-
-<section class="bg-verde-claro animar">
-  <h2>Dress Code 👗</h2>
-  <p>Elegante Sport✨</p>
-</section>
-
-<section class="bg-verde animar">
-    <h2>Confirma tu Asistencia🥰</h2>
-  <form id="formulario" onsubmit="enviarWhatsApp(); return false;">
-  <label>Nombre:</label>
-  <input type="text" id="nombre" required><br><br>
-
-  <label>¿Asistís?</label><br>
-  <input type="radio" name="asistencia" value="Sí" required> Sí
-  <input type="radio" name="asistencia" value="No"> No<br><br>
-
-  <label>¿Tenés alguna necesidad alimentaria?</label>
-  <select id="menu">
-    <option value="Ninguna">Ninguna</option>
-    <option value="Vegetariano/a">Vegetariano/a</option>
-    <option value="Vegano/a">Vegano/a</option>
-    <option value="Celíaco/a">Celíaco/a</option>
-    <option value="Diabético/a">Diabético/a</option>
-    <option value="Otra">Otra</option>
-  </select><br><br>
-
-  <label>Otro (opcional):</label>
-  <input type="text" id="otro"><br><br>
-
-  <button type="submit">Confirmar por WhatsApp</button>
-</form>
-</section>
-
-<section class="bg-verde-claro animar">
-  <h2>¿Querés hacerme un regalo? 🎁</h2>
-  <p>Tu presencia es lo más importante, pero si igual querés regalarme algo:</p>
-  <p>Alias: <strong>Magg.15</strong></p>
-</section>
-
-<section class="bg-verde animar">
-  <h2>¡Te Espero! ❤️</h2>
-  <p>Será una tarde inolvidable y me encantaría compartirla con vos.</p>
-  <div class="icono-decorativo">💃🎉🕺</div>
-</section>
-
-<footer>
-  Hecho con 💌 por @mitarjetaonline_ para Magalí © 2025
-</footer>
-
-<script src="script.js"></script>
-</body>
-</html>
