@@ -293,6 +293,7 @@ footer {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   z-index: 9999;
   font-family: 'Montserrat', sans-serif;
+  max-width: 90%;
 }
 
 .barra-musica button {
@@ -306,6 +307,7 @@ footer {
   cursor: pointer;
   margin-right: 10px;
   transition: background 0.3s ease;
+  flex-shrink: 0;
 }
 
 .barra-musica button:hover {
@@ -317,4 +319,25 @@ footer {
   color: #5a2e3d;
   font-weight: 500;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* RESPONSIVE para celulares */
+@media (max-width: 480px) {
+  .barra-musica {
+    flex-direction: row;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .barra-musica button {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+    margin-right: 8px;
+  }
+
+  .titulo-musica {
+    font-size: 0.8rem;
+  }
 }
