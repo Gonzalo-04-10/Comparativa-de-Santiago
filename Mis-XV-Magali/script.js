@@ -77,22 +77,10 @@ function cambiarFoto(dir) {
 const audio = document.getElementById("miAudio");
 const playPauseBtn = document.getElementById("playPauseBtn");
 
-let reproduciendo = false;
 
-playPauseBtn.addEventListener("click", () => {
-  if (!reproduciendo) {
     audio.volume = 0.4;
     audio.currentTime = 3;
     audio.play();
-    playPauseBtn.textContent = "⏸️";
-    reproduciendo = true;
-  } else {
-    audio.pause();
-    playPauseBtn.textContent = "🎵";
-    reproduciendo = false;
-  }
-});
-
 
 function enviarWhatsApp() {
   const nombre = document.getElementById("nombre").value;

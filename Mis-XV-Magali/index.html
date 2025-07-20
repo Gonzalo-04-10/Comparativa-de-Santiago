@@ -98,6 +98,11 @@
 
 
 </style>
+
+<audio id="miAudio" loop>
+  <source src="Taylor-allyouhad.mp3" type="audio/mp3">
+</audio>
+
 <div class="bienvenida">
   <div class="contenido-bienvenida animar">
     <h1>Bienvenid@ a Mis XV</h1>
@@ -112,5 +117,17 @@
   document.getElementById("btnRedirigir").addEventListener("click", function () {
     window.location.href = "index2.html"; // Redirige al HTML principal
   });
+
+  document.getElementById("btnRedirigir").addEventListener("click", () => {
+  const audio = document.getElementById("miAudio");
+  audio.volume = 0.4;
+  audio.currentTime = 3;
+  audio.play().catch((e) => {
+    console.log("Autoplay bloqueado");
+  });
+
+  // Redirigir a la página principal
+  window.location.href = "index2.html";
+});
 </script>
 
