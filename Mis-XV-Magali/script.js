@@ -32,9 +32,7 @@ window.addEventListener("DOMContentLoaded", () => {
   document.querySelector(".hero p").style.opacity = "1";
 });
 
-const audio = document.getElementById("miAudio");
 
-audio.volume = 0.4; // volumen al 40%
 
 
 // SLIDER PRINCIPAL
