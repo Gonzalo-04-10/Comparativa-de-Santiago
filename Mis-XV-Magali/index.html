@@ -10,8 +10,8 @@
 }
 
 .contenido-bienvenida {
-  max-width: 900px;
-  max-height:400px;
+  height: 90vh;
+  max-height: none;
   padding: 2rem;
   background: white;
   border-radius: 20px;
@@ -91,6 +91,32 @@
 .contenido-bienvenida button {
   /* ya tenés estilos, agregamos esto */
   animation: flotarSutil 3s ease-in-out infinite;
+}
+
+@media (max-width: 600px) {
+  .bienvenida {
+    padding: 1rem;
+  }
+
+  .contenido-bienvenida {
+    height: 90vh;
+    padding: 1.5rem;
+    border-radius: 15px;
+  }
+
+  .contenido-bienvenida h1 {
+    font-size: 1.7rem;
+  }
+
+  .contenido-bienvenida p {
+    font-size: 1rem;
+  }
+
+  .contenido-bienvenida button {
+    width: 100%;
+    font-size: 1.2rem;
+    padding: 1rem;
+  }
 }
 
 
