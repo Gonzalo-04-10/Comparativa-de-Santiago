@@ -32,25 +32,21 @@ window.addEventListener("DOMContentLoaded", () => {
   document.querySelector(".hero p").style.opacity = "1";
 });
 
-// Audio controlado
 const audio = document.getElementById("miAudio");
 
+audio.volume = 0.4; // volumen al 40%
+
 audio.addEventListener("canplay", () => {
-  audio.currentTime = 4;
-  audio.volume = 0.4;
+  audio.currentTime = 3; // empezamos en el segundo 3
   audio.play();
 });
 
+// Cuando termina, vuelve a empezar desde el segundo 3
 audio.addEventListener("ended", () => {
-  audio.currentTime = 10;
+  audio.currentTime = 3;
   audio.play();
 });
 
-audio.addEventListener("timeupdate", () => {
-  if (audio.currentTime < 10) {
-    audio.currentTime = 10;
-  }
-});
 
 // SLIDER PRINCIPAL
 const sliderContenedor = document.getElementById("sliderContenedor");
