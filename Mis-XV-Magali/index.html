@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mis XV - Magalí</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <div class="hero">
+    <h1 class="titulo-principal animar">Mis XV-Magalí</h1>
+    <p class="animar">5 de Octubre, 2025 - Janos Boutique Ramos Mejía</p>
+    
+    <div class="contador-header animar">
+      <h2>Cuenta Regresiva</h2>
+      <div id="countdown">Cargando...</div>
+      <div class="icono-decorativo">⏳</div>
+    </div>
+  </div>
+</header>
+
+
+<audio id="miAudio" autoplay loop>
+  <source src="Taylor-allyouhad.mp3" type="audio/mp3">
+</audio>
+
+
+
+<section class="bg-verde-claro">
+  <h2>Mis fotos🥰</h2>
+  <div class="slider" id="slider">
+    <button class="flecha-slider izquierda" onclick="cambiarSlide(-1)">‹</button>
+    <div class="slider-contenedor" id="sliderContenedor">
+      <img src="ImagenesMagali/IMG-20250719-WA0001.jpg" class="active">
+      <img src="ImagenesMagali/IMG-20250719-WA0002.jpg">
+      <img src="ImagenesMagali/IMG-20250719-WA0003.jpg">
+      <img src="ImagenesMagali/IMG-20250719-WA0004.jpg">
+      <img src="ImagenesMagali/IMG-20250719-WA0005.jpg">
+      <img src="ImagenesMagali/IMG-20250719-WA0006.jpg">
+    </div>
+    <button class="flecha-slider derecha" onclick="cambiarSlide(1)">›</button>
+  </div>
+  <div class="center-btn">
+    <button onclick="abrirGaleria()">Ver Fotos 📸</button>
+  </div>
+</section>
+
+<div class="galeria-popup" id="galeriaPopup">
+  <div class="cerrar-btn" onclick="cerrarGaleria()">&times;</div>
+  <div class="popup-contenido galeria-fondo">
+    <button class="flecha-slider izquierda" onclick="cambiarFoto(-1)">‹</button>
+    <img src="" id="galeriaImg" class="galeria-img">
+    <button class="flecha-slider derecha" onclick="cambiarFoto(1)">›</button>
+  </div>
+</div>
+
+
+
+<section class="bg-verde animar">
+  <h2>¿Dónde es la fiesta? 📍</h2>
+  <p>📌 <strong>Janos Boutique Ramos Mejía</strong> — Alvear 508 esquina Castelli</p>
+  <p>🕑 <strong>14 Hrs puntual </strong></p>
+  <p>🚗 El lugar posee estacionamiento. Al llegar, anunciáte en la puerta del salón para recibir instrucciones.</p>
+  <div class="mapa-container">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d105017.78315212182!2d-58.71436930273436!3d-34.659609!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcc7b1e2f94925%3A0x462f17377652797b!2sJanos%20Ramos%20Mej%C3%ADa!5e0!3m2!1ses!2sar!4v1752975337408!5m2!1ses!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+</section>
+
+<section class="bg-verde-claro animar">
+  <h2>Dress Code 👗</h2>
+  <p>Elegante Sport✨</p>
+</section>
+
+<section class="bg-verde animar">
+  <h2>Comida📋</h2>
+  <p>Por favor completá el formulario antes del <strong>5 de agosto</strong>.</p>
+  <p>Si necesitás un menú especial: vegetariano, celíaco, vegano, diabético, alérgico o hipertenso.</p>
+  <div class="center-btn">
+    <a href="https://docs.google.com/forms/d/e/FORMULARIO_ID/viewform" target="_blank">
+      <button>Completar Formulario ✅</button>
+    </a>
+  </div>
+</section>
+
+<section class="bg-verde-claro animar">
+  <h2>¿Querés hacerme un regalo? 🎁</h2>
+  <p>Tu presencia es lo más importante, pero si igual querés regalarme algo:</p>
+  <p>Alias: <strong>Magg.15</strong></p>
+</section>
+
+<section class="bg-verde animar">
+  <h2>¡Te Espero! ❤️</h2>
+  <p>Será una tarde inolvidable y me encantaría compartirla con vos.</p>
+  <div class="icono-decorativo">💃🎉🕺</div>
+</section>
+
+<footer>
+  Hecho con 💌 por @mitarjetaonline_ para Magalí © 2025
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
