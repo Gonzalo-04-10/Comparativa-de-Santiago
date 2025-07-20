@@ -11,7 +11,7 @@ body {
 
 .titulo-principal .animar {
   font-family: 'Great Vibes', cursive;
-  font-size: 4rem;
+  font-size: 2rem;
   letter-spacing: 1px;
 }
 
@@ -19,7 +19,7 @@ header {
   background: url('ImagenesMagali/Picsart_25-07-20_00-58-00-609.png') no-repeat;
   background-size: cover;
   background-position: center 47%;
-  height: 150vh;
+  height: 120vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -74,7 +74,7 @@ header::before {
   opacity: 0;
 }
 .hero p {
-  font-size: 1.2rem;
+  font-size: 1rem;
   margin-top: 1rem;
   animation: fadeInUp 1.2s ease-out forwards;
   opacity: 0;
@@ -92,8 +92,8 @@ section:hover {
   transform: translateY(-3px);
 }
 .bg-verde {
-  background: #f19fbc; /* rosa fuerte */
-  border-left: 5px solid #ffccd5; /* rosa pálido */
+  background: #f4acc5; /* rosa fuerte */
+  border-left: 5px solid #f78fb3; /* rosa pálido */
 }
 .bg-verde-claro {
   background: #ffd6e0; /* rosa suave */
@@ -340,3 +340,68 @@ footer {
     font-size: 0.8rem;
   }
 }
+
+form {
+  background: #fff0f5;
+  padding: 2rem;
+  border-radius: 15px;
+  max-width: 500px;
+  margin: 2rem auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Montserrat', sans-serif;
+  color: #5a2e3d;
+}
+
+form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+form input[type="text"],
+form select {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 1.2rem;
+  font-size: 1rem;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #fff;
+  color: #333;
+}
+
+form input[type="radio"] {
+  margin-right: 0.4rem;
+}
+
+form button {
+  background-color: #ff6f91;
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s ease;
+  width: 100%;
+}
+
+form button:hover {
+  background-color: #e85c80;
+}
+
+/* Responsive para celular */
+@media (max-width: 480px) {
+  form {
+    padding: 1.2rem;
+  }
+
+  form button {
+    font-size: 0.95rem;
+    padding: 0.7rem;
+  }
+}
+
