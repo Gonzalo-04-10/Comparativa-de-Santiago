@@ -91,7 +91,7 @@ function enviarWhatsApp() {
   const mensaje = `Hola! Soy ${nombre}. Confirmo asistencia: ${asistencia}. Requerimientos alimentarios: ${menu}${otro ? ` (${otro})` : ''}.`;
 
   // Número de WhatsApp de la clienta (sin el "+" y sin espacios)
-  const numero = "5491134570167";
+  const numero = "5491130913877";
 
   const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
   window.open(url, '_blank');
