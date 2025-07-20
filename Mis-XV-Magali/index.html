@@ -1,20 +1,21 @@
 <style>
-    .bienvenida {
+  .bienvenida {
   height: 100vh;
   background: #f8f6f4; /* blanco sucio elegante */
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
+  padding: 2rem;
 }
 
 .contenido-bienvenida {
-  height: 40vh;
-  max-height: none;
-  padding: 2rem;
+  width: 100%;
+  max-width: 650px;
+  padding: 3rem 2rem;
   background: white;
   border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
   transition: transform 0.3s ease;
 }
 
@@ -24,27 +25,36 @@
 
 .contenido-bienvenida h1 {
   font-family: 'Montserrat', sans-serif;
-  font-size: 2.5rem;
+  font-size: 3rem; /* Más grande */
   color: #4a1f2f;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
 }
 
 .contenido-bienvenida p {
-  font-size: 1.5rem;
+  font-size: 1.6rem; /* Más grande */
   color: #6a4f57;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 
 .contenido-bienvenida button {
   background: #ff4f87;
   color: white;
   border: none;
-  padding: 1.5rem 3rem;
+  padding: 1.4rem 3.5rem;
   font-size: 1.5rem;
   cursor: pointer;
   font-weight: 600;
   transition: background 0.3s ease;
-  box-shadow: 0 4px 12px rgba(255, 79, 135, 0.4);
+  box-shadow: 0 4px 15px rgba(255, 79, 135, 0.4);
+  animation: flotarSutil 3s ease-in-out infinite;
+}
+
+/* Animación sutil para el botón */
+@keyframes flotarSutil {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-5px); }
+  100% { transform: translateY(0); }
 }
 
 .contenido-bienvenida button:hover {
@@ -65,56 +75,24 @@
   }
 }
 
-/* Responsive */
+/* 📱 Responsive para celular */
 @media (max-width: 600px) {
-  .contenido-bienvenida h1 {
-    font-size: 2rem;
-  }
-
-  .contenido-bienvenida p {
-    font-size: 1rem;
-  }
-
-  .contenido-bienvenida button {
-    width: 100%;
-  }
-}
-
-/* Animación flotante sutil para el botón */
-@keyframes flotarSutil {
-  0%   { transform: translateY(0); }
-  50%  { transform: translateY(-5px); }
-  100% { transform: translateY(0); }
-}
-
-.contenido-bienvenida button {
-  /* ya tenés estilos, agregamos esto */
-  animation: flotarSutil 3s ease-in-out infinite;
-}
-
-@media (max-width: 600px) {
-  .bienvenida {
-    padding: 1rem;
-  }
-
   .contenido-bienvenida {
-    height: 90vh;
-    padding: 1.5rem;
-    border-radius: 15px;
+    padding: 3rem 1.2rem;
   }
 
   .contenido-bienvenida h1 {
-    font-size: 1.7rem;
+    font-size: 2.5rem;
   }
 
   .contenido-bienvenida p {
-    font-size: 1rem;
+    font-size: 1.3rem;
   }
 
   .contenido-bienvenida button {
     width: 100%;
-    font-size: 1.2rem;
-    padding: 1rem;
+    font-size: 1.3rem;
+    padding: 1.2rem;
   }
 }
 
