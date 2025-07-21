@@ -29,3 +29,6 @@ def upload_file():
     file.save(save_path)
 
     return jsonify({'message': 'File uploaded successfully'})
+
+if __name__ == "__main__":
+    app.run()
