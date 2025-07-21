@@ -241,40 +241,6 @@ footer {
   color: #154575;
 }
 
-/* Barra musica */
-.barra-musica {
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #f0f5fe;
-  border-radius: 30px;
-  padding: 0.5rem 1rem;
-  display: flex;
-  align-items: center;
-  box-shadow: 0 4px 12px rgba(42, 120, 201, 0.15);
-  z-index: 9999;
-  font-family: 'Montserrat', sans-serif;
-  max-width: 90%;
-}
-
-.barra-musica button {
-  background: #2a78c9;
-  border: none;
-  color: white;
-  font-size: 1.2rem;
-  border-radius: 50%;
-  width: 36px;
-  height: 36px;
-  cursor: pointer;
-  margin-right: 10px;
-  transition: background 0.3s ease;
-  flex-shrink: 0;
-}
-
-.barra-musica button:hover {
-  background: #1b4f8c;
-}
 
 /* Subir foto sección */
 .upload-section {
@@ -321,100 +287,98 @@ footer {
 }
 
 /* Formulario de confirmación (bg-verde) */
-.bg-verde {
-  background: #dbe9fc;
-  border-left: 5px solid #6ca0dc;
-  max-width: 480px;
-  margin: 2rem auto;
-  padding: 24px 30px;
-  border-radius: 14px;
-  box-shadow: 0 3px 10px rgba(42, 120, 201, 0.15);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #1e3e6d;
-  box-sizing: border-box;
-}
-
-.bg-verde h2 {
-  text-align: center;
-  font-size: 1.8rem;
-  margin-bottom: 24px;
-  font-weight: 700;
-  color: #2362a7;
-}
-
+/* Ajustes para que todo sea más compacto y elegante */
 .bg-verde label {
-  display: block;
   font-weight: 600;
+  font-size: 0.95rem;
+  color: #1a2e43;
   margin-bottom: 6px;
-  font-size: 1rem;
-  color: #1e3e6d;
+  display: block;
+  letter-spacing: 0.02em;
 }
 
+/* Inputs y selects: bordes finos, sin sombras, esquinas sutilmente redondeadas */
 .bg-verde input[type="text"],
 .bg-verde select {
   width: 100%;
-  padding: 10px 12px;
+  padding: 8px 12px;
   font-size: 1rem;
-  border: 2px solid #a9c2f9;
-  border-radius: 8px;
-  outline-offset: 2px;
-  transition: border-color 0.3s ease;
+  border: 1.5px solid #a0aec0; /* gris profesional */
+  border-radius: 6px;
+  background-color: #f9fafb;
+  color: #1a2e43;
+  transition: border-color 0.25s ease;
+  font-weight: 400;
   box-sizing: border-box;
-  color: #1e3e6d;
-  background: white;
 }
 
+/* Foco: resalta borde con color azul elegante */
 .bg-verde input[type="text"]:focus,
 .bg-verde select:focus {
-  border-color: #2362a7;
-  box-shadow: 0 0 8px rgba(35, 98, 167, 0.4);
+  border-color: #3182ce; /* azul profesional */
+  outline: none;
+  background-color: #fff;
 }
 
-.bg-verde input[type="radio"] {
-  margin-right: 8px;
-  transform: scale(1.15);
-  cursor: pointer;
-  vertical-align: middle;
+/* Radios: en línea, con texto al lado, espacio uniforme */
+.radio-group {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 20px;
 }
 
-.bg-verde form > label:nth-of-type(2) {
-  margin-top: 1rem;
-  margin-bottom: 6px;
+.radio-group label {
+  display: flex;
+  align-items: center;
   font-weight: 600;
+  font-size: 1rem;
+  color: #1a2e43;
+  cursor: pointer;
+  user-select: none;
 }
 
-.bg-verde button {
-  margin-top: 24px;
-  width: 100%;
-  padding: 14px 0;
-  font-size: 1.2rem;
-  font-weight: 700;
-  background-color: #2a78c9;
-  color: white;
-  border: none;
-  border-radius: 10px;
+.radio-group input[type="radio"] {
+  margin-right: 8px;
+  transform: scale(1.1);
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(42, 120, 201, 0.6);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Botón: fondo sólido azul, texto blanco, bordes redondeados */
+.bg-verde button {
+  width: 100%;
+  padding: 12px 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  background-color: #3182ce; /* azul profesional */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 8px rgba(49, 130, 206, 0.4);
 }
 
 .bg-verde button:hover,
 .bg-verde button:focus {
-  background-color: #1b4f8c;
-  box-shadow: 0 6px 20px rgba(27, 79, 140, 0.8);
+  background-color: #2c5282; /* azul oscuro */
+  box-shadow: 0 6px 14px rgba(44, 82, 130, 0.6);
   outline: none;
 }
 
+/* Menor margen entre inputs para reducir altura total */
 .bg-verde input,
 .bg-verde select,
 .bg-verde button {
-  display: block;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
-.bg-verde form > label:nth-of-type(2) + br + input[type="radio"],
-.bg-verde form > label:nth-of-type(2) + br + input[type="radio"] + label {
-  margin-right: 16px;
+/* Quitar <br> innecesarios del HTML para mejor control con CSS */
+/* En el HTML, asegúrate de eliminar los <br><br> y dejar todo con bloques y márgenes */
+
+/* Opcional: input "otro" en itálica y color gris suave */
+.bg-verde input#otro {
+  font-style: italic;
+  color: #718096;
 }
 
 /* Responsive */

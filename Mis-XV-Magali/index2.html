@@ -61,32 +61,35 @@
 </section>
 
 <section class="bg-verde animar">
-    <h2>Confirma tu Asistencia🥰</h2>
+  <h2>Confirma tu Asistencia🥰</h2>
   <form id="formulario" onsubmit="enviarWhatsApp(); return false;">
-  <label>Nombre:</label>
-  <input type="text" id="nombre" required><br><br>
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" required>
 
-  <label>¿Asistís?</label><br>
-  <input type="radio" name="asistencia" value="Sí" required> Sí
-  <input type="radio" name="asistencia" value="No"> No<br>
+    <label>¿Asistís?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="asistencia" value="Sí" required> Sí</label>
+      <label><input type="radio" name="asistencia" value="No"> No</label>
+    </div>
 
-  <label>¿Tenés alguna necesidad alimentaria?</label>
-  <select id="menu">
-    <option value="Ninguna">Ninguna</option>
-    <option value="Vegetariano/a">Vegetariano/a</option>
-    <option value="Vegano/a">Vegano/a</option>
-    <option value="Celíaco/a">Celíaco/a</option>
-    <option value="Diabético/a">Diabético/a</option>
-    <option value="Hipertenso/a">Hipertenso/a</option>
-    <option value="Otra">Otra</option>
-  </select><br><br>
+    <label for="menu">¿Tenés alguna necesidad alimentaria?</label>
+    <select id="menu">
+      <option value="Ninguna">Ninguna</option>
+      <option value="Vegetariano/a">Vegetariano/a</option>
+      <option value="Vegano/a">Vegano/a</option>
+      <option value="Celíaco/a">Celíaco/a</option>
+      <option value="Diabético/a">Diabético/a</option>
+      <option value="Hipertenso/a">Hipertenso/a</option>
+      <option value="Otra">Otra</option>
+    </select>
 
-  <label>Otro (opcional):</label>
-  <input type="text" id="otro"><br><br>
+    <label for="otro">Otro (opcional):</label>
+    <input type="text" id="otro">
 
-  <button type="submit">Confirmar por WhatsApp</button>
-</form>
+    <button type="submit">Confirmar por WhatsApp</button>
+  </form>
 </section>
+
 
 <section class="bg-verde-claro animar">
   <h2>¿Querés hacerme un regalo? 🎁</h2>
