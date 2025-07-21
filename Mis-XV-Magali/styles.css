@@ -325,85 +325,37 @@ footer {
   text-overflow: ellipsis;
 }
 
-@media (max-width: 480px) {
-  .barra-musica {
-    flex-direction: row;
-    padding: 0.4rem 0.8rem;
-  }
-
-  .barra-musica button {
-    width: 32px;
-    height: 32px;
-    font-size: 1rem;
-    margin-right: 8px;
-  }
-
-  .titulo-musica {
-    font-size: 0.8rem;
-  }
+.upload-section {
+  background: #f8f8ff;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
 }
 
-form {
-  background: #fff0f5;
-  padding: 2rem;
-  border-radius: 15px;
-  max-width: 500px;
-  margin: 2rem auto;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  font-family: 'Montserrat', sans-serif;
-  color: #5a2e3d;
-}
-
-form label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-  font-size: 0.95rem;
-}
-
-form input[type="text"],
-form select {
-  width: 100%;
-  padding: 0.6rem 0.8rem;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  margin-bottom: 1.2rem;
-  font-size: 1rem;
-  font-family: 'Montserrat', sans-serif;
-  background-color: #fff;
+.upload-section h2 {
   color: #333;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
 }
 
-form input[type="radio"] {
-  margin-right: 0.4rem;
-}
-
-form button {
-  background-color: #ff6f91;
-  color: white;
-  border: none;
-  padding: 0.8rem 2rem;
-  border-radius: 30px;
+.upload-section p {
+  color: #555;
   font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+.upload-link button {
+  background-color: #ff4fa3;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
   cursor: pointer;
-  font-weight: 600;
-  transition: background 0.3s ease;
-  width: 100%;
+  font-size: 1rem;
+  transition: background-color 0.3s;
 }
 
-form button:hover {
-  background-color: #e85c80;
+.upload-link button:hover {
+  background-color: #e04492;
 }
-
-/* Responsive para celular */
-@media (max-width: 480px) {
-  form {
-    padding: 1.2rem;
-  }
-
-  form button {
-    font-size: 0.95rem;
-    padding: 0.7rem;
-  }
-}
-
