@@ -30,14 +30,16 @@
 </audio>
 
 
-<section class="upload-section">
-  <h2>📸 Subí tu mejor foto de la fiesta</h2>
-  <p>¡Queremos guardar tus recuerdos! Hacé clic abajo para subir tu imagen desde galería o cámara.</p>
+<form 
+  action="https://TU_BACKEND_RENDER_URL/upload?evento=15_malen"
+  method="POST" 
+  enctype="multipart/form-data"
+>
+  <input type="file" name="file" accept="image/*" capture="environment" required>
+  <button type="submit">Enviar</button>
+</form>
 
-  <a href="https://docs.google.com/forms/d/e/1FAIpQLScEI99ocFm6powdMgebmKYofNhc00KNbHP60VH9XlYGEuflzw/viewform?usp=preview" target="_blank" class="upload-link">
-    <button type="button">Ir al Formulario</button>
-  </a>
-</section>
+
 
 
 

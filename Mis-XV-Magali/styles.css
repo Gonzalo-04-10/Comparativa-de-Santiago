@@ -325,37 +325,51 @@ footer {
   text-overflow: ellipsis;
 }
 
-.upload-section {
-  background: #f8f8ff;
+form {
+  max-width: 400px;
+  margin: 30px auto;
   padding: 20px;
-  border-radius: 12px;
-  text-align: center;
-  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  background-color: #fff8fb;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
 }
 
-.upload-section h2 {
+label {
+  display: block;
+  margin-top: 15px;
+  font-size: 15px;
   color: #333;
-  font-size: 1.5rem;
-  margin-bottom: 10px;
 }
 
-.upload-section p {
-  color: #555;
-  font-size: 1rem;
-  margin-bottom: 15px;
+input[type="text"],
+input[type="file"] {
+  width: 100%;
+  margin-top: 8px;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 14px;
+  background-color: #fff;
+  box-sizing: border-box;
 }
 
-.upload-link button {
-  background-color: #ff4fa3;
+button[type="submit"] {
+  display: block;
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px;
+  background-color: #ff66a5;
   color: white;
-  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
   border: none;
-  border-radius: 8px;
+  border-radius: 12px;
   cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease;
 }
 
-.upload-link button:hover {
-  background-color: #e04492;
+button[type="submit"]:hover {
+  background-color: #ff498c;
 }
+
