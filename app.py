@@ -4,11 +4,18 @@ from werkzeug.utils import secure_filename
 from flask_cors import CORS
 from datetime import datetime
 
+import cloudinary
+import cloudinary.uploader
+
 app = Flask(__name__)
 CORS(app)
 
-UPLOAD_FOLDER = 'upload'
-os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+# Configuración de Cloudinary (reemplazá con tus datos)
+cloudinary.config(
+    cloud_name='Root',
+    api_key='242495746777566',
+    api_secret='sppzK8OEvobLDw9uVrIpqS82T08'
+)
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
@@ -22,13 +29,25 @@ def upload_file():
 
     filename = secure_filename(file.filename)
     timestamp = int(datetime.now().timestamp() * 1000)
-    evento_folder = os.path.join(UPLOAD_FOLDER, evento)
-    os.makedirs(evento_folder, exist_ok=True)
+    public_id = f"{evento}/{timestamp}-{filename}"
 
-    save_path = os.path.join(evento_folder, f"{timestamp}-{filename}")
-    file.save(save_path)
+    try:
+        # Subida directa a Cloudinary
+        result = cloudinary.uploader.upload(
+            file,
+            public_id=public_id,
+            folder=evento,
+            resource_type="image",
+            overwrite=False
+        )
 
-    return jsonify({'message': 'File uploaded successfully'})
+        return jsonify({
+            'message': 'Imagen subida con éxito a Cloudinary',
+            'url': result['secure_url']
+        })
+
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 if __name__ == "__main__":
     app.run()
