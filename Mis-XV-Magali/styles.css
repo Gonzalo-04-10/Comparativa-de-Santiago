@@ -20,6 +20,7 @@ body {
   font-family: 'Great Vibes', cursive;
   font-size: 2rem;
   letter-spacing: 1px;
+  color:white;
 }
 
 .titulo-principal {
@@ -392,6 +393,24 @@ footer {
   font-style: italic;
   color: #718096;
 }
+.sticker-magali {
+  display: block;
+  max-width: 220px; /* tamaño máximo recomendado */
+  width: 100%;
+  height: auto;
+  margin: 1.5rem auto 0 auto;
+  border-radius: 12px; /* opcional, le da un toque suave */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* sombra suave */
+  animation: flotar 3s ease-in-out infinite; /* opcional: animación sutil */
+}
+
+/* Reutilizando la animación ya definida en tu CSS */
+@keyframes flotar {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+
 
 /* Responsive */
 @media (max-width: 480px) {
