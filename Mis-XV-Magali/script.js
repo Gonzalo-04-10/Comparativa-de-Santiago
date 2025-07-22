@@ -46,7 +46,7 @@ function enviarWhatsApp() {
   const menu = document.getElementById("menu").value;
   const otro = document.getElementById("otro").value;
 
-  const mensaje = `Hola! Soy ${nombre}. Confirmo asistencia: ${asistencia}. Requerimientos alimentarios: ${menu}${otro ? ` (${otro})` : ''}.`;
+  const mensaje = `Hola! Soy ${nombre}. Confirmo que: ${asistencia} asistiré. Requerimientos alimentarios: ${menu}${otro ? ` (${otro})` : ''}.`;
 
   // Número de WhatsApp de la clienta (sin el "+" y sin espacios)
   const numero = "5491149153890";
