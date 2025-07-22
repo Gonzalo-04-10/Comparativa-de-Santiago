@@ -32,48 +32,6 @@ window.addEventListener("DOMContentLoaded", () => {
   document.querySelector(".hero p").style.opacity = "1";
 });
 
-
-
-
-// SLIDER PRINCIPAL
-const sliderContenedor = document.getElementById("sliderContenedor");
-const sliderImagenes = sliderContenedor.querySelectorAll("img");
-let currentSlide = 0;
-
-function actualizarSlide() {
-  sliderContenedor.style.transform = `translateX(-${currentSlide * 100}%)`;
-}
-
-function cambiarSlide(dir) {
-  currentSlide = (currentSlide + dir + sliderImagenes.length) % sliderImagenes.length;
-  actualizarSlide();
-}
-
-setInterval(() => {
-  cambiarSlide(1);
-}, 4000);
-
-// GALERÍA POPUP
-const galeriaPopup = document.getElementById("galeriaPopup");
-const galeriaImg = document.getElementById("galeriaImg");
-let galeriaIndex = 0;
-const imagenes = Array.from(sliderImagenes).map(img => img.src);
-
-function abrirGaleria() {
-  galeriaIndex = 0;
-  galeriaImg.src = imagenes[galeriaIndex];
-  galeriaPopup.style.display = "flex";
-}
-
-function cerrarGaleria() {
-  galeriaPopup.style.display = "none";
-}
-
-function cambiarFoto(dir) {
-  galeriaIndex = (galeriaIndex + dir + imagenes.length) % imagenes.length;
-  galeriaImg.src = imagenes[galeriaIndex];
-}
-
 const audio = document.getElementById("miAudio");
 const playPauseBtn = document.getElementById("playPauseBtn");
 
