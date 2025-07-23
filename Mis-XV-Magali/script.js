@@ -49,18 +49,46 @@ function generarCamposAcompanantes() {
   for (let i = 1; i <= cantidad; i++) {
     const campoHTML = `
       <div class="acompanante">
-        <label for="acompanante${i}">Nombre del acompañante ${i}:</label>
-        <input type="text" name="acompanante${i}" required>
-
-        <div class="edad-opciones">
-          <label><input type="radio" name="edad${i}" value="Mayor" required> Mayor de edad</label>
-          <label><input type="radio" name="edad${i}" value="Menor" required> Menor de edad</label>
+        <label for="acompanante${i}">Acompañante ${i}:</label>
+        <div class="fila-acompanante">
+          <input type="text" name="acompanante${i}" required placeholder="Nombre">
+          <div class="edad-opciones">
+            <label>¿Es mayor?</label>
+            <label><input type="radio" name="edad${i}" value="Sí" required> Sí</label>
+            <label><input type="radio" name="edad${i}" value="No"> No</label>
+          </div>
         </div>
+        <style>
+        .fila-acompanante {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.fila-acompanante input[type="text"] {
+  flex: 1;
+  padding: 0.5rem;
+}
+
+.edad-opciones {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.edad-opciones label {
+  margin: 0;
+}
+
+        <style/>
       </div>
     `;
     contenedor.insertAdjacentHTML("beforeend", campoHTML);
   }
 }
+
+
 
 
 
@@ -77,7 +105,8 @@ function enviarWhatsApp() {
     const edad = document.querySelector(`input[name="edad${i}"]:checked`);
 
     if (inputNombre && edad) {
-      nombresAcompanantes += `\n- Acompañante ${i}: ${inputNombre.value} (${edad.value})`;
+      const esMayor = edad.value === "Sí" ? "Mayor de edad" : "Menor de edad";
+      nombresAcompanantes += `\n- Acompañante ${i}: ${inputNombre.value} (${esMayor})`;
     }
   }
 
