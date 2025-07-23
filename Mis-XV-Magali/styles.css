@@ -410,6 +410,11 @@ footer {
   50% { transform: translateY(-6px); }
   100% { transform: translateY(0); }
 }
+#camposAcompanantes label,
+#camposAcompanantes input {
+  display: block;
+  margin-top: 10px;
+}
 
 
 /* Responsive */

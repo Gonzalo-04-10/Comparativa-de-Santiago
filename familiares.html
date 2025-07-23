@@ -1,0 +1,126 @@
+<style>
+  .bienvenida {
+    height: 100vh;
+    background: #e7f0fa; /* celeste muy claro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 3rem;
+    font-family: 'Lora', serif;
+  }
+
+  .contenido-bienvenida {
+    width: 100%;
+    max-width: 650px;
+    padding: 4rem 3rem;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(42, 120, 201, 0.1);
+    transition: transform 0.3s ease;
+    border-left: 5px solid #6ca0dc; /* línea celeste */
+  }
+
+  .contenido-bienvenida:hover {
+    transform: translateY(-5px);
+  }
+
+  .contenido-bienvenida h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3.5rem;
+    color: #2a78c9;
+    margin-bottom: 1.2rem;
+    text-shadow: 1px 1px 4px rgba(42, 120, 201, 0.2);
+  }
+
+  .contenido-bienvenida p {
+    font-size: 1.4rem;
+    color: #3a4a63;
+    margin-bottom: 2.5rem;
+    font-family: 'Lora', serif;
+  }
+
+  .contenido-bienvenida button {
+    background-color: #2a78c9;
+    color: white;
+    border: none;
+    padding: 1.5rem 3.5rem;
+    font-size: 1.3rem;
+    cursor: pointer;
+    font-weight: 700;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 12px rgba(42, 120, 201, 0.4);
+    border-radius: 12px;
+    animation: flotarSutil 3s ease-in-out infinite;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .contenido-bienvenida button:hover {
+    background-color: #1b4f8c;
+    box-shadow: 0 6px 16px rgba(27, 79, 140, 0.6);
+  }
+
+  @keyframes flotarSutil {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0); }
+  }
+
+  .animar {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .contenido-bienvenida {
+      padding: 3rem 1.5rem;
+    }
+
+    .contenido-bienvenida h1 {
+      font-size: 2.7rem;
+    }
+
+    .contenido-bienvenida p {
+      font-size: 1.2rem;
+    }
+
+    .contenido-bienvenida button {
+      width: 100%;
+      font-size: 1.2rem;
+      padding: 1.2rem;
+    }
+  }
+</style>
+
+<audio id="miAudio" loop>
+  <source src="Taylor-allyouhad.mp3" type="audio/mp3">
+</audio>
+
+<div class="bienvenida">
+  <div class="contenido-bienvenida animar">
+    <h1>Bienvenid@ a Mis XV</h1>
+    <p>Gracias por ser parte de este momento tan especial✨</p>
+    <button id="btnRedirigir">Ingresar</button>
+  </div>
+</div>
+
+<script>
+  document.getElementById("btnRedirigir").addEventListener("click", () => {
+    const audio = document.getElementById("miAudio");
+    audio.volume = 0.4;
+    audio.currentTime = 3;
+    audio.play().catch((e) => {
+      console.log("Autoplay bloqueado");
+    });
+
+    window.location.href = "family.html";
+  });
+</script>

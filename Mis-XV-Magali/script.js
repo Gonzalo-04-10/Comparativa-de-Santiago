@@ -40,18 +40,58 @@ const playPauseBtn = document.getElementById("playPauseBtn");
     audio.currentTime = 3;
     audio.play();
 
+
+function generarCamposAcompanantes() {
+  const cantidad = parseInt(document.getElementById('acompanantes').value);
+  const contenedor = document.getElementById('camposAcompanantes');
+
+  contenedor.innerHTML = ''; // Limpiar campos anteriores
+
+  for (let i = 1; i <= cantidad; i++) {
+    const label = document.createElement('label');
+    label.textContent = `Nombre del acompañante ${i}:`;
+
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.name = `acompanante${i}`;
+    input.placeholder = `Acompañante ${i}`;
+    input.required = true;
+
+    contenedor.appendChild(label);
+    contenedor.appendChild(input);
+  }
+}
+
+
 function enviarWhatsApp() {
   const nombre = document.getElementById("nombre").value;
   const asistencia = document.querySelector('input[name="asistencia"]:checked').value;
   const menu = document.getElementById("menu").value;
   const otro = document.getElementById("otro").value;
+  const cantidadAcompanantes = parseInt(document.getElementById("acompanantes").value);
 
-  const mensaje = `Hola! Soy ${nombre}. Confirmo que: ${asistencia} asistiré. Requerimientos alimentarios: ${menu}${otro ? ` (${otro})` : ''}.`;
+  // Obtener nombres de acompañantes
+  let nombresAcompanantes = '';
+  for (let i = 1; i <= cantidadAcompanantes; i++) {
+    const input = document.querySelector(`input[name="acompanante${i}"]`);
+    if (input && input.value.trim() !== '') {
+      nombresAcompanantes += `\n- Acompañante ${i}: ${input.value}`;
+    }
+  }
 
-  // Número de WhatsApp de la clienta (sin el "+" y sin espacios)
+  // Armar mensaje
+  let mensaje = `Hola! Soy ${nombre}. Confirmo que: ${asistencia} asistiré.\n`;
+  mensaje += `Requerimientos alimentarios: ${menu}`;
+  if (otro) mensaje += ` (${otro})`;
+  if (cantidadAcompanantes > 0) {
+    mensaje += `\n\n👥 Acompañantes (${cantidadAcompanantes}):${nombresAcompanantes}`;
+  }
+
+  // Número de WhatsApp de la clienta
   const numero = "5491149153890";
 
   const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
   window.open(url, '_blank');
 }
+
 
