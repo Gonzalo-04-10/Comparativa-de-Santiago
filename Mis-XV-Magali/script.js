@@ -42,25 +42,26 @@ const playPauseBtn = document.getElementById("playPauseBtn");
 
 
 function generarCamposAcompanantes() {
-  const cantidad = parseInt(document.getElementById('acompanantes').value);
-  const contenedor = document.getElementById('camposAcompanantes');
-
-  contenedor.innerHTML = ''; // Limpiar campos anteriores
+  const cantidad = parseInt(document.getElementById("acompanantes").value);
+  const contenedor = document.getElementById("camposAcompanantes");
+  contenedor.innerHTML = ""; // limpiar
 
   for (let i = 1; i <= cantidad; i++) {
-    const label = document.createElement('label');
-    label.textContent = `Nombre del acompañante ${i}:`;
+    const campoHTML = `
+      <div class="acompanante">
+        <label for="acompanante${i}">Nombre del acompañante ${i}:</label>
+        <input type="text" name="acompanante${i}" required>
 
-    const input = document.createElement('input');
-    input.type = 'text';
-    input.name = `acompanante${i}`;
-    input.placeholder = `Acompañante ${i}`;
-    input.required = true;
-
-    contenedor.appendChild(label);
-    contenedor.appendChild(input);
+        <div class="edad-opciones">
+          <label><input type="radio" name="edad${i}" value="Mayor" required> Mayor de edad</label>
+          <label><input type="radio" name="edad${i}" value="Menor" required> Menor de edad</label>
+        </div>
+      </div>
+    `;
+    contenedor.insertAdjacentHTML("beforeend", campoHTML);
   }
 }
+
 
 
 function enviarWhatsApp() {
@@ -70,16 +71,16 @@ function enviarWhatsApp() {
   const otro = document.getElementById("otro").value;
   const cantidadAcompanantes = parseInt(document.getElementById("acompanantes").value);
 
-  // Obtener nombres de acompañantes
   let nombresAcompanantes = '';
   for (let i = 1; i <= cantidadAcompanantes; i++) {
-    const input = document.querySelector(`input[name="acompanante${i}"]`);
-    if (input && input.value.trim() !== '') {
-      nombresAcompanantes += `\n- Acompañante ${i}: ${input.value}`;
+    const inputNombre = document.querySelector(`input[name="acompanante${i}"]`);
+    const edad = document.querySelector(`input[name="edad${i}"]:checked`);
+
+    if (inputNombre && edad) {
+      nombresAcompanantes += `\n- Acompañante ${i}: ${inputNombre.value} (${edad.value})`;
     }
   }
 
-  // Armar mensaje
   let mensaje = `Hola! Soy ${nombre}. Confirmo que: ${asistencia} asistiré.\n`;
   mensaje += `Requerimientos alimentarios: ${menu}`;
   if (otro) mensaje += ` (${otro})`;
@@ -87,11 +88,7 @@ function enviarWhatsApp() {
     mensaje += `\n\n👥 Acompañantes (${cantidadAcompanantes}):${nombresAcompanantes}`;
   }
 
-  // Número de WhatsApp de la clienta
   const numero = "5491149153890";
-
   const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
   window.open(url, '_blank');
 }
-
-
