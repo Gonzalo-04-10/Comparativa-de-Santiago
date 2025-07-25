@@ -62,6 +62,13 @@
     margin: 0.8rem 0 2rem;
   }
 
+  header h1,
+header p,
+#countdown {
+  position: relative;
+  top: 35vh; /* Ajustá este número según tu imagen */
+}
+
   #countdown {
     font-size: 1.3rem;
     font-weight: bold;
@@ -344,6 +351,20 @@ footer {
   object-fit: cover;
   flex-shrink: 0;
 }
+@keyframes aparecerSuave {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animar-header {
+  animation: aparecerSuave 1.5s ease-out forwards;
+}
 
 </style>
 
@@ -352,9 +373,11 @@ footer {
 <body>
 
   <header>
+    <div class="texto-header animar-header">
     <h1>Mis XV - Bianca </h1>
     <p>4 de octubre de 2025 - Salon "Entre fincas"</p>
     <div id="countdown">Cargando cuenta regresiva...</div>
+    </div>
   </header>
 
   <section class="gris">
