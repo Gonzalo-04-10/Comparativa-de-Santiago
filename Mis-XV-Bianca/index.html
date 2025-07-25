@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Boda de Sofía y Lucas</title>
+ <style>
+  :root {
+    --fondo: #f5f5f5;
+    --oscuro: #8f4a7b;
+    --claro: #ddb4cd;
+    --gris: #ddc5d9;
+    --fuente: 'Segoe UI', sans-serif;
+    --acento: #ffffff;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: var(--fuente);
+    background: var(--fondo);
+    color: var(--oscuro);
+    line-height: 1.6;
+  }
+
+  header {
+  height: 150vh;
+  background: url(ImagenesBianca/Picsart_25-07-25_15-43-26-833\ 1.jpg) no-repeat center center;
+  background-size: cover;
+  color: var(--claro);
+  text-align: center;
+  padding: 3rem 1rem;
+  overflow: hidden;
+}
+.mapa-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* Proporción 16:9 */
+  height: 0;
+  overflow: hidden;
+}
+
+.mapa-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+  header h1 {
+    font-size: 2.8rem;
+    margin: 0;
+  }
+
+  header p {
+    font-size: 1.2rem;
+    margin: 0.8rem 0 2rem;
+  }
+
+  #countdown {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--acento);
+  }
+
+  section {
+    width: 100%;
+    padding: 3rem 1rem;
+  }
+
+  .oscura {
+    background: var(--oscuro);
+    color: var(--claro);
+  }
+
+  .clara {
+    background: var(--claro);
+    color: var(--oscuro);
+  }
+
+  .gris {
+    background: var(--gris);
+  }
+
+  .contenedor {
+    max-width: 700px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  h2 {
+    font-weight: 500;
+    font-size: 1.7rem;
+    margin-bottom: 1rem;
+  }
+
+  a {
+    color: var(--acento);
+    text-decoration: underline;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  input[type="text"],
+  select {
+    padding: 0.7rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    background: white;
+  }
+
+  .radio-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  button {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    background: transparent;
+    border: 2px solid var(--oscuro);
+    color: var(--oscuro);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: fit-content;
+  }
+
+  button:hover {
+    background: var(--oscuro);
+    color: var(--claro);
+  }
+  /* Galería */
+
+.slider { 
+  height: 600px;  
+  position: relative;
+  max-width: 800px;
+  margin: 2rem auto;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slider img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: opacity 0.5s ease;
+}
+
+
+.slider-inner img {
+  flex-shrink: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.flecha-slider {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(30, 30, 30, 0.5);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.3s ease;
+}
+
+.flecha-slider:hover {
+  background: rgba(30, 30, 30, 0.8);
+}
+
+.flecha-slider.izquierda {
+  left: 0;
+}
+
+.flecha-slider.derecha {
+  right: 0;
+}
+
+.center-btn {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.center-btn button {
+  padding: 0.7rem 1.4rem;
+  font-size: 1rem;
+  background: transparent;
+  border: 2px solid var(--oscuro);
+  color: var(--oscuro);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.center-btn button:hover {
+  background: var(--oscuro);
+  color: var(--blanco);
+}
+
+@media (max-width: 600px) {
+  .flecha-slider {
+    font-size: 1.5rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .slider {
+    max-width: 100%;
+  }
+}
+
+  @media (max-width: 600px) {
+    header h1 {
+      font-size: 2rem;
+    }
+
+    #countdown {
+      font-size: 1.1rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    .contenedor {
+      padding: 0 1rem;
+    }
+  }
+
+  /* MODAL - Pantallazo para ver álbum ampliado */
+.modal-galeria {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.95);
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 9999;
+  padding: 2rem;
+}
+
+.modal-galeria.show {
+  display: flex;
+}
+
+.modal-img {
+  max-width: 90%;
+  max-height: 80%;
+  border: 4px solid white;
+  box-shadow: 0 0 10px black;
+  margin-bottom: 1rem;
+}
+
+/* Reutilizamos estilo de tus botones */
+.flecha-modal,
+.cerrar-modal {
+  background: transparent;
+  border: 2px solid var(--claro);
+  color: var(--claro);
+  padding: 0.6rem 1.2rem;
+  font-size: 1.4rem;
+  margin: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.flecha-modal:hover,
+.cerrar-modal:hover {
+  background: var(--claro);
+  color: var(--oscuro);
+}
+
+.flecha-modal {
+  font-weight: bold;
+}
+
+.modal-controles {
+  display: flex;
+  gap: 1rem;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #f5f9fe; /* gris muy claro / casi blanco */
+  font-size: 0.9rem;
+  color: #0f0f10; /* celeste grisáceo */
+  margin-top: 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Animación scroll */
+.oculta {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease-out;
+}
+
+.animada {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.slider {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  height: 700px;
+  overflow: hidden;
+  margin: 2rem auto;
+}
+
+.slider-inner {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+
+
+.slider-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+</style>
+
+
+</head>
+<body>
+
+  <header>
+    <h1>Mis XV - Bianca </h1>
+    <p>4 de octubre de 2025 - Salon "Entre fincas"</p>
+    <div id="countdown">Cargando cuenta regresiva...</div>
+  </header>
+
+  <section class="gris">
+  <div class="contenedor">
+    <h1>Álbum</h1>
+    <div class="slider" id="slider">
+      <div class="slider-inner" id="sliderInner">
+        <img src="ImagenesBianca/im3.jpg" />
+        <img src="ImagenesBianca/im2.jpg" />
+        <img src="ImagenesBianca/im1.jpg" />
+        <img src="ImagenesBianca/im4.jpg" />
+      </div>
+      <button class="flecha-slider izquierda" onclick="cambiarSlide(-1)">‹</button>
+      <button class="flecha-slider derecha" onclick="cambiarSlide(1)">›</button>
+    </div>
+    <div class="center-btn">
+      <button onclick="abrirGaleria()">Ver Álbum 📸</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- MODAL ACTUALIZADO -->
+<div class="modal-galeria" id="modalGaleria">
+  <img class="modal-img" id="modalImg" src="" alt="Foto ampliada">
+  <div class="modal-controles">
+    <button class="flecha-modal" onclick="cambiarFotoModal(-1)">‹</button>
+    <button class="cerrar-modal" onclick="cerrarGaleria()">×</button>
+    <button class="flecha-modal" onclick="cambiarFotoModal(1)">›</button>
+  </div>
+</div>
+
+  <section class="oscura">
+    <div class="contenedor">
+    <h2>📍 Ubicación: Salon "Entre fincas" Los Italianos 1680</h2>
+    <div class="mapa-container">
+    <iframe
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d905.364605574919!2d-68.70655364358227!3d-32.94017440525308!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x967e137b9180d77b%3A0xf386e0f304ced7d3!2sEntre.fincas!5e0!3m2!1ses!2sar!4v1753466708396!5m2!1ses!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+  allowfullscreen=""
+  loading="lazy"
+  referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    </div>
+    </div>
+  </section>
+
+
+  <section class="clara">
+    <div class="contenedor">
+    <h2>💌 Confirmá tu Asistencia</h2>
+    <form id="formulario" onsubmit="enviarWhatsApp(); return false;">
+      <label for="nombre">Tu nombre:</label>
+      <input type="text" id="nombre" required>
+
+      <label>¿Vas a asistir?</label>
+      <div class="radio-group">
+        <label><input type="radio" name="asistencia" value="Sí" required> Sí</label>
+        <label><input type="radio" name="asistencia" value="No"> No</label>
+      </div>
+
+      <label for="menu">¿Tenés alguna necesidad alimentaria?</label>
+      <select id="menu">
+        <option value="Ninguna">Ninguna</option>
+        <option value="Vegetariano">Vegetariano/a</option>
+        <option value="Vegano">Vegano/a</option>
+        <option value="Celíaco">Celíaco/a</option>
+        <option value="Otra">Otra</option>
+      </select>
+
+      <label for="otro">Otro (opcional):</label>
+      <input type="text" id="otro">
+
+      <label for="acompanantes">¿Cuántos acompañantes traés?</label>
+      <select id="acompanantes" onchange="generarCamposAcompanantes()">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+
+      <div id="camposAcompanantes"></div>
+
+      <button type="submit">Enviar por WhatsApp</button>
+    </form>
+    </div>
+  </section>
+
+
+  <section class="oscura">
+    <div class="contenedor">
+    <h2>¡Te Esperamos!</h2>
+    <p>Vamos a vivir una noche inolvidable💘</p>
+    </div>
+  </section>
+
+  <footer>
+  Con mucho amor de @mitarjetaonline_ Para: Bianca © 2025
+</footer>
+  <script>
+    // Contador
+    const countdown = document.getElementById("countdown");
+    const fechaBoda = new Date("2025-10-04T00:00:00").getTime();
+
+    setInterval(() => {
+      const ahora = new Date().getTime();
+      const distancia = fechaBoda - ahora;
+
+      const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+      const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+
+      countdown.textContent = `${dias} días, ${horas} hs, ${minutos} min, ${segundos} seg`;
+    }, 1000);
+
+    // Generador de acompañantes
+    function generarCamposAcompanantes() {
+      const cantidad = parseInt(document.getElementById("acompanantes").value);
+      const contenedor = document.getElementById("camposAcompanantes");
+      contenedor.innerHTML = "";
+
+      for (let i = 1; i <= cantidad; i++) {
+        const campoHTML = `
+          <div>
+            <label>Nombre del acompañante ${i}:</label>
+            <input type="text" name="acompanante${i}" required>
+            <div class="radio-group">
+              <label>¿Es mayor?</label>
+              <label><input type="radio" name="edad${i}" value="Sí" required> Sí</label>
+              <label><input type="radio" name="edad${i}" value="No"> No</label>
+            </div>
+          </div>
+        `;
+        contenedor.insertAdjacentHTML("beforeend", campoHTML);
+      }
+    }
+
+    // Envío a WhatsApp
+    function enviarWhatsApp() {
+      const nombre = document.getElementById("nombre").value;
+      const asistencia = document.querySelector('input[name="asistencia"]:checked').value;
+      const menu = document.getElementById("menu").value;
+      const otro = document.getElementById("otro").value;
+      const cantidadAcompanantes = parseInt(document.getElementById("acompanantes").value);
+
+      let mensaje = `Hola! Soy ${nombre}. Confirmo que: ${asistencia} asistiré.\nRequerimientos alimentarios: ${menu}`;
+      if (otro) mensaje += ` (${otro})`;
+
+      if (cantidadAcompanantes > 0) {
+        mensaje += `\n\nAcompañantes (${cantidadAcompanantes}):`;
+        for (let i = 1; i <= cantidadAcompanantes; i++) {
+          const nom = document.querySelector(`input[name="acompanante${i}"]`).value;
+          const edad = document.querySelector(`input[name="edad${i}"]:checked`).value;
+          mensaje += `\n- ${nom} (${edad})`;
+        }
+      }
+
+      const numero = "5491123456789"; // reemplazá con el número real
+      const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+      window.open(url, "_blank");
+    }
+
+
+ let indice = 0;
+const sliderInner = document.getElementById('sliderInner');
+const slides = sliderInner.querySelectorAll('img');
+
+function cambiarSlide(dir) {
+  indice = (indice + dir + slides.length) % slides.length;
+  sliderInner.style.transform = `translateX(-${indice * 100}%)`;
+}
+
+
+
+// Modal (pantallazo ampliado)
+let modalIndex = 0;
+
+function abrirGaleria() {
+  modalIndex = indice;
+  mostrarModalFoto();
+  document.getElementById('modalGaleria').classList.add('show');
+}
+
+function cerrarGaleria() {
+  document.getElementById('modalGaleria').classList.remove('show');
+}
+
+function mostrarModalFoto() {
+  const img = slides[modalIndex].src;
+  document.getElementById('modalImg').src = img;
+}
+
+function cambiarFotoModal(dir) {
+  modalIndex = (modalIndex + dir + slides.length) % slides.length;
+  mostrarModalFoto();
+}
+
+// Animación de scroll para secciones
+const secciones = document.querySelectorAll('section, header');
+
+const options = {
+  threshold: 0.2
+};
+
+const observer = new IntersectionObserver((entradas) => {
+  entradas.forEach((entrada) => {
+    if (entrada.isIntersecting) {
+      entrada.target.classList.add('animada');
+    }
+  });
+}, options);
+
+secciones.forEach(seccion => {
+  seccion.classList.add('oculta'); // ocultamos inicialmente
+  observer.observe(seccion);
+});
+
+  </script>
+</body>
+</html>
