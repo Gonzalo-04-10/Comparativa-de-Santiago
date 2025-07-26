@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mis XV Bianca</title>
+  <title>Mis XV Sofia</title>
  <style>
   :root {
     --fondo: #f5f5f5;
-    --oscuro: #8f4a7b;
-    --claro: #ddb4cd;
-    --gris: #ddc5d9;
+    --oscuro: #1c1b1b;
+    --claro: #b6b5b6;
+    --gris: #dcd0e1;
     --fuente: 'Segoe UI', sans-serif;
-    --acento: #ffffff;
+    --acento: #c8b3e9;
   }
 
   * {
@@ -28,7 +28,7 @@
 
   header {
   height: 90vh;
-  background: url(ImagenesBianca/Picsart_25-07-25_15-43-26-833.jpg) no-repeat center center;
+  background: url(ImagenesSofi/Picsart_25-07-25_21-06-19-726.jpg) no-repeat center center;
   background-size: cover;
   color: var(--claro);
   text-align: center;
@@ -374,8 +374,8 @@ footer {
 
   <header>
     <div class="texto-header animar-header">
-    <h1>Mis XV - Bianca </h1>
-    <p>4 de octubre de 2025 - Salon "Entre fincas"</p>
+    <h1>Mis XV - Sofia </h1>
+    <p>27 de septiembre de 2025</p>
     <div id="countdown">Cargando cuenta regresiva...</div>
     </div>
   </header>
@@ -385,11 +385,11 @@ footer {
     <h1>Álbum</h1>
     <div class="slider" id="slider">
       <div class="slider-inner" id="sliderInner">
-        <img src="ImagenesBianca/im3.jpg" />
-        <img src="ImagenesBianca/im2.jpg" />
-        <img src="ImagenesBianca/im1.jpg" />
-        <img src="ImagenesBianca/im4.jpg" />
-        <img src="ImagenesBianca/im4.jpg" />
+        <img src="ImagenesSofi/IMG-20250725-WA0003.jpg" />
+        <img src="ImagenesSofi/IMG-20250725-WA0004.jpg" />
+        <img src="ImagenesSofi/IMG-20250725-WA0005.jpg" />
+        <img src="ImagenesSofi/IMG-20250725-WA0006.jpg" />
+        <img src="ImagenesSofi/IMG-20250725-WA0007.jpg" />
       </div>
       <button class="flecha-slider izquierda" onclick="cambiarSlide(-1)">‹</button>
       <button class="flecha-slider derecha" onclick="cambiarSlide(1)">›</button>
@@ -411,20 +411,23 @@ footer {
   </div>
 </div>
 
-  <section class="oscura">
+<section class="oscura">
     <div class="contenedor">
-    <h2>📍 Ubicación: Salon "Entre fincas" Los Italianos 1680</h2>
-    <div class="mapa-container">
-    <iframe
-  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d905.364605574919!2d-68.70655364358227!3d-32.94017440525308!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x967e137b9180d77b%3A0xf386e0f304ced7d3!2sEntre.fincas!5e0!3m2!1ses!2sar!4v1753466708396!5m2!1ses!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-  allowfullscreen=""
-  loading="lazy"
-  referrerpolicy="no-referrer-when-downgrade"></iframe>
-
-    </div>
+    <h2>Horario y Lugar:</h2>
+    <p>Salon del Club San Martin</p>
+    <p>Puntual: <strong>21:00HS</strong></p>
     </div>
   </section>
 
+<section class="clara">
+    <div class="contenedor">
+        <h2>Valor de Tarjeta💌</h2>
+        <p>Reserva hasta el <strong>17/09</strong></p>
+    <div class="center-btn">
+      <button onclick="abrirGaleria()">Ver</button>
+    </div>
+    </div>
+  </section>
 
   <section class="clara">
     <div class="contenedor">
@@ -468,14 +471,8 @@ footer {
     </div>
   </section>
 
-   <section class="oscura">
-    <div class="contenedor">
-    <h2>Regalo🎁</h2>
-    <p>Alias: <strong>fabianaiob.mp</strong></p>
-    </div>
-  </section>
 
-  <section class="clara">
+  <section class="oscura">
     <div class="contenedor">
     <h2>¡Te Esperamos!</h2>
     <p>Vamos a vivir una noche inolvidable💘</p>
@@ -483,12 +480,12 @@ footer {
   </section>
 
   <footer>
-  Con mucho amor de @mitarjetaonline_ Para: Bianca © 2025
+  Con mucho amor de @mitarjetaonline_ Para: Sofia © 2025
 </footer>
   <script>
     // Contador
     const countdown = document.getElementById("countdown");
-    const fechaBoda = new Date("2025-10-04T00:00:00").getTime();
+    const fechaBoda = new Date("2025-09-27T00:00:00").getTime();
 
     setInterval(() => {
       const ahora = new Date().getTime();
