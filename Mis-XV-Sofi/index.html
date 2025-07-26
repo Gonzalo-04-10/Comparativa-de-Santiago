@@ -366,11 +366,113 @@ footer {
   animation: aparecerSuave 1.5s ease-out forwards;
 }
 
+.modal-valor {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  text-align: center;
+  color: var(--oscuro);
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  max-width: 90%;
+}
+
+.modal-valor h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.modal-valor p {
+  font-size: 1.5rem;
+  color: var(--oscuro);
+}
+
+
+ .pantalla-bienvenida {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: var(--oscuro);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      z-index: 9999;
+      padding: 2rem;
+    }
+
+    .pantalla-bienvenida h1 {
+      font-size: 2.8rem;
+      color: var(--acento);
+      margin-bottom: 1rem;
+    }
+
+    .pantalla-bienvenida p {
+      font-size: 1.3rem;
+      color: var(--claro);
+      margin-bottom: 2rem;
+    }
+
+    .pantalla-bienvenida img {
+      max-width: 220px;
+      border-radius: 0;
+      margin-bottom: 2rem;
+      box-shadow: 0 0 10px rgba(255,255,255,0.1);
+    }
+
+    .pantalla-bienvenida button {
+      font-size: 1rem;
+      padding: 0.8rem 2rem;
+      background: transparent;
+      border: 2px solid var(--claro);
+      color: var(--claro);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .pantalla-bienvenida button:hover {
+      background: var(--claro);
+      color: var(--oscuro);
+    }
+
+    /* Oculta el resto del contenido al principio */
+    .contenido-tarjeta {
+      display: none;
+    }
+
+    /* Ejemplo de contenido de fondo (se reemplaza con tu tarjeta) */
+    .contenido-tarjeta header {
+      height: 100vh;
+      background: url('ImagenesSofi/a538612b334e57bb95514326a7e48f1f.jpg') no-repeat center center;
+      background-size: cover;
+      color: var(--claro);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .contenido-tarjeta header h2 {
+      font-size: 2.5rem;
+      background: rgba(0,0,0,0.5);
+      padding: 1rem;
+    }
 </style>
 
 
 </head>
 <body>
+
+ <!-- Bienvenida -->
+  <div class="pantalla-bienvenida" id="bienvenida">
+    <img src="ImagenesSofi/IMG-20250725-WA0003.jpg" alt="Sofi">
+    <h1>¡Bienvenido/a!</h1>
+    <p>Estás invitado a vivir una noche inolvidable con Sofi 💜</p>
+    <button onclick="entrarTarjeta()">Ingresar</button>
+  </div>
 
   <header>
     <div class="texto-header animar-header">
@@ -423,8 +525,8 @@ footer {
     <div class="contenedor">
         <h2>Valor de Tarjeta💌</h2>
         <p>Reserva hasta el <strong>17/09</strong></p>
-    <div class="center-btn">
-      <button onclick="abrirGaleria()">Ver</button>
+   <div class="center-btn">
+    <button onclick="abrirValorTarjeta()">Ver</button>
     </div>
     </div>
   </section>
@@ -486,6 +588,15 @@ footer {
     </div>
   </section>
 
+<!-- MODAL DE VALOR DE TARJETA -->
+<div id="modalTarjeta" class="modal-galeria">
+  <div class="modal-valor">
+    <h2>💌 Valor de la tarjeta</h2>
+    <p><strong>$50.000</strong></p>
+    <button class="cerrar-modal" onclick="cerrarValorTarjeta()">Cerrar</button>
+  </div>
+</div>
+
   <footer>
   Con mucho amor de @mitarjetaonline_ Para: Sofia © 2025
 </footer>
@@ -528,6 +639,14 @@ footer {
       }
     }
 
+    function abrirValorTarjeta() {
+  document.getElementById("modalTarjeta").classList.add("show");
+}
+
+function cerrarValorTarjeta() {
+  document.getElementById("modalTarjeta").classList.remove("show");
+}
+
     // Envío a WhatsApp
     function enviarWhatsApp() {
       const nombre = document.getElementById("nombre").value;
@@ -548,7 +667,7 @@ footer {
         }
       }
 
-      const numero = "5491123456789"; // reemplazá con el número real
+      const numero = "5493492679696"; // reemplazá con el número real
       const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
       window.open(url, "_blank");
     }
@@ -608,6 +727,10 @@ secciones.forEach(seccion => {
   observer.observe(seccion);
 });
 
+function entrarTarjeta() {
+      document.getElementById("bienvenida").style.display = "none";
+      document.getElementById("tarjetaPrincipal").style.display = "block";
+    }
   </script>
 </body>
 </html>
