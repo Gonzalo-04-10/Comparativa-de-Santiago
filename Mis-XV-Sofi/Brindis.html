@@ -517,13 +517,13 @@ footer {
     <div class="contenedor">
     <h2>Horario y Lugar:</h2>
     <p>Salon del Club San Martin</p>
-    <p>Puntual: <strong>21:00HS</strong></p>
+    <p>Puntual: <strong>00:00HS</strong></p>
     </div>
   </section>
 
 <section class="gris">
     <div class="contenedor">
-        <h2>Valor de Tarjeta💌</h2>
+        <h2>Valor del brindis🥂</h2>
         <p>Reserva hasta el <strong>17/09</strong></p>
    <div class="center-btn">
     <button onclick="abrirValorTarjeta()">Ver</button>
@@ -574,8 +574,8 @@ footer {
       </select>
 
       <div id="camposAcompanantes"></div>
-<label for="cancion">¿Querés sugerir una canción? 🎶 (opcional)</label>
-<input type="text" id="cancion" placeholder="Ej: Coldplay - Yellow">
+      <label for="cancion">¿Querés sugerir una canción? 🎶 (opcional)</label>
+    <input type="text" id="cancion" placeholder="Ej: Coldplay - Yellow">
 
       <button type="submit">Enviar por WhatsApp</button>
     </form>
@@ -593,8 +593,8 @@ footer {
 <!-- MODAL DE VALOR DE TARJETA -->
 <div id="modalTarjeta" class="modal-galeria">
   <div class="modal-valor">
-    <h2>💌 Valor de la tarjeta</h2>
-    <p><strong>$50.000</strong></p>
+    <h2>🥂 Valor del brindis</h2>
+    <p><strong>$20.000</strong></p>
     <button class="cerrar-modal" onclick="cerrarValorTarjeta()">Cerrar</button>
   </div>
 </div>
@@ -650,7 +650,7 @@ function cerrarValorTarjeta() {
 }
 
     // Envío a WhatsApp
-  function enviarWhatsApp() {
+    function enviarWhatsApp() {
   const nombre = document.getElementById("nombre").value;
   const asistencia = document.querySelector('input[name="asistencia"]:checked').value;
   const menu = document.getElementById("menu").value;
