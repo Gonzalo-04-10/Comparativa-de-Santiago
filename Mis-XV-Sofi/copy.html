@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mis XV Sofia</title>
+ <style>
+  :root {
+    --fondo: #f5f5f5;
+    --oscuro: #1c1b1b;
+    --claro: #b6b5b6;
+    --gris: #dcd0e1;
+    --fuente: 'Segoe UI', sans-serif;
+    --acento: #c8b3e9;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: var(--fuente);
+    background: var(--fondo);
+    color: var(--oscuro);
+    line-height: 1.6;
+  }
+
+  header {
+  height: 90vh;
+  background: url(ImagenesSofi/a538612b334e57bb95514326a7e48f1f.jpg) no-repeat center center;
+  background-size: cover;
+  color: var(--claro);
+  text-align: center;
+  padding: 4rem 1.5rem;
+  overflow: hidden;
+}
+.mapa-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* Proporción 16:9 */
+  height: 0;
+  overflow: hidden;
+}
+
+.mapa-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+  header h1 {
+    font-size: 2.8rem;
+    margin: 0;
+  }
+
+  header p {
+    font-size: 1.2rem;
+    margin: 0.8rem 0 2rem;
+  }
+
+  header h1,
+header p,
+#countdown {
+  position: relative;
+  top: 35vh; /* Ajustá este número según tu imagen */
+}
+
+  #countdown {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--acento);
+  }
+
+  section {
+    width: 100%;
+    padding: 3rem 1rem;
+  }
+
+  .oscura {
+    background: var(--oscuro);
+    color: var(--claro);
+  }
+
+  .clara {
+    background: var(--claro);
+    color: var(--oscuro);
+  }
+
+  .gris {
+    background: var(--gris);
+  }
+
+  .contenedor {
+    max-width: 700px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  h2 {
+    font-weight: 500;
+    font-size: 1.7rem;
+    margin-bottom: 1rem;
+  }
+
+  a {
+    color: var(--acento);
+    text-decoration: underline;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  input[type="text"],
+  select {
+    padding: 0.7rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    background: white;
+  }
+
+  .radio-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  button {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    background: transparent;
+    border: 2px solid var(--oscuro);
+    color: var(--oscuro);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: fit-content;
+  }
+
+  button:hover {
+    background: var(--oscuro);
+    color: var(--claro);
+  }
+  /* Galería */
+
+.slider { 
+  height: 600px;  
+  position: relative;
+  max-width: 800px;
+  margin: 2rem auto;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slider img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: opacity 0.5s ease;
+}
+
+
+.slider-inner img {
+  flex-shrink: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.flecha-slider {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(30, 30, 30, 0.5);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.3s ease;
+}
+
+.flecha-slider:hover {
+  background: rgba(30, 30, 30, 0.8);
+}
+
+.flecha-slider.izquierda {
+  left: 0;
+}
+
+.flecha-slider.derecha {
+  right: 0;
+}
+
+.center-btn {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.center-btn button {
+  padding: 0.7rem 1.4rem;
+  font-size: 1rem;
+  background: transparent;
+  border: 2px solid var(--oscuro);
+  color: var(--oscuro);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.center-btn button:hover {
+  background: var(--oscuro);
+  color: var(--blanco);
+}
+
+@media (max-width: 600px) {
+  .flecha-slider {
+    font-size: 1.5rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .slider {
+    max-width: 100%;
+  }
+}
+
+  @media (max-width: 600px) {
+    header h1 {
+      font-size: 2rem;
+    }
+
+    #countdown {
+      font-size: 1.1rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    .contenedor {
+      padding: 0 1rem;
+    }
+  }
+
+  /* MODAL - Pantallazo para ver álbum ampliado */
+.modal-galeria {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.95);
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 9999;
+  padding: 2rem;
+}
+
+.modal-galeria.show {
+  display: flex;
+}
+
+.modal-img {
+  max-width: 90%;
+  max-height: 80%;
+  border: 4px solid white;
+  box-shadow: 0 0 10px black;
+  margin-bottom: 1rem;
+}
+
+/* Reutilizamos estilo de tus botones */
+.flecha-modal,
+.cerrar-modal {
+  background: transparent;
+  border: 2px solid var(--claro);
+  color: var(--claro);
+  padding: 0.6rem 1.2rem;
+  font-size: 1.4rem;
+  margin: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.flecha-modal:hover,
+.cerrar-modal:hover {
+  background: var(--claro);
+  color: var(--oscuro);
+}
+
+.flecha-modal {
+  font-weight: bold;
+}
+
+.modal-controles {
+  display: flex;
+  gap: 1rem;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #f5f9fe; /* gris muy claro / casi blanco */
+  font-size: 0.9rem;
+  color: #0f0f10; /* celeste grisáceo */
+  margin-top: 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Animación scroll */
+.oculta {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease-out;
+}
+
+.animada {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.slider {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  height: 700px;
+  overflow: hidden;
+  margin: 2rem auto;
+}
+
+.slider-inner {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+
+
+.slider-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+@keyframes aparecerSuave {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animar-header {
+  animation: aparecerSuave 1.5s ease-out forwards;
+}
+
+.modal-valor {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  text-align: center;
+  color: var(--oscuro);
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  max-width: 90%;
+}
+
+.modal-valor h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.modal-valor p {
+  font-size: 1.5rem;
+  color: var(--oscuro);
+}
+
+
+ .pantalla-bienvenida {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: var(--oscuro);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      z-index: 9999;
+      padding: 2rem;
+    }
+
+    .pantalla-bienvenida h1 {
+      font-size: 2.8rem;
+      color: var(--acento);
+      margin-bottom: 1rem;
+    }
+
+    .pantalla-bienvenida p {
+      font-size: 1.3rem;
+      color: var(--claro);
+      margin-bottom: 2rem;
+    }
+
+    .pantalla-bienvenida img {
+      max-width: 220px;
+      border-radius: 0;
+      margin-bottom: 2rem;
+      box-shadow: 0 0 10px rgba(255,255,255,0.1);
+    }
+
+    .pantalla-bienvenida button {
+      font-size: 1rem;
+      padding: 0.8rem 2rem;
+      background: transparent;
+      border: 2px solid var(--claro);
+      color: var(--claro);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .pantalla-bienvenida button:hover {
+      background: var(--claro);
+      color: var(--oscuro);
+    }
+
+    /* Oculta el resto del contenido al principio */
+    .contenido-tarjeta {
+      display: none;
+    }
+
+    /* Ejemplo de contenido de fondo (se reemplaza con tu tarjeta) */
+    .contenido-tarjeta header {
+      height: 100vh;
+      background: url('ImagenesSofi/a538612b334e57bb95514326a7e48f1f.jpg') no-repeat center center;
+      background-size: cover;
+      color: var(--claro);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .contenido-tarjeta header h2 {
+      font-size: 2.5rem;
+      background: rgba(0,0,0,0.5);
+      padding: 1rem;
+    }
+</style>
+
+
+</head>
+<body>
+
+ <!-- Bienvenida -->
+  <div class="pantalla-bienvenida" id="bienvenida">
+    <img src="ImagenesSofi/IMG-20250725-WA0003.jpg" alt="Sofi">
+    <h1>¡Bienvenido/a!</h1>
+    <p>Estás invitado a vivir una noche inolvidable con Sofi 💜</p>
+    <button onclick="entrarTarjeta()">Ingresar</button>
+  </div>
+
+  <header>
+    <div class="texto-header animar-header">
+    <h1>Mis XV - Sofia </h1>
+    <p>27 de septiembre de 2025</p>
+    <div id="countdown">Cargando cuenta regresiva...</div>
+    </div>
+  </header>
+
+  <audio id="miAudio" autoplay loop>
+  <source src="Y2meta - MP3 - 3899231fad40766.mp3" type="audio/mp3">
+</audio>
+
+  <section class="gris">
+  <div class="contenedor">
+    <h1>Álbum</h1>
+    <div class="slider" id="slider">
+      <div class="slider-inner" id="sliderInner">
+        <img src="ImagenesSofi/IMG-20250725-WA0003.jpg" />
+        <img src="ImagenesSofi/IMG-20250725-WA0004.jpg" />
+        <img src="ImagenesSofi/IMG-20250725-WA0005.jpg" />
+        <img src="ImagenesSofi/IMG-20250725-WA0006.jpg" />
+        <img src="ImagenesSofi/IMG-20250725-WA0007.jpg" />
+      </div>
+      <button class="flecha-slider izquierda" onclick="cambiarSlide(-1)">‹</button>
+      <button class="flecha-slider derecha" onclick="cambiarSlide(1)">›</button>
+    </div>
+    <div class="center-btn">
+      <button onclick="abrirGaleria()">Ver Álbum 📸</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- MODAL ACTUALIZADO -->
+<div class="modal-galeria" id="modalGaleria">
+  <img class="modal-img" id="modalImg" src="" alt="Foto ampliada">
+  <div class="modal-controles">
+    <button class="flecha-modal" onclick="cambiarFotoModal(-1)">‹</button>
+    <button class="cerrar-modal" onclick="cerrarGaleria()">×</button>
+    <button class="flecha-modal" onclick="cambiarFotoModal(1)">›</button>
+  </div>
+</div>
+
+<section class="oscura">
+    <div class="contenedor">
+    <h2>Horario y Lugar:</h2>
+    <p>Salon del Club San Martin</p>
+    <p>Puntual: <strong>21:00HS</strong></p>
+    </div>
+  </section>
+
+<section class="gris">
+    <div class="contenedor">
+        <h2>Valor de Tarjeta💌</h2>
+        <p>Reserva hasta el <strong>17/09</strong></p>
+   <div class="center-btn">
+    <button onclick="abrirValorTarjeta()">Ver</button>
+    </div>
+    </div>
+  </section>
+
+  <section class="oscura">
+    <div class="contenedor">
+    <h2>Regalo🎁</h2>
+    <p>Alias: <strong>soficanavese</strong></p>
+    </div>
+  </section>
+
+  <section class="gris">
+    <div class="contenedor">
+    <h2>💌 Confirmá tu Asistencia</h2>
+    <form id="formulario" onsubmit="enviarWhatsApp(); return false;">
+      <label for="nombre">Tu nombre:</label>
+      <input type="text" id="nombre" required>
+
+      <label>¿Vas a asistir?</label>
+      <div class="radio-group">
+        <label><input type="radio" name="asistencia" value="Sí" required> Sí</label>
+        <label><input type="radio" name="asistencia" value="No"> No</label>
+      </div>
+
+      <label for="menu">¿Tenés alguna necesidad alimentaria?</label>
+      <select id="menu">
+        <option value="Ninguna">Ninguna</option>
+        <option value="Vegetariano">Vegetariano/a</option>
+        <option value="Vegano">Vegano/a</option>
+        <option value="Celíaco">Celíaco/a</option>
+        <option value="Otra">Otra</option>
+      </select>
+
+      <label for="otro">Otro (opcional):</label>
+      <input type="text" id="otro">
+
+      <label for="acompanantes">¿Cuántos acompañantes traés?</label>
+      <select id="acompanantes" onchange="generarCamposAcompanantes()">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+
+      <div id="camposAcompanantes"></div>
+<label for="cancion">¿Querés sugerir una canción? 🎶 (opcional)</label>
+<input type="text" id="cancion" placeholder="Ej: Coldplay - Yellow">
+
+      <button type="submit">Enviar por WhatsApp</button>
+    </form>
+    </div>
+  </section>
+
+
+  <section class="oscura">
+    <div class="contenedor">
+    <h2>¡Te Esperamos!</h2>
+    <p>Vamos a vivir una noche inolvidable💘</p>
+    </div>
+  </section>
+
+<!-- MODAL DE VALOR DE TARJETA -->
+<div id="modalTarjeta" class="modal-galeria">
+  <div class="modal-valor">
+    <h2>💌 Valor de la tarjeta</h2>
+    <p><strong>$50.000</strong></p>
+    <button class="cerrar-modal" onclick="cerrarValorTarjeta()">Cerrar</button>
+  </div>
+</div>
+
+  <footer>
+  Con mucho amor de @mitarjetaonline_ Para: Sofia © 2025
+</footer>
+  <script>
+    // Contador
+    const countdown = document.getElementById("countdown");
+    const fechaBoda = new Date("2025-09-27T00:00:00").getTime();
+
+    setInterval(() => {
+      const ahora = new Date().getTime();
+      const distancia = fechaBoda - ahora;
+
+      const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+      const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+
+      countdown.textContent = `${dias} días, ${horas} hs, ${minutos} min, ${segundos} seg`;
+    }, 1000);
+
+    // Generador de acompañantes
+    function generarCamposAcompanantes() {
+      const cantidad = parseInt(document.getElementById("acompanantes").value);
+      const contenedor = document.getElementById("camposAcompanantes");
+      contenedor.innerHTML = "";
+
+      for (let i = 1; i <= cantidad; i++) {
+        const campoHTML = `
+          <div>
+            <label>Nombre del acompañante ${i}:</label>
+            <input type="text" name="acompanante${i}" required>
+            <div class="radio-group">
+              <label>¿Es mayor?</label>
+              <label><input type="radio" name="edad${i}" value="Sí" required> Sí</label>
+              <label><input type="radio" name="edad${i}" value="No"> No</label>
+            </div>
+          </div>
+        `;
+        contenedor.insertAdjacentHTML("beforeend", campoHTML);
+      }
+    }
+
+    function abrirValorTarjeta() {
+  document.getElementById("modalTarjeta").classList.add("show");
+}
+
+function cerrarValorTarjeta() {
+  document.getElementById("modalTarjeta").classList.remove("show");
+}
+
+    // Envío a WhatsApp
+  function enviarWhatsApp() {
+  const nombre = document.getElementById("nombre").value;
+  const asistencia = document.querySelector('input[name="asistencia"]:checked').value;
+  const menu = document.getElementById("menu").value;
+  const otro = document.getElementById("otro").value;
+  const sugerencia = document.getElementById("cancion").value;
+  const cantidadAcompanantes = parseInt(document.getElementById("acompanantes").value);
+
+  let mensaje = `Hola! Soy ${nombre}. Confirmo que: ${asistencia} asistiré.\nRequerimientos alimentarios: ${menu}`;
+  if (otro) mensaje += ` (${otro})`;
+
+  if (cantidadAcompanantes > 0) {
+    mensaje += `\n\nAcompañantes (${cantidadAcompanantes}):`;
+    for (let i = 1; i <= cantidadAcompanantes; i++) {
+      const nom = document.querySelector(`input[name="acompanante${i}"]`).value;
+      const edad = document.querySelector(`input[name="edad${i}"]:checked`).value;
+      mensaje += `\n- ${nom} (${edad})`;
+    }
+  }
+
+  if (sugerencia) {
+    mensaje += `\n\n🎵 Sugerencia musical: ${sugerencia}`;
+  }
+
+  const numero = "5493492679696"; // Reemplazá con el número real
+  const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+  window.open(url, "_blank");
+}
+
+
+
+ let indice = 0;
+const sliderInner = document.getElementById('sliderInner');
+const slides = sliderInner.querySelectorAll('img');
+
+function cambiarSlide(dir) {
+  indice = (indice + dir + slides.length) % slides.length;
+  sliderInner.style.transform = `translateX(-${indice * 100}%)`;
+}
+
+
+
+// Modal (pantallazo ampliado)
+let modalIndex = 0;
+
+function abrirGaleria() {
+  modalIndex = indice;
+  mostrarModalFoto();
+  document.getElementById('modalGaleria').classList.add('show');
+}
+
+function cerrarGaleria() {
+  document.getElementById('modalGaleria').classList.remove('show');
+}
+
+function mostrarModalFoto() {
+  const img = slides[modalIndex].src;
+  document.getElementById('modalImg').src = img;
+}
+
+function cambiarFotoModal(dir) {
+  modalIndex = (modalIndex + dir + slides.length) % slides.length;
+  mostrarModalFoto();
+}
+
+// Animación de scroll para secciones
+const secciones = document.querySelectorAll('section, header');
+
+const options = {
+  threshold: 0.2
+};
+
+const observer = new IntersectionObserver((entradas) => {
+  entradas.forEach((entrada) => {
+    if (entrada.isIntersecting) {
+      entrada.target.classList.add('animada');
+    }
+  });
+}, options);
+
+secciones.forEach(seccion => {
+  seccion.classList.add('oculta'); // ocultamos inicialmente
+  observer.observe(seccion);
+});
+
+function entrarTarjeta() {
+      document.getElementById("bienvenida").style.display = "none";
+      document.getElementById("tarjetaPrincipal").style.display = "block";
+    }
+  </script>
+</body>
+</html>
