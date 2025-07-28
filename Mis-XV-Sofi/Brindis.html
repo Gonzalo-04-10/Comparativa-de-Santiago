@@ -482,7 +482,7 @@ footer {
     </div>
   </header>
 
-  <audio id="miAudio" autoplay loop>
+  <audio id="miAudio" preload="auto" loop>
   <source src="Y2meta - MP3 - 2d8e2bf35a729b6.mp3" type="audio/mp3">
 </audio>
 
@@ -740,9 +740,17 @@ secciones.forEach(seccion => {
 });
 
 function entrarTarjeta() {
-      document.getElementById("bienvenida").style.display = "none";
-      document.getElementById("tarjetaPrincipal").style.display = "block";
-    }
+  document.getElementById("bienvenida").style.display = "none";
+  document.querySelector(".contenido-tarjeta").style.display = "block";
+
+  const audio = document.getElementById("miAudio");
+  if (audio) {
+    audio.play().catch((e) => {
+      console.warn("No se pudo reproducir el audio automáticamente:", e);
+    });
+  }
+}
+
   </script>
 </body>
 </html>
