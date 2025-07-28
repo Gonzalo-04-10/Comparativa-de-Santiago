@@ -742,7 +742,16 @@ secciones.forEach(seccion => {
 function entrarTarjeta() {
       document.getElementById("bienvenida").style.display = "none";
       document.getElementById("tarjetaPrincipal").style.display = "block";
+
+      const audio = document.getElementById("miAudio");
+  audio.play().then(() => {
+    console.log("🎵 Audio reproduciéndose");
+  }).catch(error => {
+    console.error("❌ Error al reproducir el audio:", error);
+    alert("No se pudo reproducir el audio. Tocá nuevamente si no escuchás la música.");
+  });
     }
+
   </script>
 </body>
 </html>
