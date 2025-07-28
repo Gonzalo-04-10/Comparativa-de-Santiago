@@ -482,8 +482,8 @@ footer {
     </div>
   </header>
 
-  <audio id="miAudio" autoplay loop>
-  <source src="Y2meta - MP3 - 3899231fad40766.mp3" type="audio/mp3">
+  <audio id="musicaFondo" loop>
+  <source src="Calvin Harris & Dua Lipa - One Kiss (Traducida al Español) [fvU63wr1YUk].mp3" type="audio/mp3">
 </audio>
 
   <section class="gris">
@@ -741,14 +741,11 @@ secciones.forEach(seccion => {
 
 function entrarTarjeta() {
   document.getElementById("bienvenida").style.display = "none";
-  document.querySelector(".contenido-tarjeta").style.display = "block";
-
-  const audio = document.getElementById("miAudio");
-  if (audio) {
-    audio.play().catch((e) => {
-      console.warn("No se pudo reproducir el audio automáticamente:", e);
-    });
-  }
+  
+  const musica = document.getElementById("musicaFondo");
+  musica.play().catch(e => {
+    console.log("El navegador bloqueó el autoplay:", e);
+  });
 }
 
   </script>
