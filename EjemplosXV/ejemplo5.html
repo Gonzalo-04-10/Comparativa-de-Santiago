@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Invitación – Cumple de Martina</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap');
+
+    :root {
+      --fondo: #f0f4f8;
+      --principal: #4a4e69;
+      --secundario: #9a8c98;
+      --claro: #c9ada7;
+      --acento: #f2e9e4;
+      --fuente: 'Karla', sans-serif;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: var(--fuente);
+      background: var(--fondo);
+      color: var(--principal);
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    .pantalla-bienvenida {
+      position:fixed; top:0; left:0; width:100%; height:100vh;
+      background: var(--secundario); color: white;
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      text-align:center; z-index:9999; padding:2rem; transition:opacity 1s ease;
+    }
+
+    .pantalla-bienvenida img {
+      width:150px; height:150px; border-radius:50%;
+      object-fit:cover; margin-bottom:1.2rem; border:4px solid white;
+    }
+
+    .pantalla-bienvenida h1 { font-size:2.2rem; }
+    .pantalla-bienvenida p { margin:1rem 0 2rem; font-size:1.1rem; }
+    .pantalla-bienvenida button {
+      padding: .7rem 2rem; font-size:1rem;
+      background:white; color:var(--secundario);
+      border:none; border-radius:8px;
+      cursor:pointer; transition:.3s ease;
+    }
+    .pantalla-bienvenida button:hover {
+      background: #e8d8d4;
+    }
+
+    header {
+      background: url('imaxv1/chica\ 7\ \(3\).jpg') center/cover no-repeat;
+      padding:5rem 1rem; text-align:center; color:var(--principal);
+    }
+
+    section {
+      max-width:800px; margin:0 auto; padding:3rem 1rem;
+      opacity:0; transform:translateY(40px); transition: all 0.8s ease;
+    }
+
+    section.visible {
+      opacity:1; transform:translateY(0);
+    }
+
+    h2 { font-size:2rem; color: var(--secundario); margin-bottom:1rem; }
+    .gris { background: var(--acento); }
+
+    button {
+      background: transparent; border:2px solid var(--principal);
+      padding: .6rem 1.2rem; color: var(--principal);
+      cursor:pointer; margin-top:1rem; border-radius:6px;
+      transition:.3s ease;
+    }
+
+    button:hover {
+      background: var(--principal); color:white;
+    }
+
+    input, select {
+      padding:.6rem; width:90%; max-width:400px;
+      margin-bottom:1rem; display:block; border-radius:6px;
+    }
+
+    .acompanante { margin-bottom:1rem; }
+
+    .slider {
+      overflow:hidden; position:relative; max-width:800px; margin:auto;
+    }
+
+    .slider-inner {
+      display:flex; transition:transform .5s ease;
+    }
+
+    .slider-inner img {
+      flex-shrink:0; width:100%; object-fit:cover;
+    }
+
+    .flecha-slider {
+      position:absolute; top:50%; transform:translateY(-50%);
+      background:rgba(255,255,255,0.8); border:none;
+      font-size:2rem; color:var(--principal);
+      cursor:pointer; padding:.5rem 1rem;
+      z-index:10; border-radius:6px;
+    }
+
+    .izquierda { left:0; }
+    .derecha { right:0; }
+
+    footer {
+      background: #eae2dc; padding:1rem; text-align:center;
+      font-size:0.9rem; margin-top:3rem;
+    }
+
+     .mapa-container {
+      max-width:100%; height:300px; border-radius:12px;
+      overflow:hidden; margin-top:1rem; box-shadow:0 3px 10px rgba(63,114,175,0.3);
+    }
+    .mapa-container iframe {
+      width:100%; height:100%; border:0; border-radius:12px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="pantalla-bienvenida" id="bienvenida">
+  <img src="imaXV1/chica 7 (2).jpg" alt="Martina">
+  <h1>¡Hola! Soy Martina ✨</h1>
+  <p>Y quiero que vengas a celebrar mi día especial conmigo 💜</p>
+  <button onclick="entrar()">Entrar</button>
+</div>
+
+<audio id="musicaFondo" loop>
+  <source src="musica.mp3" type="audio/mp3" />
+</audio>
+
+<main id="contenido" style="display:none;">
+
+<header>
+  <h2>Te espero en mi cumple</h2>
+  <p>Una noche llena de sorpresas, diversión y amor</p>
+</header>
+
+<section><h2>Cuenta regresiva</h2><div id="contador"></div></section>
+
+<section class="gris">
+  <div class="slider" id="slider">
+    <div class="slider-inner" id="sliderInner">
+      <img src="imaXV1/chica 7 (1).jpg" />
+      <img src="imaXV1/chica 7 (4).jpg" />
+    </div>
+    <button class="flecha-slider izquierda" onclick="cambiarSlide(-1)">‹</button>
+    <button class="flecha-slider derecha" onclick="cambiarSlide(1)">›</button>
+  </div>
+</section>
+
+<section>
+  <h2>Ubicación</h2>
+  <div class="mapa-container">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3275.0178797102876!2d-58.662843224447876!3d-34.830642972873704!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcddcb4417efd1%3A0x5a488f9643c3b980!2sSal%C3%B3n%20Eventos%20SAN%20FRANCISCO%20JAVIER!5e0!3m2!1ses!2sar!4v1753982952469!5m2!1ses!2sar" allowfullscreen loading="lazy"></iframe>
+  </div>
+</section>
+
+<section class="gris">
+  <h2>Regalito 💝</h2>
+  <p>Podés ayudarme con un regalo digital si así lo deseás:</p>
+  <p><strong>Alias:</strong> martina.evento</p>
+  <p><strong>CBU:</strong> 2223334445556667778889</p>
+</section>
+
+<section>
+  <h2>Dress Code 👗</h2>
+  <p>Ropa elegante y tonos suaves. ¡Sentite libre, pero chic!</p>
+</section>
+
+<section class="gris">
+  <h2>Confirmá asistencia</h2>
+  <form onsubmit="enviarAsistencia(); return false;">
+    <input id="nombre" placeholder="Tu nombre" required>
+    <select id="menu">
+      <option value="Sin preferencias">Sin preferencias</option>
+      <option>Vegetariano</option>
+      <option>Celíaco</option>
+    </select>
+    <div id="acompanantes"></div>
+    <button type="button" onclick="agregarAcompanante()">+ Acompañante</button>
+    <button type="submit">Confirmar</button>
+  </form>
+</section>
+
+<footer>🌸 Invitación digital de Martina – Gracias por estar 💫</footer>
+</main>
+
+<script>
+  function entrar(){
+    document.getElementById("bienvenida").style.opacity="0";
+    setTimeout(()=>{
+      document.getElementById("bienvenida").style.display="none";
+      document.getElementById("contenido").style.display="block";
+      document.getElementById("musicaFondo").play().catch(()=>{});
+      setTimeout(animarSecciones,100);
+    },1000);
+  }
+
+  function animarSecciones(){
+    document.querySelectorAll("section").forEach((sec,i)=>
+      setTimeout(()=>sec.classList.add("visible"),i*300));
+  }
+
+  let idx=0;
+  function cambiarSlide(dir){
+    const si=document.getElementById("sliderInner");
+    const imgs=si.children.length;
+    idx=(idx+dir+imgs)%imgs;
+    si.style.transform=`translateX(-${idx*100}%)`;
+  }
+
+  function agregarAcompanante(){
+    const c=document.getElementById("acompanantes");
+    if(c.children.length>=6)return alert("Máximo 6 acompañantes");
+    const i=c.children.length+1;
+    const d=document.createElement("div");
+    d.className="acompanante";
+    d.innerHTML=`
+      <input class="acom" placeholder="Acompañante ${i}" required>
+      <select class="mayoria"><option>Mayor</option><option>Menor</option></select>`;
+    c.appendChild(d);
+  }
+
+  function enviarAsistencia(){
+    const n=document.getElementById("nombre").value;
+    const m=document.getElementById("menu").value;
+    let txt=`¡Hola! Soy ${n} 💫\nMenú: ${m}\nAcompañantes:`;
+    document.querySelectorAll(".acom").forEach((el,i)=>{
+      const mo=document.querySelectorAll(".mayoria")[i].value;
+      txt+=`\n- ${el.value} (${mo})`;
+    });
+    window.open(`https://wa.me/5491234567890?text=${encodeURIComponent(txt)}`,"_blank");
+  }
+
+  const ev=new Date("2025-12-22T20:30:00"), cnt=document.getElementById("contador");
+  setInterval(()=>{
+    const d=ev-new Date();
+    if(d<=0)return cnt.innerText="¡Llegó el día!";
+    const days=Math.floor(d/86400000),
+          hrs=Math.floor(d/3600000%24),
+          mins=Math.floor(d/60000%60),
+          secs=Math.floor(d/1000%60);
+    cnt.innerText=`${days} días, ${hrs}h ${mins}m ${secs}s`;
+  },1000);
+</script>
+
+</body>
+</html>

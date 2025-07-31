@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Invitación – Cumple de Julieta</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
+
+    :root {
+      --fondo: #fff0f3;
+      --oscuro: #6b2737;
+      --claro: #ffe3e3;
+      --acento: #ff7a5a;
+      --fuente: 'Quicksand', sans-serif;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: var(--fuente);
+      background: var(--fondo);
+      color: var(--oscuro);
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    .pantalla-bienvenida {
+      position:fixed; top:0; left:0; width:100%; height:100vh;
+      background: var(--acento); color: white;
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      text-align:center; z-index:9999; padding:2rem; transition:opacity 1s ease;
+    }
+
+    .pantalla-bienvenida img {
+      width:160px; height:160px; border-radius:50%;
+      object-fit:cover; margin-bottom:1.5rem; border:4px solid white;
+    }
+
+    .pantalla-bienvenida h1 { font-size:2.5rem; }
+    .pantalla-bienvenida p { margin:1rem 0 2rem; font-size:1.2rem; }
+    .pantalla-bienvenida button {
+      padding: .8rem 2rem; font-size:1rem;
+      background:white; color:var(--acento);
+      border:none; border-radius:8px;
+      cursor:pointer; transition:.3s ease;
+    }
+    .pantalla-bienvenida button:hover {
+      background: #ffe5de;
+    }
+
+    header {
+      background: url('imaxv1/spring.jpg') center/cover no-repeat;
+      padding:6rem 1rem; text-align:center; color:white;
+    }
+
+    section {
+      max-width:800px; margin:0 auto; padding:3rem 1rem;
+      opacity:0; transform:translateY(40px); transition: all 0.8s ease;
+    }
+
+    section.visible {
+      opacity:1; transform:translateY(0);
+    }
+
+    h2 { font-size:2rem; color: var(--acento); margin-bottom:1rem; }
+    .gris { background: var(--claro); }
+
+    button {
+      background: transparent; border:2px solid var(--oscuro);
+      padding: .6rem 1.2rem; color: var(--oscuro);
+      cursor:pointer; margin-top:1rem; border-radius:6px;
+      transition:.3s ease;
+    }
+
+    button:hover {
+      background: var(--oscuro); color:white;
+    }
+
+    input, select {
+      padding:.6rem; width:90%; max-width:400px;
+      margin-bottom:1rem; display:block; border-radius:6px;
+    }
+
+    .acompanante { margin-bottom:1rem; }
+
+    .slider {
+      overflow:hidden; position:relative; max-width:800px; margin:auto;
+    }
+
+    .slider-inner {
+      display:flex; transition:transform .5s ease;
+    }
+
+    .slider-inner img {
+      flex-shrink:0; width:100%; object-fit:cover;
+    }
+
+    .flecha-slider {
+      position:absolute; top:50%; transform:translateY(-50%);
+      background:rgba(255,255,255,0.7); border:none;
+      font-size:2rem; color:var(--oscuro);
+      cursor:pointer; padding:.5rem 1rem;
+      z-index:10; border-radius:6px;
+    }
+
+    .izquierda { left:0; }
+    .derecha { right:0; }
+
+    footer {
+      background: #ffe3e3; padding:1rem; text-align:center;
+      font-size:0.9rem; margin-top:3rem;
+    }
+
+    .mapa-container {
+      max-width:100%; height:300px; border-radius:12px;
+      overflow:hidden; margin-top:1rem; box-shadow:0 3px 10px rgba(63,114,175,0.3);
+    }
+    .mapa-container iframe {
+      width:100%; height:100%; border:0; border-radius:12px;
+    }
+
+    .modal-galeria {
+      display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+      background:rgba(0,0,0,0.9); z-index:9999;
+      justify-content:center; align-items:center; flex-direction:column;
+    }
+
+    .modal-galeria.show { display:flex; }
+
+    .modal-img {
+      max-width:90%; max-height:80%;
+      border:4px solid white; margin-bottom:1rem;
+    }
+
+    .modal-controles {
+      display:flex; gap:1rem;
+    }
+
+    .flecha-modal, .cerrar-modal {
+      background:transparent; border:2px solid white;
+      color:white; padding:.6rem 1.2rem; font-size:1.3rem;
+      cursor:pointer; transition:.3s;
+    }
+
+    .flecha-modal:hover, .cerrar-modal:hover {
+      background:white; color:var(--oscuro);
+    }
+  </style>
+</head>
+<body>
+
+<div class="pantalla-bienvenida" id="bienvenida">
+  <img src="imaXV1/ecf3c6cb-4625-44c5-9307-ab9f2518e88c.jpg" alt="Foto Julieta">
+  <h1>¡Hola! Soy Julieta 🎀</h1>
+  <p>Y te invito a celebrar mi cumpleaños conmigo ✨</p>
+  <button onclick="entrar()">Entrar</button>
+</div>
+
+<audio id="musicaFondo" loop>
+  <source src="musica.mp3" type="audio/mp3" />
+</audio>
+
+<main id="contenido" style="display:none;">
+
+<header>
+  <h2>¡Festejemos juntas!</h2>
+  <p>Una noche para recordar, llena de magia y alegría</p>
+</header>
+
+<section>
+<h2>Cuenta regresiva</h2>
+<div id="contador">
+</div></section>
+
+<section>
+  <h2>Ubicación</h2>
+  <div class="mapa-container">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3275.0178797102876!2d-58.662843224447876!3d-34.830642972873704!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcddcb4417efd1%3A0x5a488f9643c3b980!2sSal%C3%B3n%20Eventos%20SAN%20FRANCISCO%20JAVIER!5e0!3m2!1ses!2sar!4v1753982952469!5m2!1ses!2sar" allowfullscreen loading="lazy"></iframe>
+  </div>
+</section>
+
+<section class="gris">
+  <h2>Sobre el regalo 🎁</h2>
+  <p>Si querés darme un regalito, podés colaborar digitalmente:</p>
+  <button onclick="document.getElementById('regalo-info').style.display='block'">Ver datos</button>
+  <div id="regalo-info" style="display:none;">
+    <p><strong>Alias:</strong> julieta.cumple</p>
+    <p><strong>CBU:</strong> 1112223334445556667778</p>
+  </div>
+</section>
+
+<section>
+  <h2>Dress Code 💃</h2>
+  <p>Colores florales o suaves, y muchas ganas de bailar ✨</p>
+</section>
+
+<section class="gris">
+  <h2>Confirmá tu asistencia</h2>
+  <form onsubmit="enviarAsistencia(); return false;">
+    <input id="nombre" placeholder="Tu nombre" required>
+    <select id="menu">
+      <option value="Ninguna">Ninguna</option>
+      <option>Vegetariano</option><option>Vegano</option>
+      <option>Celíaco</option><option>Otro</option>
+    </select>
+    <div id="acompanantes"></div>
+    <button type="button" onclick="agregarAcompanante()">+ Acompañante</button>
+    <button type="submit">Enviar por WhatsApp</button>
+  </form>
+</section>
+
+<footer>💌 Hecho con cariño para Julieta – Mi Tarjeta Online © 2025</footer>
+</main>
+
+<script>
+  function entrar(){
+    document.getElementById("bienvenida").style.opacity="0";
+    setTimeout(()=>{
+      document.getElementById("bienvenida").style.display="none";
+      document.getElementById("contenido").style.display="block";
+      document.getElementById("musicaFondo").play().catch(()=>{});
+      setTimeout(animarSecciones,100);
+    },1000);
+  }
+
+  function animarSecciones(){
+    document.querySelectorAll("section").forEach((sec,i)=>
+      setTimeout(()=>sec.classList.add("visible"),i*300));
+  }
+
+  let idx=0;
+  function cambiarSlide(dir){
+    const si=document.getElementById("sliderInner");
+    const imgs=si.children.length;
+    idx=(idx+dir+imgs)%imgs;
+    si.style.transform=`translateX(-${idx*100}%)`;
+  }
+
+  function abrirGaleria(){
+    document.getElementById("modalGaleria").classList.add("show");
+    document.getElementById("modalImg").src=document.getElementById("sliderInner").children[idx].src;
+  }
+
+  function cambiarFotoModal(d){
+    cambiarSlide(d);
+    document.getElementById("modalImg").src=document.getElementById("sliderInner").children[idx].src;
+  }
+
+  function cerrarGaleria(){
+    document.getElementById("modalGaleria").classList.remove("show");
+  }
+
+  function agregarAcompanante(){
+    const c=document.getElementById("acompanantes");
+    if(c.children.length>=10)return alert("Máximo 10 acompañantes");
+    const i=c.children.length+1;
+    const d=document.createElement("div");
+    d.className="acompanante";
+    d.innerHTML=`
+      <input class="acom" placeholder="Nombre acompañante ${i}" required>
+      <select class="mayoria"><option>Mayor</option><option>Menor</option></select>
+      <input class="otros" placeholder="Restricción alimentaria (opcional)">`;
+    c.appendChild(d);
+  }
+
+  function enviarAsistencia(){
+    const n=document.getElementById("nombre").value;
+    const m=document.getElementById("menu").value;
+    let txt=`Hola! Soy ${n} 🎉\nAlimentación: ${m}\nAcompañantes:`;
+    document.querySelectorAll(".acom").forEach((el,i)=>{
+      const mo=document.querySelectorAll(".mayoria")[i].value;
+      const ot=document.querySelectorAll(".otros")[i].value;
+      txt+=`\n- ${el.value} (${mo})${ot?" - "+ot:""}`;
+    });
+    window.open(`https://wa.me/5491234567890?text=${encodeURIComponent(txt)}`,"_blank");
+  }
+
+  const ev=new Date("2025-12-15T21:00:00"), cnt=document.getElementById("contador");
+  setInterval(()=>{
+    const d=ev-new Date();
+    if(d<=0)return cnt.innerText="¡Es hoy!";
+    const days=Math.floor(d/86400000),
+          hrs=Math.floor(d/3600000%24),
+          mins=Math.floor(d/60000%60),
+          secs=Math.floor(d/1000%60);
+    cnt.innerText=`${days} días, ${hrs}h ${mins}m ${secs}s`;
+  },1000);
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Invitación Especial - Variante Rosa</title>
+  <style>
+    :root {
+      --fondo: #fff5f8;
+      --oscuro: #333;
+      --claro: #ffe6f0;
+      --acento: #ff85c0;
+      --fuente: 'Poppins', sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--fuente);
+      background: var(--fondo);
+      color: var(--oscuro);
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+    .pantalla-bienvenida {
+      position: fixed; top:0; left:0; width:100%; height:100vh;
+      background: var(--acento);
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      color:white; z-index:9999; text-align:center; padding:2rem; transition:opacity 1s ease;
+    }
+    .pantalla-bienvenida h1 { font-size:2.5rem; }
+    .pantalla-bienvenida p { margin-bottom:2rem; font-size:1.2rem; }
+    .pantalla-bienvenida img { max-width:180px; border-radius:50%; margin-bottom:1.5rem; }
+    .pantalla-bienvenida button {
+      font-size:1rem; padding:0.8rem 2rem;
+      background:transparent; border:2px solid white; color:white;
+      cursor:pointer; transition:0.3s ease;
+    }
+    .pantalla-bienvenida button:hover { background:white; color:var(--acento); }
+    header {
+      background-image: url('imaxv1/chica\ 4\ \(1\).jpg');
+      background-size:cover; background-position:center; padding:6rem 1rem; color:white;
+      text-align:center;
+    }
+    section {
+      padding:4rem 1rem; max-width:800px; margin:0 auto; text-align:center;
+      opacity:0; transform:translateY(50px); transition:all 1s ease;
+    }
+    section.visible { opacity:1; transform:translateY(0); }
+    h2 { font-size:2rem; margin-bottom:1rem; color:var(--acento); }
+    .gris { background:var(--claro); }
+    button {
+      margin-top:1rem; padding:0.6rem 1.2rem; border:2px solid var(--oscuro);
+      background:transparent; color:var(--oscuro); cursor:pointer; transition:0.3s ease;
+    }
+    button:hover { background:var(--oscuro); color:white; }
+    footer {
+      text-align:center; padding:1rem; font-size:0.9rem; background:#f2f2f2; margin-top:3rem;
+    }
+    input, select, textarea { margin:0.5rem auto; padding:0.5rem;
+      width:90%; max-width:400px; margin-bottom:1rem; }
+    .acompanante { margin-bottom:1rem; }
+    #regalo-info { display:none; margin-top:1rem; }
+    #contador { font-size:1.5rem; margin-bottom:1rem; }
+    .mapa-container {
+      max-width:100%; height:300px; border-radius:12px; overflow:hidden;
+      margin-top:1rem; box-shadow:0 3px 10px rgba(255,133,192,0.3);
+    }
+    .mapa-container iframe {
+      width:100%; height:100%; border:0; border-radius:12px;
+    }
+    .slider {
+      position:relative; max-width:800px; margin:2rem auto; overflow:hidden;
+    }
+    .slider-inner {
+      display:flex; width:100%; transition:transform 0.5s ease-in-out;
+    }
+    .slider-inner img {
+      flex-shrink:0; width:100%; object-fit:cover;
+    }
+    .flecha-slider {
+      position:absolute; top:50%; transform:translateY(-50%);
+      background:rgba(255,255,255,0.6); border:none; color:var(--oscuro);
+      font-size:2rem; padding:0.5rem 1rem; cursor:pointer; transition:0.3s ease;
+      z-index:10;
+    }
+    .flecha-slider:hover { background:white; }
+    .izquierda { left:0; }
+    .derecha { right:0; }
+    .center-btn { text-align:center; margin-top:1rem; }
+    .center-btn button { width:auto; }
+    .modal-galeria {
+      display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+      background:rgba(0,0,0,0.95); justify-content:center; align-items:center;
+      flex-direction:column; z-index:9999; padding:2rem;
+    }
+    .modal-galeria.show { display:flex; }
+    .modal-img {
+      max-width:90%; max-height:80%; border:4px solid white;
+      box-shadow:0 0 20px black; margin-bottom:1rem;
+    }
+    .modal-controles {
+      display:flex; gap:1rem;
+    }
+    .flecha-modal, .cerrar-modal {
+      background:transparent; border:2px solid white; color:white;
+      padding:0.6rem 1.2rem; font-size:1.4rem; cursor:pointer; transition:0.3s ease;
+    }
+    .flecha-modal:hover, .cerrar-modal:hover { background:white; color:var(--oscuro); }
+    .flecha-modal { font-weight:bold; }
+    @keyframes flotar { 0%{transform:translateY(0);}50%{transform:translateY(-8px);}100%{transform:translateY(0);} }
+    .icono { width:60px; height:60px; margin:1rem auto; animation:flotar 3s ease-in-out infinite; }
+  </style>
+</head>
+<body>
+
+<div class="pantalla-bienvenida" id="bienvenida">
+  <img src="imaXV1/chica 4 (3).jpg" alt="Invitación" />
+  <h1>¡Cumple de Sofi!</h1>
+  <p>Vení a celebrar junto a ella 💖</p>
+  <button onclick="entrar()">Ingresar</button>
+</div>
+
+<audio id="musicaFondo" loop>
+  <source src="tu-musica.mp3" type="audio/mp3" />
+</audio>
+
+<main id="contenido" style="display:none">
+
+<header>
+  <section><h2>¡Bienvenida!</h2><p>Tu presencia es nuestro mejor regalo 🎂</p></section>
+</header>
+
+<section><h2>Faltan...</h2><div id="contador"></div></section>
+
+<section class="gris">
+  <div class="slider" id="slider">
+    <div class="slider-inner" id="sliderInner">
+      <img src="imaXV1/chica 4 (2).jpg" alt="">
+      <img src="imaXV1/chica 4 (4).jpg" alt="">
+      <img src="imaXV1/chica 4 (5).jpg" alt="">
+    </div>
+    <button class="flecha-slider izquierda" onclick="cambiarSlide(-1)">‹</button>
+    <button class="flecha-slider derecha" onclick="cambiarSlide(1)">›</button>
+  </div>
+  <div class="center-btn"><button onclick="abrirGaleria()">Ver Álbum 📸</button></div>
+</section>
+
+<div class="modal-galeria" id="modalGaleria">
+  <img class="modal-img" id="modalImg" src="" alt="Foto ampliada">
+  <div class="modal-controles">
+    <button class="flecha-modal" onclick="cambiarFotoModal(-1)">‹</button>
+    <button class="cerrar-modal" onclick="cerrarGaleria()">×</button>
+    <button class="flecha-modal" onclick="cambiarFotoModal(1)">›</button>
+  </div>
+</div>
+
+<section>
+  <h2>Ubicación</h2>
+  <div class="mapa-container">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3275.0178797102876!2d-58.662843224447876!3d-34.830642972873704!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcddcb4417efd1%3A0x5a488f9643c3b980!2sSal%C3%B3n%20Eventos%20SAN%20FRANCISCO%20JAVIER!5e0!3m2!1ses!2sar!4v1753982952469!5m2!1ses!2sar">
+      allowfullscreen="" loading="lazy"></iframe>
+  </div>
+</section>
+
+<section class="gris">
+  <div class="icono">
+    <svg viewBox="0 0 24 24" fill="none" stroke="var(--acento)" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+      <path d="M16 3a4 4 0 0 1 0 8H8a4 4 0 0 1 0-8z"/><line x1="12" y1="7" x2="12" y2="21"/>
+    </svg>
+  </div>
+  <h2>Regalo</h2><p>Alias o CBU disponibles :)</p>
+  <button onclick="document.getElementById('regalo-info').style.display='block'">Ver datos</button>
+  <div id="regalo-info">
+    <p><strong>Alias:</strong> sofi.regalo</p>
+    <p><strong>CBU:</strong> 0000000000000000000000</p>
+  </div>
+</section>
+
+<section>
+  <div class="icono">
+    <svg viewBox="0 0 24 24" fill="none" stroke="var(--acento)" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M14 3v2l3 3-3 3v2l5 9H5l5-9v-2L7 8l3-3V3z"/>
+    </svg>
+  </div>
+  <h2>Dress Code</h2><p>Vestido o accesorios en tonos pastel</p>
+</section>
+
+<section class="gris">
+  <h2>Confirmá tu asistencia</h2>
+  <form onsubmit="enviarAsistencia(); return false;">
+    <input type="text" id="nombre" placeholder="Tu nombre" required />
+    <select id="menu">
+      <option value="Ninguna">Ninguna</option>
+      <option value="Vegano">Vegano</option>
+      <option value="Vegetariano">Vegetariano</option>
+      <option value="Celíaco">Celíaco</option>
+      <option value="Diabético">Diabético</option>
+      <option value="Hipertenso">Hipertenso</option>
+    </select>
+    <div id="acompanantes"></div>
+    <button type="button" onclick="agregarAcompanante()">+ Acompañante</button>
+    <button type="submit">Enviar por WhatsApp</button>
+  </form>
+</section>
+
+<footer>Hecho con 💖 por Mi Tarjeta Online © 2025</footer>
+</main>
+
+<script>
+  function entrar() {
+    document.getElementById("bienvenida").style.opacity="0";
+    setTimeout(() => {
+      document.getElementById("bienvenida").style.display="none";
+      document.getElementById("contenido").style.display="block";
+      document.getElementById("musicaFondo").play().catch(()=>{});
+      setTimeout(animarSecciones,100);
+    },1000);
+  }
+  function animarSecciones(){
+    document.querySelectorAll("section").forEach((sec,i)=>setTimeout(()=>sec.classList.add("visible"),i*300));
+  }
+  function cambiarSlide(dir){
+    const si=document.getElementById("sliderInner");
+    const imgs=si.children.length;
+    let idx=(window._idxSlide||0)+dir;
+    if(idx<0)idx=imgs-1;if(idx>=imgs)idx=0;
+    window._idxSlide=idx;
+    si.style.transform=`translateX(-${idx*100}%)`;
+  }
+  function abrirGaleria(){window._idxSlide=window._idxSlide||0;document.getElementById("modalGaleria").classList.add("show");document.getElementById("modalImg").src=document.getElementById("sliderInner").children[window._idxSlide].src;}
+  function cambiarFotoModal(d){cambiarSlide(d);document.getElementById("modalImg").src=document.getElementById("sliderInner").children[window._idxSlide].src;}
+  function cerrarGaleria(){document.getElementById("modalGaleria").classList.remove("show");}
+  function agregarAcompanante(){
+    const c=document.getElementById("acompanantes");
+    if(c.children.length>=10)return alert("Máximo 10 acompañantes");
+    const idx=c.children.length+1;
+    const d=document.createElement("div");d.className="acompanante";
+    d.innerHTML=`<input class="acom" placeholder="Nombre acompañante ${idx}" required/><select class="mayoria"><option>Mayor</option><option>Menor</option></select><input class="otros" placeholder="N. alimentaria (opcional)"/>`;
+    c.appendChild(d);
+  }
+  function enviarAsistencia(){
+    const nombre=document.getElementById("nombre").value, menu=document.getElementById("menu").value;
+    let text=`Hola! Soy ${nombre} 😊\nNecesidad alimentaria: ${menu}\nAcompañantes:`;
+    document.querySelectorAll(".acom").forEach((el,i)=>{
+      text+=`\n- ${el.value} (${document.querySelectorAll(".mayoria")[i].value})${document.querySelectorAll(".otros")[i].value?" - "+document.querySelectorAll(".otros")[i].value:""}`;
+    });
+    window.open(`https://wa.me/5491234567890?text=${encodeURIComponent(text)}`,"_blank");
+  }
+  const fecha=new Date("2025-12-25T00:00:00"), cnt=document.getElementById("contador");
+  setInterval(()=>{
+    const d=fecha-new Date();
+    if(d<=0){cnt.innerText="¡Es hoy!";return;}
+    const days=Math.floor(d/86400000), hrs=Math.floor(d/3600000%24), mins=Math.floor(d/60000%60), secs=Math.floor(d/1000%60);
+    cnt.innerText=`${days} días, ${hrs}h ${mins}m ${secs}s`;
+  },1000);
+</script>
+</body>
+</html>
