@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mis XV Nahiara</title>
+  <style>
+    :root {
+      --fondo: #fff5f8;
+      --oscuro: #333;
+      --claro: #ffe6f0;
+      --acento: #ff85c0;
+      --fuente: 'Poppins', sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--fuente);
+      background: var(--fondo);
+      color: var(--oscuro);
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+    .pantalla-bienvenida {
+      position: fixed; top:0; left:0; width:100%; height:100vh;
+      background: var(--acento);
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      color:white; z-index:9999; text-align:center; padding:2rem; transition:opacity 1s ease;
+    }
+    .pantalla-bienvenida h1 { font-size:2.5rem; }
+    .pantalla-bienvenida p { margin-bottom:2rem; font-size:1.2rem; }
+    .pantalla-bienvenida img { max-width:180px; border-radius:50%; margin-bottom:1.5rem; }
+    .pantalla-bienvenida button {
+      font-size:1rem; padding:0.8rem 2rem;
+      background:transparent; border:2px solid white; color:white;
+      cursor:pointer; transition:0.3s ease;
+    }
+    .pantalla-bienvenida button:hover { background:white; color:var(--acento); }
+    header {
+      background: url(37adb81a-5888-45ad-9d5a-1d51b14091a3.jpg) no-repeat center center;
+      background-size:cover; background-position:center; padding:6rem 1rem; color:rgb(228, 204, 223);
+      text-align:center;
+    }
+    section {
+      padding:4rem 1rem; max-width:800px; margin:0 auto; text-align:center;
+      opacity:0; transform:translateY(50px); transition:all 1s ease;
+    }
+    section.visible { opacity:1; transform:translateY(0); }
+    h2 { font-size:2rem; margin-bottom:1rem; color:var(--acento); }
+    .gris { background:var(--claro); }
+    button {
+      margin-top:1rem; padding:0.6rem 1.2rem; border:2px solid var(--oscuro);
+      background:transparent; color:var(--oscuro); cursor:pointer; transition:0.3s ease;
+    }
+    button:hover { background:var(--oscuro); color:white; }
+    footer {
+      text-align:center; padding:1rem; font-size:0.9rem; background:#f2f2f2; margin-top:3rem;
+    }
+    input, select, textarea { margin:0.5rem auto; padding:0.5rem;
+      width:90%; max-width:400px; margin-bottom:1rem; }
+    .acompanante { margin-bottom:1rem; }
+    #regalo-info { display:none; margin-top:1rem; }
+    #contador { font-size:1.5rem; margin-bottom:1rem; }
+    .mapa-container {
+      max-width:100%; height:300px; border-radius:12px; overflow:hidden;
+      margin-top:1rem; box-shadow:0 3px 10px rgba(255,133,192,0.3);
+    }
+    .mapa-container iframe {
+      width:100%; height:100%; border:0; border-radius:12px;
+    }
+    .slider {
+      position:relative; max-width:800px; margin:2rem auto; overflow:hidden;
+    }
+    .slider-inner {
+      display:flex; width:100%; transition:transform 0.5s ease-in-out;
+    }
+    .slider-inner img {
+      flex-shrink:0; width:100%; object-fit:cover;
+    }
+    .flecha-slider {
+      position:absolute; top:50%; transform:translateY(-50%);
+      background:rgba(255,255,255,0.6); border:none; color:var(--oscuro);
+      font-size:2rem; padding:0.5rem 1rem; cursor:pointer; transition:0.3s ease;
+      z-index:10;
+    }
+    .flecha-slider:hover { background:white; }
+    .izquierda { left:0; }
+    .derecha { right:0; }
+    .center-btn { text-align:center; margin-top:1rem; }
+    .center-btn button { width:auto; }
+    .modal-galeria {
+      display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+      background:rgba(0,0,0,0.95); justify-content:center; align-items:center;
+      flex-direction:column; z-index:9999; padding:2rem;
+    }
+    .modal-galeria.show { display:flex; }
+    .modal-img {
+      max-width:90%; max-height:80%; border:4px solid white;
+      box-shadow:0 0 20px black; margin-bottom:1rem;
+    }
+    .modal-controles {
+      display:flex; gap:1rem;
+    }
+    .flecha-modal, .cerrar-modal {
+      background:transparent; border:2px solid white; color:white;
+      padding:0.6rem 1.2rem; font-size:1.4rem; cursor:pointer; transition:0.3s ease;
+    }
+    .flecha-modal:hover, .cerrar-modal:hover { background:white; color:var(--oscuro); }
+    .flecha-modal { font-weight:bold; }
+    @keyframes flotar { 0%{transform:translateY(0);}50%{transform:translateY(-8px);}100%{transform:translateY(0);} }
+    .icono { width:60px; height:60px; margin:1rem auto; animation:flotar 3s ease-in-out infinite; }
+    .contenedor {
+  max-width: 500px;
+  margin: 0 auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+form label {
+  display: block;
+  text-align: left;
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+}
+form input, 
+form select {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+.radio-group {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.radio-group label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: normal;
+}
+button[type="submit"] {
+  background: var(--acento);
+  border: none;
+  padding: 0.8rem 1.5rem;
+  color: white;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+button[type="submit"]:hover {
+  background: #e674a9;
+}
+  </style>
+</head>
+<body>
+
+<div class="pantalla-bienvenida" id="bienvenida">
+  <h1>Nahiara te invita a sus XV</h1>
+  <p>Vení a celebrar junto a ella 💖</p>
+  <button onclick="entrar()">Ingresar</button>
+</div>
+
+<audio id="musicaFondo" loop>
+  <source src="tu-musica.mp3" type="audio/mp3" />
+</audio>
+
+<main id="contenido" style="display:none">
+
+<header>
+  <section><h2>¡Bienvenido/a!</h2><p>Tu presencia es nuestro mejor regalo 🎂</p></section>
+</header>
+
+<section class="gris"><h2>Faltan...</h2><div id="contador"></div></section>
+
+
+<section>
+  <h2>Ubicación:</h2>
+  <p>Salon:<strong>Portofino eventos</strong>  Av. Eva Peron 1017 </p>
+  <div class="mapa-container">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d442.1312985467078!2d-58.38329291676642!3d-34.77344868436918!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcd2d9ef89b859%3A0x2b9ddfa49da75216!2sPortofino%20Eventos!5e0!3m2!1ses!2sar!4v1755089107908!5m2!1ses!2sar">
+      allowfullscreen="" loading="lazy"></iframe>
+  </div>
+</section>
+
+<section class="gris">
+  <div class="icono">
+    <svg viewBox="0 0 24 24" fill="none" stroke="var(--acento)" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+      <path d="M16 3a4 4 0 0 1 0 8H8a4 4 0 0 1 0-8z"/><line x1="12" y1="7" x2="12" y2="21"/>
+    </svg>
+  </div>
+  <h2>Regalo</h2><p>Alias o CBU disponibles :)</p>
+  <button onclick="document.getElementById('regalo-info').style.display='block'">Ver datos</button>
+  <div id="regalo-info">
+    <p><strong>Alias:</strong> Nahiara.308</p>
+    <p><strong></strong>Nahiara Jazmin Jacamo</p>
+  </div>
+</section>
+
+<section>
+  <div class="icono">
+    <svg viewBox="0 0 24 24" fill="none" stroke="var(--acento)" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M14 3v2l3 3-3 3v2l5 9H5l5-9v-2L7 8l3-3V3z"/>
+    </svg>
+  </div>
+  <h2>Dress Code</h2><p>Elegante Sport</p>
+</section>
+
+<section class="gris">
+    <div class="contenedor">
+    <h2>💌 Confirmá tu Asistencia</h2>
+    <form id="formulario" onsubmit="enviarWhatsApp(); return false;">
+      <label for="nombre">Tu nombre:</label>
+      <input type="text" id="nombre" required>
+
+      <label>¿Vas a asistir?</label>
+      <div class="radio-group">
+        <label><input type="radio" name="asistencia" value="Sí" required> Sí</label>
+        <label><input type="radio" name="asistencia" value="No"> No</label>
+      </div>
+
+      <label for="menu">¿Tenés alguna necesidad alimentaria?</label>
+      <select id="menu">
+        <option value="Ninguna">Ninguna</option>
+        <option value="Vegetariano">Vegetariano/a</option>
+        <option value="Vegano">Vegano/a</option>
+        <option value="Celíaco">Celíaco/a</option>
+        <option value="Otra">Otra</option>
+      </select>
+
+      <label for="otro">Otro (opcional):</label>
+      <input type="text" id="otro">
+
+      <label for="acompanantes">¿Cuántos acompañantes traés?</label>
+      <select id="acompanantes" onchange="generarCamposAcompanantes()">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+
+      <div id="camposAcompanantes"></div>
+
+      <button type="submit">Enviar por WhatsApp</button>
+    </form>
+    </div>
+  </section>
+
+<footer>Hecho con 💖 por Mi Tarjeta Online © 2025</footer>
+</main>
+
+<script>
+
+    function generarCamposAcompanantes() {
+      const cantidad = parseInt(document.getElementById("acompanantes").value);
+      const contenedor = document.getElementById("camposAcompanantes");
+      contenedor.innerHTML = "";
+
+      for (let i = 1; i <= cantidad; i++) {
+        const campoHTML = `
+          <div>
+            <label>Nombre del acompañante ${i}:</label>
+            <input type="text" name="acompanante${i}" required>
+            <div class="radio-group">
+              <label>¿Es mayor?</label>
+              <label><input type="radio" name="edad${i}" value="Sí" required> Sí</label>
+              <label><input type="radio" name="edad${i}" value="No"> No</label>
+            </div>
+          </div>
+        `;
+        contenedor.insertAdjacentHTML("beforeend", campoHTML);
+      }
+    }
+  function entrar() {
+    document.getElementById("bienvenida").style.opacity="0";
+    setTimeout(() => {
+      document.getElementById("bienvenida").style.display="none";
+      document.getElementById("contenido").style.display="block";
+      document.getElementById("musicaFondo").play().catch(()=>{});
+      setTimeout(animarSecciones,100);
+    },1000);
+  }
+  function animarSecciones(){
+    document.querySelectorAll("section").forEach((sec,i)=>setTimeout(()=>sec.classList.add("visible"),i*300));
+  }
+  function cambiarSlide(dir){
+    const si=document.getElementById("sliderInner");
+    const imgs=si.children.length;
+    let idx=(window._idxSlide||0)+dir;
+    if(idx<0)idx=imgs-1;if(idx>=imgs)idx=0;
+    window._idxSlide=idx;
+    si.style.transform=`translateX(-${idx*100}%)`;
+  }
+  function abrirGaleria(){window._idxSlide=window._idxSlide||0;document.getElementById("modalGaleria").classList.add("show");document.getElementById("modalImg").src=document.getElementById("sliderInner").children[window._idxSlide].src;}
+  function cambiarFotoModal(d){cambiarSlide(d);document.getElementById("modalImg").src=document.getElementById("sliderInner").children[window._idxSlide].src;}
+  function cerrarGaleria(){document.getElementById("modalGaleria").classList.remove("show");}
+  function agregarAcompanante(){
+    const c=document.getElementById("acompanantes");
+    if(c.children.length>=10)return alert("Máximo 10 acompañantes");
+    const idx=c.children.length+1;
+    const d=document.createElement("div");d.className="acompanante";
+    d.innerHTML=`<input class="acom" placeholder="Nombre acompañante ${idx}" required/><select class="mayoria"><option>Mayor</option><option>Menor</option></select><input class="otros" placeholder="N. alimentaria (opcional)"/>`;
+    c.appendChild(d);
+  }
+  function enviarAsistencia(){
+    const nombre=document.getElementById("nombre").value, menu=document.getElementById("menu").value;
+      const asistencia = document.querySelector('input[name="asistencia"]:checked').value;
+      const otro = document.getElementById("otro").value;
+      const cantidadAcompanantes = parseInt(document.getElementById("acompanantes").value);
+    let text=`Hola! Soy ${nombre} Confirmo que: ${asistencia} asistiré.\nRequerimientos alimentarios: ${menu}`;
+    document.querySelectorAll(".acom").forEach((el,i)=>{
+      text+=`\n- ${el.value} (${document.querySelectorAll(".mayoria")[i].value})${document.querySelectorAll(".otros")[i].value?" - "+document.querySelectorAll(".otros")[i].value:""}`;
+    });
+    if (otro) mensaje += ` (${otro})`;
+
+      if (cantidadAcompanantes > 0) {
+        mensaje += `\n\nAcompañantes (${cantidadAcompanantes}):`;
+        for (let i = 1; i <= cantidadAcompanantes; i++) {
+          const nom = document.querySelector(`input[name="acompanante${i}"]`).value;
+          const edad = document.querySelector(`input[name="edad${i}"]:checked`).value;
+          mensaje += `\n- ${nom} (${edad})`;
+        }
+      }
+
+      const numero = "5491164327666"; // reemplazá con el número real
+      const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+      window.open(url, "_blank");
+  }
+  const fecha=new Date("2025-11-09T00:00:00"), cnt=document.getElementById("contador");
+  setInterval(()=>{
+    const d=fecha-new Date();
+    if(d<=0){cnt.innerText="¡Es hoy!";return;}
+    const days=Math.floor(d/86400000), hrs=Math.floor(d/3600000%24), mins=Math.floor(d/60000%60), secs=Math.floor(d/1000%60);
+    cnt.innerText=`${days} días, ${hrs}h ${mins}m ${secs}s`;
+  },1000);
+</script>
+</body>
+</html>

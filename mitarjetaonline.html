@@ -1,230 +1,251 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Mi Tarjeta Online</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --rosa: #f7d4cf;
-      --marron: #c8a79b;
-      --blanco: #fffaf9;
+      --bg-main: #fefefe;
+      --bg-light: #fff6f6;
+      --accent-pink: #f7c5cc;
+      --accent-beige: #fcefe4;
+      --black: #111;
+      --font: 'Montserrat', sans-serif;
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-      background: var(--blanco);
-      color: #4e3d3c;
-      line-height: 1.6;
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
+
+    html, body {
+      font-family: var(--font);
+      background: var(--bg-main);
+      color: var(--black);
+      scroll-behavior: smooth;
+    }
+
     header {
-      background: var(--rosa);
-      padding: 5rem 2rem;
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    header video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      filter: brightness(0.6);
+    }
+
+    .header-content {
+      text-align: center;
+      color: white;
+    }
+
+    .header-content h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .header-content button {
+      background: var(--accent-pink);
+      color: var(--black);
+      padding: 15px 30px;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .header-content button:hover {
+      background: var(--accent-beige);
+    }
+
+    section {
+      padding: 60px 20px;
+    }
+
+    .carousel {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 20px;
+      padding-bottom: 20px;
+    }
+
+    .carousel::-webkit-scrollbar {
+      display: none;
+    }
+
+    .carousel img {
+      width: 250px;
+      height: 500px;
+      object-fit: cover;
+      border-radius: 20px;
+      scroll-snap-align: start;
+      flex-shrink: 0;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+
+    .carousel img:hover {
+      transform: scale(1.05);
+    }
+
+    .features {
+      background: var(--bg-light);
       text-align: center;
     }
-    header h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
+
+    .features h2 {
+      font-size: 2rem;
+      margin-bottom: 30px;
     }
-    header p {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-    }
-    .cta-btn {
-      padding: 1rem 2rem;
-      background: var(--marron);
-      color: white;
-      border: none;
-      border-radius: 10px;
-      font-size: 1rem;
-      cursor: pointer;
-    }
-    section {
-      padding: 5rem 2rem;
-      max-width: 1100px;
-      margin: auto;
-    }
-    .galeria {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-    }
-    .tarjeta {
-      background: #fff;
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
-    .tarjeta:hover {
-      transform: scale(1.02);
-    }
-    .tarjeta img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-    }
-    .tarjeta p {
-      padding: 1rem;
-      font-size: 1rem;
-    }
-    .caracteristicas, .beneficios {
+
+    .feature-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
+      gap: 30px;
+      margin-top: 40px;
     }
-    .caracteristica, .beneficio {
-      background: #fff;
-      border-radius: 10px;
-      padding: 1.5rem;
-      box-shadow: 0 0 5px rgba(0,0,0,0.03);
+
+    .feature {
+      background: var(--accent-beige);
+      padding: 30px;
+      border-radius: 15px;
+      transition: all 0.3s ease;
     }
-    .caracteristica h4, .beneficio h4 {
-      margin-bottom: 0.5rem;
-      color: var(--marron);
+
+    .feature:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
     }
-    .testimonios {
-      background: var(--blanco);
-      padding: 6rem 2rem;
-    }
-    .testimonios h2 {
-      text-align: center;
-      margin-bottom: 4rem;
-    }
-    .testimonios-contenido {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-    }
-    .testimonio {
-      background: #fff;
-      border-left: 5px solid var(--rosa);
-      padding: 1.5rem;
-      border-radius: 10px;
-    }
-    .testimonio p {
-      font-style: italic;
-    }
-    .testimonio span {
+
+    .feature i {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
       display: block;
-      margin-top: 1rem;
-      font-weight: bold;
     }
+
+    .feature h3 {
+      margin-bottom: 10px;
+      font-size: 1.3rem;
+    }
+
     footer {
-      background: var(--rosa);
-      padding: 2rem;
+      background: var(--black);
+      color: white;
       text-align: center;
-      color: #4e3d3c;
-      margin-top: 4rem;
+      padding: 30px;
     }
-    .wsp-btn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #25d366;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 999;
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
-    .wsp-btn img {
-      width: 32px;
-      height: 32px;
-    }
-    @media (max-width: 600px) {
-      header h1 { font-size: 2.2rem; }
+
+    .animated {
+      animation: fadeInUp 1s ease forwards;
     }
   </style>
+  <script>
+    // Animaciones al hacer scroll
+    document.addEventListener("DOMContentLoaded", () => {
+      const elements = document.querySelectorAll('.feature');
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animated');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+
+      elements.forEach(el => observer.observe(el));
+    });
+  </script>
 </head>
 <body>
 
-  <a href="https://wa.me/5491134570167" class="wsp-btn" target="_blank">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-  </a>
-
   <header>
-    <h1>Diseñamos tu Tarjeta Digital Ideal</h1>
-    <p>Una forma moderna, personalizada y única de invitar y emocionar</p>
-    <button class="cta-btn" onclick="window.location.href='https://wa.me/5491134570167'">Solicitar la tuya</button>
+    <video autoplay muted loop>
+      <source src="https://cdn.coverr.co/videos/coverr-card-reading-3210/1080p.mp4" type="video/mp4">
+    </video>
+    <div class="header-content">
+      <h1>Diseñá tu Tarjeta Online</h1>
+      <button onclick="location.href='#reserva'">Reservá la tuya</button>
+    </div>
   </header>
 
   <section>
-    <h2 style="text-align:center; margin-bottom:3rem;">Algunos de nuestros diseños</h2>
-    <div class="galeria">
-      <div class="tarjeta" onclick="location.href='xv-camila.html'">
-        <img src="preview-xv-camila.jpg" alt="XV Camila">
-        <p>Invitación XV elegante y animada.</p>
-      </div>
-      <div class="tarjeta">
-        <img src="preview-xv-sole.jpg" alt="XV Sole">
-        <p>Diseño floral, interactivo y con galería de fotos.</p>
-      </div>
-      <div class="tarjeta">
-        <img src="preview-xv-manu.jpg" alt="XV Manu">
-        <p>Minimalista, con música de fondo y cuenta regresiva.</p>
-      </div>
+    <h2 style="text-align:center; font-size:2rem; margin-bottom:30px;">Ejemplos de Diseños</h2>
+    <div class="carousel">
+      <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e" alt="Ejemplo 1">
+      <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e" alt="Ejemplo 2">
+      <img src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb" alt="Ejemplo 3">
+      <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330" alt="Ejemplo 4">
     </div>
   </section>
 
-  <section>
-    <h2 style="text-align:center; margin-bottom:3rem;">¿Qué incluye tu tarjeta?</h2>
-    <div class="caracteristicas">
-      <div class="caracteristica"><h4>Confirmación</h4><p>Permití que tus invitados confirmen asistencia con un solo clic.</p></div>
-      <div class="caracteristica"><h4>Cuenta regresiva</h4><p>Un reloj que genera expectativa y emoción para tu día especial.</p></div>
-      <div class="caracteristica"><h4>Ubicación</h4><p>Link directo con mapa para que nadie se pierda.</p></div>
-      <div class="caracteristica"><h4>Juego interactivo</h4><p>Un detalle divertido para que tus invitados participen.</p></div>
-      <div class="caracteristica"><h4>Bienvenida animada</h4><p>Impresioná desde el primer segundo con una entrada mágica.</p></div>
-      <div class="caracteristica"><h4>Canciones sugeridas</h4><p>Compartí tus temas favoritos para que suene tu esencia.</p></div>
-      <div class="caracteristica"><h4>Dress code</h4><p>Mostrá los colores o estilo con los que querés que vayan.</p></div>
-      <div class="caracteristica"><h4>Regalos</h4><p>Alias de transferencia para facilitar cualquier obsequio.</p></div>
-      <div class="caracteristica"><h4>Álbum de fotos</h4><p>Incluí tus mejores recuerdos para emocionar a todos.</p></div>
-      <div class="caracteristica"><h4>Música de fondo</h4><p>Una melodía suave que acompaña la experiencia completa.</p></div>
-      <div class="caracteristica"><h4>Historia o frases</h4><p>Frases especiales o tu historia para dar un toque único.</p></div>
-      <div class="caracteristica"><h4>Menciones especiales</h4><p>Destacá a tus padres, padrinos o personas importantes.</p></div>
-      <div class="caracteristica"><h4>Código QR</h4><p>Escaneable desde el celular para compartir rápidamente.</p></div>
-    </div>
-  </section>
-
-  <section>
-    <h2 style="text-align:center; margin-bottom:3rem;">Beneficios que hacen la diferencia</h2>
-    <div class="beneficios">
-      <div class="beneficio"><h4>Fácil de compartir</h4><p>Enviá por WhatsApp, redes o mail sin límites.</p></div>
-      <div class="beneficio"><h4>Envíos ilimitados</h4><p>No importa si son 10 o 1000 personas, ¡llegás a todos!</p></div>
-      <div class="beneficio"><h4>Rápido y económico</h4><p>Soluciones modernas que se entregan en tiempo récord.</p></div>
-      <div class="beneficio"><h4>100% personalizadas</h4><p>Diseños únicos, hechos a tu medida y con tu estilo.</p></div>
-      <div class="beneficio"><h4>Funcionales</h4><p>Todo lo que necesitás, en un solo lugar. Sin complicaciones.</p></div>
-    </div>
-  </section>
-
-  <section class="testimonios">
-    <h2>Lo que dicen nuestros clientes</h2>
-    <div class="testimonios-contenido">
-      <div class="testimonio">
-        <p>"No sabía que una tarjeta podía emocionarme tanto. Todos me felicitaron por lo original que fue. ¡Gracias!"</p>
-        <span>- Martina R.</span>
+  <section class="features" id="reserva">
+    <h2>¿Qué incluye tu tarjeta?</h2>
+    <div class="feature-grid">
+      <div class="feature">
+        <i>📱</i>
+        <h3>Adaptada a Celulares</h3>
+        <p>Diseño responsive, perfecto para compartir en redes y WhatsApp.</p>
       </div>
-      <div class="testimonio">
-        <p>"La atención fue excelente, y quedó hermosa. La música, las fotos, ¡todo impecable!"</p>
-        <span>- Julieta F.</span>
+      <div class="feature">
+        <i>🎥</i>
+        <h3>Video de bienvenida</h3>
+        <p>Podés incluir un mensaje animado o video corto personalizado.</p>
       </div>
-      <div class="testimonio">
-        <p>"Muy profesional. Lo envié por WhatsApp y todos mis invitados lo recibieron al instante."</p>
-        <span>- Carolina T.</span>
+      <div class="feature">
+        <i>🎨</i>
+        <h3>Diseño único</h3>
+        <p>Personalizamos tu tarjeta con colores, estilo y tipografía a medida.</p>
+      </div>
+      <div class="feature">
+        <i>🗺️</i>
+        <h3>Ubicación interactiva</h3>
+        <p>Tu dirección con Google Maps integrada, para que nadie se pierda.</p>
+      </div>
+      <div class="feature">
+        <i>🎁</i>
+        <h3>Regalos</h3>
+        <p>Podés incluir una lista de regalos o links a tiendas elegidas.</p>
+      </div>
+      <div class="feature">
+        <i>🖼️</i>
+        <h3>Galería de fotos</h3>
+        <p>Mostrá tu historia con una sección de fotos animada y moderna.</p>
       </div>
     </div>
   </section>
 
   <footer>
-    © 2025 Mi Tarjeta Online · Todos los derechos reservados
+    <p>&copy; 2025 Mi Tarjeta Online. Diseñado con ❤️ por Gonza.</p>
   </footer>
 
 </body>
 </html>
-
-
