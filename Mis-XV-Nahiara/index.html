@@ -160,8 +160,8 @@ button[type="submit"]:hover {
 <body>
 
 <div class="pantalla-bienvenida" id="bienvenida">
-  <h1>Nahiara te invita a sus XV</h1>
-  <p>Vení a celebrar junto a ella 💖</p>
+  <h1>Te invito a mis XV</h1>
+  <p>Vení a celebrar conmigo 💖</p>
   <button onclick="entrar()">Ingresar</button>
 </div>
 
@@ -172,15 +172,14 @@ button[type="submit"]:hover {
 <main id="contenido" style="display:none">
 
 <header>
-  <section><h2>¡Bienvenido/a!</h2><p>Tu presencia es nuestro mejor regalo 🎂</p></section>
+  <section><h2>Mis Xv Nahiara</h2><p>Salon Portofino - 9 De Noviembre 2025🎂</p></section>
+  
 </header>
-
-<section class="gris"><h2>Faltan...</h2><div id="contador"></div></section>
-
+<section><h2>Faltan...</h2><div id="contador"></div></section>
 
 <section>
-  <h2>Ubicación:</h2>
-  <p>Salon:<strong>Portofino eventos</strong>  Av. Eva Peron 1017 </p>
+  <h2>📍Ubicación:</h2>
+  <p>Salon:Portofino eventos, Av. Eva Peron 1017 </p>
   <div class="mapa-container">
     <iframe
       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d442.1312985467078!2d-58.38329291676642!3d-34.77344868436918!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcd2d9ef89b859%3A0x2b9ddfa49da75216!2sPortofino%20Eventos!5e0!3m2!1ses!2sar!4v1755089107908!5m2!1ses!2sar">
@@ -214,7 +213,7 @@ button[type="submit"]:hover {
   <h2>Dress Code</h2><p>Elegante Sport</p>
 </section>
 
-<section class="gris">
+<section class="clara">
     <div class="contenedor">
     <h2>💌 Confirmá tu Asistencia</h2>
     <form id="formulario" onsubmit="enviarWhatsApp(); return false;">
@@ -261,6 +260,7 @@ button[type="submit"]:hover {
 
 <script>
 
+   // Generador de acompañantes
     function generarCamposAcompanantes() {
       const cantidad = parseInt(document.getElementById("acompanantes").value);
       const contenedor = document.getElementById("camposAcompanantes");
@@ -280,6 +280,31 @@ button[type="submit"]:hover {
         `;
         contenedor.insertAdjacentHTML("beforeend", campoHTML);
       }
+    }
+
+    // Envío a WhatsApp
+    function enviarWhatsApp() {
+      const nombre = document.getElementById("nombre").value;
+      const asistencia = document.querySelector('input[name="asistencia"]:checked').value;
+      const menu = document.getElementById("menu").value;
+      const otro = document.getElementById("otro").value;
+      const cantidadAcompanantes = parseInt(document.getElementById("acompanantes").value);
+
+      let mensaje = `Hola! Soy ${nombre}. Confirmo que: ${asistencia} asistiré.\nRequerimientos alimentarios: ${menu}`;
+      if (otro) mensaje += ` (${otro})`;
+
+      if (cantidadAcompanantes > 0) {
+        mensaje += `\n\nAcompañantes (${cantidadAcompanantes}):`;
+        for (let i = 1; i <= cantidadAcompanantes; i++) {
+          const nom = document.querySelector(`input[name="acompanante${i}"]`).value;
+          const edad = document.querySelector(`input[name="edad${i}"]:checked`).value;
+          mensaje += `\n- ${nom} (${edad})`;
+        }
+      }
+
+      const numero = "5491164327666"; // reemplazá con el número real
+      const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+      window.open(url, "_blank");
     }
   function entrar() {
     document.getElementById("bienvenida").style.opacity="0";
@@ -304,38 +329,6 @@ button[type="submit"]:hover {
   function abrirGaleria(){window._idxSlide=window._idxSlide||0;document.getElementById("modalGaleria").classList.add("show");document.getElementById("modalImg").src=document.getElementById("sliderInner").children[window._idxSlide].src;}
   function cambiarFotoModal(d){cambiarSlide(d);document.getElementById("modalImg").src=document.getElementById("sliderInner").children[window._idxSlide].src;}
   function cerrarGaleria(){document.getElementById("modalGaleria").classList.remove("show");}
-  function agregarAcompanante(){
-    const c=document.getElementById("acompanantes");
-    if(c.children.length>=10)return alert("Máximo 10 acompañantes");
-    const idx=c.children.length+1;
-    const d=document.createElement("div");d.className="acompanante";
-    d.innerHTML=`<input class="acom" placeholder="Nombre acompañante ${idx}" required/><select class="mayoria"><option>Mayor</option><option>Menor</option></select><input class="otros" placeholder="N. alimentaria (opcional)"/>`;
-    c.appendChild(d);
-  }
-  function enviarAsistencia(){
-    const nombre=document.getElementById("nombre").value, menu=document.getElementById("menu").value;
-      const asistencia = document.querySelector('input[name="asistencia"]:checked').value;
-      const otro = document.getElementById("otro").value;
-      const cantidadAcompanantes = parseInt(document.getElementById("acompanantes").value);
-    let text=`Hola! Soy ${nombre} Confirmo que: ${asistencia} asistiré.\nRequerimientos alimentarios: ${menu}`;
-    document.querySelectorAll(".acom").forEach((el,i)=>{
-      text+=`\n- ${el.value} (${document.querySelectorAll(".mayoria")[i].value})${document.querySelectorAll(".otros")[i].value?" - "+document.querySelectorAll(".otros")[i].value:""}`;
-    });
-    if (otro) mensaje += ` (${otro})`;
-
-      if (cantidadAcompanantes > 0) {
-        mensaje += `\n\nAcompañantes (${cantidadAcompanantes}):`;
-        for (let i = 1; i <= cantidadAcompanantes; i++) {
-          const nom = document.querySelector(`input[name="acompanante${i}"]`).value;
-          const edad = document.querySelector(`input[name="edad${i}"]:checked`).value;
-          mensaje += `\n- ${nom} (${edad})`;
-        }
-      }
-
-      const numero = "5491164327666"; // reemplazá con el número real
-      const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
-      window.open(url, "_blank");
-  }
   const fecha=new Date("2025-11-09T00:00:00"), cnt=document.getElementById("contador");
   setInterval(()=>{
     const d=fecha-new Date();
