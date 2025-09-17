@@ -596,7 +596,7 @@ footer {
   <span id="duration">0:00</span>
 </div>
 
-    <audio id="audio" src="Y2meta - MP3 - 1e87df4ff1539bc.mp3"></audio>
+    <audio id="audio" src="Chromatics - Girls just wanna have some (Traducida al Español) __ Ludovica & Chiara __ BABY [v7SjUgAfRvg].mp3"></audio>
   </div>
 </section>
 
@@ -720,6 +720,19 @@ const currentTimeEl = document.getElementById("current-time");
 const durationEl = document.getElementById("duration");
 const progressBar = document.querySelector(".progress-bar");
 
+// Formatear tiempo mm:ss
+function formatTime(time) {
+  if (isNaN(time)) return "0:00";
+  const minutes = Math.floor(time / 60);
+  const seconds = Math.floor(time % 60).toString().padStart(2,"0");
+  return `${minutes}:${seconds}`;
+}
+
+// Cuando se carga el audio, actualizamos la duración
+audio.addEventListener("loadedmetadata", () => {
+  durationEl.textContent = formatTime(audio.duration);
+});
+
 // Play / Pause
 playPauseBtn.addEventListener("click", () => {
   if (audio.paused) {
@@ -733,12 +746,9 @@ playPauseBtn.addEventListener("click", () => {
 
 // Actualizar barra y tiempo
 audio.addEventListener("timeupdate", () => {
-  if (!isNaN(audio.duration)) {
-    const progressPercent = (audio.currentTime / audio.duration) * 100;
-    progress.style.width = `${progressPercent}%`;
-    currentTimeEl.textContent = formatTime(audio.currentTime);
-    durationEl.textContent = formatTime(audio.duration);
-  }
+  const progressPercent = (audio.currentTime / audio.duration) * 100;
+  progress.style.width = `${progressPercent}%`;
+  currentTimeEl.textContent = formatTime(audio.currentTime);
 });
 
 // Clic en la barra para cambiar tiempo
@@ -748,13 +758,6 @@ progressBar.addEventListener("click", (e) => {
   audio.currentTime = (clickX / width) * audio.duration;
 });
 
-// Formatear tiempo mm:ss
-function formatTime(time) {
-  if (isNaN(time)) return "0:00";
-  const minutes = Math.floor(time / 60);
-  const seconds = Math.floor(time % 60).toString().padStart(2,"0");
-  return `${minutes}:${seconds}`;
-}
 
 
 
