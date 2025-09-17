@@ -36,7 +36,7 @@ h1, h2, h3, p, label, a, button {
 }
 
   header {
-  height: 70vh;
+  height: 80vh;
   background: url(Picsart_25-09-17_00-38-36-070\ 1.jpg) no-repeat center center;
   background-size: cover;
   color: var(--claro);
@@ -589,11 +589,13 @@ footer {
   <div class="player-container">
     <button id="play-pause" class="btn-control">▶</button>
     <div class="progress-container">
-      <div class="progress-bar">
-        <div id="progress"></div>
-      </div>
-      <span id="duration">3:26</span>
-    </div>
+  <div class="progress-bar">
+    <div id="progress"></div>
+  </div>
+  <span id="current-time">0:00</span> / 
+  <span id="duration">0:00</span>
+</div>
+
     <audio id="audio" src="Y2meta - MP3 - 1e87df4ff1539bc.mp3"></audio>
   </div>
 </section>
@@ -685,7 +687,8 @@ footer {
       <label for="cancion">¿Querés sugerir una canción? 🎶 (opcional)</label>
     <input type="text" id="cancion" placeholder="Ej: Coldplay - Yellow">
 
-      <button type="submit">Enviar por WhatsApp</button>
+      <button type="button" onclick="enviarWhatsApp()">Confirmar por WhatsApp</button>
+
     </form>
     </div>
   </section>
@@ -771,27 +774,6 @@ function formatTime(time) {
       countdown.textContent = `${dias} días, ${horas} hs, ${minutos} min, ${segundos} seg`;
     }, 1000);
 
-    // Generador de acompañantes
-    function generarCamposAcompanantes() {
-      const cantidad = parseInt(document.getElementById("acompanantes").value);
-      const contenedor = document.getElementById("camposAcompanantes");
-      contenedor.innerHTML = "";
-
-      for (let i = 1; i <= cantidad; i++) {
-        const campoHTML = `
-          <div>
-            <label>Nombre del acompañante ${i}:</label>
-            <input type="text" name="acompanante${i}" required>
-            <div class="radio-group">
-              <label>¿Es mayor?</label>
-              <label><input type="radio" name="edad${i}" value="Sí" required> Sí</label>
-              <label><input type="radio" name="edad${i}" value="No"> No</label>
-            </div>
-          </div>
-        `;
-        contenedor.insertAdjacentHTML("beforeend", campoHTML);
-      }
-    }
 
     // Envío a WhatsApp
     function enviarWhatsApp() {
@@ -800,19 +782,11 @@ function formatTime(time) {
   const menu = document.getElementById("menu").value;
   const otro = document.getElementById("otro").value;
   const sugerencia = document.getElementById("cancion").value;
-  const cantidadAcompanantes = parseInt(document.getElementById("acompanantes").value);
 
   let mensaje = `Hola! Soy ${nombre}. Confirmo que: ${asistencia} asistiré.\nRequerimientos alimentarios: ${menu}`;
   if (otro) mensaje += ` (${otro})`;
 
-  if (cantidadAcompanantes > 0) {
-    mensaje += `\n\nAcompañantes (${cantidadAcompanantes}):`;
-    for (let i = 1; i <= cantidadAcompanantes; i++) {
-      const nom = document.querySelector(`input[name="acompanante${i}"]`).value;
-      const edad = document.querySelector(`input[name="edad${i}"]:checked`).value;
-      mensaje += `\n- ${nom} (${edad})`;
-    }
-  }
+
 
   if (sugerencia) {
     mensaje += `\n\n🎵 Sugerencia musical: ${sugerencia}`;
