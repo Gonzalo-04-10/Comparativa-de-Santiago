@@ -13,6 +13,16 @@
   --fuente: 'Segoe UI', sans-serif;
 }
 
+ * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   margin: 0;
   font-family: var(--fuente);
@@ -359,13 +369,17 @@ footer {
   transition: transform 0.5s ease-in-out;
 }
 
-
 .slider-inner img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  width: 100%; /* que cada imagen ocupe el ancho exacto del slider */
   flex-shrink: 0;
 }
+
+.slider {
+  max-width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
 @keyframes aparecerSuave {
   0% {
     opacity: 0;
@@ -656,8 +670,7 @@ footer {
   <section class="oscura regalo">
     <div class="contenedor">
     <h2>Regalo🎁</h2>
-    <p>Lo mas importante es tu compañia, pero si no sabes que regalarme
-    <p>podes hacerlo aqui...</p> 
+    <p>Lo mas importante es tu compañia, pero si no sabes que regalarme podes hacerlo aqui...</p> 
     <p>Alias: <strong>rena.aguirre</strong></p>
     <p>A nombre: Renata Aguirre</p>
     </div>
