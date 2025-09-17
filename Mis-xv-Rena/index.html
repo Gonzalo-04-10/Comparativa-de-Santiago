@@ -472,9 +472,9 @@ footer {
     }
 
    .music-player {
-  max-width: 500px;
+  max-width: 300px;
   margin: 2rem auto;
-  background: #111; /* fondo negro */
+  background:#333; /* fondo negro */
   color: #fff; /* texto blanco */
   border-radius: 12px;
   padding: 1rem 1.5rem;
@@ -533,6 +533,44 @@ footer {
 #current-time, #duration {
   font-size: 0.9rem;
 }
+
+.oscura {
+  color: white;
+  text-align: center;
+  padding: 4rem 2rem;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+/* Overlay para que el texto resalte */
+.oscura::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.4); /* capa semitransparente */
+}
+
+.oscura .contenedor {
+  position: relative; /* para que el texto quede por encima del overlay */
+  z-index: 1;
+}
+
+/* Fondos distintos */
+.horario {
+  background-image: url(Picsart_25-09-17_00-51-50-625.jpg);
+}
+
+.dresscode {
+  background-image: url(Picsart_25-09-17_00-54-00-445.jpg);
+}
+
+.regalo {
+  background-image: url(Picsart_25-09-17_00-58-11-988.jpg);
+}
+
+
+
 </style>
 
 </head>
@@ -541,8 +579,7 @@ footer {
   <header>
     <div class="texto-header animar-header">
     <h1>Mis Xv-Rena</h1> 
-    <p>4 De Octubre 2025 - Salon de Eventos BIOFAR</p>
-    <p><strong>Faltan...</strong></p>
+    <p>4 De Octubre 2025</p>
     <div id="countdown">Cargando cuenta regresiva...</div>
     </div>
   </header>
@@ -596,31 +633,34 @@ footer {
   </div>
 </div>
 
- <section class="oscura">
+ <section class="oscura horario">
     <div class="contenedor">
     <h2>Horario y Lugar:</h2>
-    <p>Salon del Club San Martin</p>
-    <p>Puntual: <strong>00:30HS</strong></p>
+    <p>Salon de Eventos <strong>BIOFAR</strong></p>
+    <p>Puntual: <strong>22:00HS</strong></p>
     </div>
   </section>
 
-  <section class="oscura">
+  <section class="oscura dresscode">
     <div class="contenedor">
     <h2>Dress Code:</h2>
     <p>Disfraces</p>
     </div>
   </section>
 
-  <section class="oscura">
+  <section class="oscura regalo">
     <div class="contenedor">
     <h2>Regalo🎁</h2>
-    <p>Alias: <strong>soficanavese</strong></p>
+    <p>Lo mas importante es tu compañia, pero si no sabes que regalarme podes hacerlo aqui...</p>
+    <p>Alias: <strong>rena.aguirre</strong></p>
+    <p>A nombre: Renata Aguirre</p>
     </div>
   </section>
 
   <section class="gris">
     <div class="contenedor">
     <h2>💌 Confirmá tu Asistencia</h2>
+    <p>Hasta el 24 de septiembre</p>
     <form id="formulario" onsubmit="enviarWhatsApp(); return false;">
       <label for="nombre">Tu nombre:</label>
       <input type="text" id="nombre" required>
