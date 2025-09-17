@@ -19,7 +19,6 @@ body {
   background: var(--fondo);
   color: var(--texto);
   line-height: 1.6;
-  box-sizing: border-box;
 }
 
 h1, h2, h3, p, label, a, button {
@@ -85,6 +84,11 @@ header p,
     font-weight: bold;
     color: var(--acento);
   }
+section {
+  width: 100%;
+  padding: 3rem 1rem;
+  overflow: hidden; /* evita escapes raros */
+}
 
   section {
     width: 100%;
