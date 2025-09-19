@@ -166,7 +166,7 @@
 
 .frase h2 {
   font-family: 'Merriweather', serif;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   margin-bottom: 1rem;
   color: var(--marron);
 }
@@ -260,6 +260,7 @@
   </style>
 </head>
 <body>
+  
 
 <!-- Pantalla de Entrada -->
 <section id="entrada" class="entrada">
@@ -268,9 +269,8 @@
   </div>
 </section>
 
-<audio id="musicaFondo" loop>
-  <source src="Charly Garcia - No Me Dejan Salir [LETRA] [GwdlqjAu5Jw].mp3" type="audio/mp3">
-</audio>
+
+<audio id="musica" src="Charly Garcia - No Me Dejan Salir [LETRA] [GwdlqjAu5Jw].mp3" preload="auto"></audio>
 
 
 <!-- Contenido principal -->
@@ -397,6 +397,17 @@ document.addEventListener("DOMContentLoaded", function() {
   }, { threshold: 0.1 });
 
   secciones.forEach(sec => observer.observe(sec));
+});
+
+    document.getElementById("btn-entrar").addEventListener("click", function() {
+  document.getElementById("entrada").style.display = "none";
+  const tarjeta = document.getElementById("tarjeta");
+  tarjeta.style.display = "block";
+  tarjeta.classList.add("fade-in"); // animación
+
+  // reproducir música
+  const audio = document.getElementById("musica");
+  audio.play().catch(e => console.log("No se pudo reproducir automáticamente:", e));
 });
 
 
