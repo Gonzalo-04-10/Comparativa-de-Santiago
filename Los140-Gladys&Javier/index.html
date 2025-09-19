@@ -268,6 +268,11 @@
   </div>
 </section>
 
+<audio id="musicaFondo" loop>
+  <source src="Charly Garcia - No Me Dejan Salir [LETRA] [GwdlqjAu5Jw].mp3" type="audio/mp3">
+</audio>
+
+
 <!-- Contenido principal -->
 <div id="tarjeta" style="display:none;">
 
@@ -411,8 +416,6 @@ document.addEventListener("DOMContentLoaded", function() {
       countdown.textContent = `${dias} días, ${horas} hs, ${minutos} min, ${segundos} seg`;
     }, 1000);
 
-
-   
 // Envío del mini formulario de menú especial
 document.getElementById("menuForm").addEventListener("submit", function(e){
   e.preventDefault();
@@ -425,9 +428,6 @@ document.getElementById("menuForm").addEventListener("submit", function(e){
   
   window.open(url, "_blank");
 });
-
-
-
 
 const header = document.querySelector('header');
 
