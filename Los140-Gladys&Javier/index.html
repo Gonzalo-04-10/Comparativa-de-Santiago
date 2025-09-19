@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Los 140 años - Gladys & Javier</title>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+
+
 
   <style>
     :root {
@@ -137,7 +139,14 @@
   color: #fff;
 }
 
-
+.entrada-contenido {
+  animation: aparecer 1s ease forwards;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end; /* baja el botón */
+  height: 80%; /* deja más espacio arriba para la imagen */
+}
 
 .btn-entrar {
   padding: 12px 30px;
@@ -156,8 +165,8 @@
 }
 
 .frase h2 {
-  font-family: 'Allura', cursive;
-  font-size: 1.6rem;
+  font-family: 'Merriweather', serif;
+  font-size: 1.4rem;
   margin-bottom: 1rem;
   color: var(--marron);
 }
@@ -232,6 +241,21 @@
   transform: scale(1.05);
 }
 
+#contador {
+  padding: 2rem 1rem;
+  text-align: center;
+  background-color: rgba(59,42,26,0.1); /* semi-transparente */
+  border-radius: 12px;
+  margin: 2rem auto;
+  max-width: 500px;
+  font-family: 'Merriweather', serif;
+  color: var(--marron);
+}
+#countdown {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
 
   </style>
 </head>
@@ -253,6 +277,7 @@
     <a href="https://tenor.com/view/messi-messi-copa-america-2024-messi-crying-messi-lesionado-messi-llorando-gif-1982993565295935480"></a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
 </section>
 
+
   <section class="oscura">
     <h2>Horario y Lugar</h2>
     <p><strong>Mirador bar</strong></p>
@@ -272,8 +297,11 @@
         <p>✨ Elegante sport ✨</p>
     </section>
 
-<section class="frase">
+<section class="frase">  
   <h2>"70 + 70 son 140 de pura vida y queremos compartir esta alegria con ustedes, que han hecho que esta travesia sea una hermosa aventura"</h2>
+  <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#3b2a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 2v20M2 12h20"/>
+  </svg>
 </section>
 
   <section class="oscura">
@@ -284,6 +312,10 @@
 
 <section class="frase">
   <h2>"¡La vida es una fiesta y a los 70 el baile recién empieza!"</h2>
+   <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#3b2a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="10"/>
+    <path d="M8 12l2 2 4-4"/>
+  </svg>
 </section>
 
 <section class="oscura">
@@ -296,6 +328,15 @@
 
 <section class="frase">
   <h2>"¡Vengan a brindar por lo que fue, por lo que es y por lo que está por venir!"</h2>
+   <svg width="50" height="50" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g stroke="#3b2a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 50h24"/>
+      <path d="M24 50v4h16v-4"/>
+      <path d="M20 10l12 14 12-14"/>
+      <path d="M32 24v22"/>
+      <path d="M20 10h24"/>
+    </g>
+  </svg>
 </section>
 
 <section class="oscura">
@@ -327,6 +368,7 @@
     Con amor @mitarjetaonline_ para Gladys & Javier © 2025
   </footer>
 </div>
+
   <script>
 document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("btn-entrar").addEventListener("click", function() {
@@ -336,6 +378,22 @@ document.addEventListener("DOMContentLoaded", () => {
     tarjeta.classList.add("fade-in"); // 👈 agregamos la animación
   });
 });
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  const secciones = document.querySelectorAll("section, .frase");
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add("visible");
+      }
+    });
+  }, { threshold: 0.1 });
+
+  secciones.forEach(sec => observer.observe(sec));
+});
+
 
     // Contador
     const countdown = document.getElementById("countdown");
