@@ -270,23 +270,28 @@
 </section>
 
 
-<audio id="musica" src="Charly Garcia - No Me Dejan Salir [LETRA] [GwdlqjAu5Jw].mp3" preload="auto"></audio>
+<audio id="musica" src="Seguir Viviendo Sin Tu Amor [VSWSnIcnoH4].mp3" preload="auto"></audio>
 
 
 <!-- Contenido principal -->
 <div id="tarjeta" style="display:none;">
 
     <section>
-  <h1>El invitado cuando ve que no llega...😂</h1>
+  <h1>Messi cuando supo que no podia asistir...😂</h1>
   <div class="tenor-gif-embed" data-postid="1982993565295935480" data-share-method="host" data-aspect-ratio="1.37569" data-width="100%">
     <a href="https://tenor.com/view/messi-messi-copa-america-2024-messi-crying-messi-lesionado-messi-llorando-gif-1982993565295935480"></a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+</section>
+    
+    <section id="contador">
+  <h2>⏳ 25/10/2025 Faltan...</h2>
+  <div id="countdown"></div>
 </section>
 
 
   <section class="oscura">
     <h2>Horario y Lugar</h2>
     <p><strong>Mirador bar</strong></p>
-    <p>Puntual: <strong>17:00HS</strong> a <strong>22:00HS</strong></p>
+    <p>Puntual: <strong>17:00HS</strong> a <strong>24:00HS</strong></p>
     <p>(Se ruega puntualidad por tema de organizacion)</p>
   </section>
 
@@ -304,24 +309,8 @@
 
 <section class="frase">  
   <h2>"70 + 70 son 140 de pura vida y queremos compartir esta alegria con ustedes, que han hecho que esta travesia sea una hermosa aventura"</h2>
-  <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#3b2a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M12 2v20M2 12h20"/>
-  </svg>
 </section>
 
-  <section class="oscura">
-    <h2>🎁 Regalo</h2>
-    <p>Lo más importante es tu compañía, pero si de igual forma te interesa regalarnos algo podes hacerlo acá</p>
-    <p>Alias: <strong>loscientocuarenta</strong></p>
-  </section>
-
-<section class="frase">
-  <h2>"¡La vida es una fiesta y a los 70 el baile recién empieza!"</h2>
-   <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#3b2a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <circle cx="12" cy="12" r="10"/>
-    <path d="M8 12l2 2 4-4"/>
-  </svg>
-</section>
 
 <section class="oscura">
     <h2>Alojamientos cerca de casa y del evento</h2>
@@ -332,15 +321,7 @@
   </section>
 
 <section class="frase">
-  <h2>"¡Vengan a brindar por lo que fue, por lo que es y por lo que está por venir!"</h2>
-   <svg width="50" height="50" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <g stroke="#3b2a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M20 50h24"/>
-      <path d="M24 50v4h16v-4"/>
-      <path d="M20 10l12 14 12-14"/>
-      <path d="M32 24v22"/>
-      <path d="M20 10h24"/>
-    </g>
+  <h2>"¡La vida es una fiesta y a los 70 el baile recién empieza!"</h2>
   </svg>
 </section>
 
@@ -363,6 +344,25 @@
     <button type="submit">Enviar al WhatsApp</button>
   </form>
 </section>
+
+<section class="frase">
+  <h2>"¡Vengan a brindar por lo que fue, por lo que es y por lo que está por venir!"</h2>
+   <svg width="50" height="50" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g stroke="#3b2a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 50h24"/>
+      <path d="M24 50v4h16v-4"/>
+      <path d="M20 10l12 14 12-14"/>
+      <path d="M32 24v22"/>
+      <path d="M20 10h24"/>
+    </g>
+  </svg>
+</section>
+
+ <section class="oscura">
+    <h2>🎁 Regalo</h2>
+    <p>Lo más importante es tu compañía, pero si de igual forma te interesa regalarnos algo podes hacerlo acá</p>
+    <p>Alias: <strong>loscientocuarenta</strong></p>
+  </section>
 
   <section>
     <h2>💖 Te Esperamos</h2>
@@ -413,7 +413,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Contador
     const countdown = document.getElementById("countdown");
-    const fechaBoda = new Date("2025-10-04T00:00:00").getTime();
+    const fechaBoda = new Date("2025-10-25T00:00:00").getTime();
 
     setInterval(() => {
       const ahora = new Date().getTime();
