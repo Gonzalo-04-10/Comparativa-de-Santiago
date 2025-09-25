@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarjeta Digital Especial</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #fcefee;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    /* Pantalla de bienvenida */
+    .welcome {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #f78ca0, #f9748f, #fd868c, #fe9a8b);
+      color: white;
+    }
+
+    .envelope-emoji {
+      font-size: 5rem;
+      cursor: pointer;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    .tarjeta {
+      display: none;
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tarjeta.show {
+      display: block;
+      animation: fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      color: #e91e63;
+    }
+
+    /* Carrusel preview */
+    .preview-carousel {
+      width: 90%;
+      max-width: 400px;
+      margin: 20px auto;
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .preview-carousel img {
+      width: 100%;
+      display: none;
+      border-radius: 15px;
+    }
+
+    .preview-carousel img.active {
+      display: block;
+      animation: fadeIn 1s ease;
+    }
+
+    /* Botón */
+    .btn {
+      display: inline-block;
+      margin: 20px;
+      padding: 12px 20px;
+      background: #e91e63;
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      transition: background 0.3s;
+    }
+    .btn:hover {
+      background: #c2185b;
+    }
+
+    /* Modal álbum */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .modal-content {
+      position: relative;
+      width: 90%;
+      max-width: 500px;
+    }
+    .modal img {
+      width: 100%;
+      border-radius: 15px;
+    }
+    .close, .prev, .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+      user-select: none;
+      padding: 10px;
+    }
+    .close {
+      top: 10px;
+      right: 20px;
+      transform: none;
+      font-size: 2rem;
+    }
+    .prev { left: -50px; }
+    .next { right: -50px; }
+
+    /* Reproductor música */
+    .music-player {
+      margin-top: 30px;
+    }
+
+    /* Corazones/flores animados */
+    .falling {
+      position: absolute;
+      top: -50px;
+      font-size: 1.5rem;
+      animation: fall 6s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Pantalla bienvenida -->
+  <div class="welcome" id="welcome">
+    <div class="envelope-emoji" id="envelope">✉️</div>
+    <p>Toca el sobre para abrir tu tarjeta ✨</p>
+  </div>
+
+  <!-- Tarjeta -->
+  <div class="tarjeta" id="tarjeta">
+    <h1>💖 Feliz Día Mamá 💖</h1>
+    <p>Gracias por tu amor infinito, por tu paciencia y por estar siempre conmigo.</p>
+
+    <!-- Preview carrusel -->
+    <div class="preview-carousel" id="preview-carousel">
+      <img src="Imagen1.jpg" class="active">
+      <img src="Imagen2.jpg">
+    </div>
+
+    <!-- Botón -->
+    <a href="#" class="btn" id="openAlbum">📷 Ver las fotos</a>
+
+    <!-- Música -->
+    <div class="music-player">
+      <audio controls autoplay loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        Tu navegador no soporta audio.
+      </audio>
+    </div>
+  </div>
+
+  <!-- Modal álbum -->
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <span class="close" id="closeModal">&times;</span>
+      <span class="prev" id="prev">&#10094;</span>
+      <img id="modalImage" src="">
+      <span class="next" id="next">&#10095;</span>
+    </div>
+  </div>
+
+  <script>
+    // Animación sobre emoji
+    const envelope = document.getElementById('envelope');
+    const tarjeta = document.getElementById('tarjeta');
+    const welcome = document.getElementById('welcome');
+
+    envelope.addEventListener('click', () => {
+      welcome.style.display = 'none';
+      tarjeta.classList.add('show');
+      startFalling(); // activar corazones/flores
+    });
+
+    // Carrusel preview
+    const images = document.querySelectorAll('.preview-carousel img');
+    let index = 0;
+    setInterval(() => {
+      images[index].classList.remove('active');
+      index = (index + 1) % images.length;
+      images[index].classList.add('active');
+    }, 3000);
+
+    // Modal álbum
+    const modal = document.getElementById('modal');
+    const modalImage = document.getElementById('modalImage');
+    const openAlbum = document.getElementById('openAlbum');
+    const closeModal = document.getElementById('closeModal');
+    const prev = document.getElementById('prev');
+    const next = document.getElementById('next');
+
+    let current = 0;
+
+    openAlbum.addEventListener('click', e => {
+      e.preventDefault();
+      modal.style.display = 'flex';
+      showImage(current);
+    });
+
+    closeModal.addEventListener('click', () => modal.style.display = 'none');
+    prev.addEventListener('click', () => showImage(--current));
+    next.addEventListener('click', () => showImage(++current));
+
+    function showImage(i) {
+      if (i < 0) current = images.length - 1;
+      else if (i >= images.length) current = 0;
+      else current = i;
+      modalImage.src = images[current].src;
+    }
+
+    // Animación sutil de flores/corazones
+    function startFalling() {
+      setInterval(() => {
+        const emoji = document.createElement('div');
+        emoji.classList.add('falling');
+        emoji.textContent = Math.random() > 0.5 ? '🌸' : '💖';
+        emoji.style.left = Math.random() * window.innerWidth + 'px';
+        document.body.appendChild(emoji);
+
+        setTimeout(() => {
+          emoji.remove();
+        }, 6000);
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
+

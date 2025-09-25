@@ -1,251 +1,411 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mi Tarjeta Online</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg-main: #fefefe;
-      --bg-light: #fff6f6;
-      --accent-pink: #f7c5cc;
-      --accent-beige: #fcefe4;
-      --black: #111;
-      --font: 'Montserrat', sans-serif;
-    }
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
 
+  <style>
+    /* RESET */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    html, body {
-      font-family: var(--font);
-      background: var(--bg-main);
-      color: var(--black);
-      scroll-behavior: smooth;
+    body {
+      background: #fef4f4;
+      color: #333;
+      line-height: 1.5;
+      font-family: 'Poppins', sans-serif;
     }
 
+    h1, h2 { 
+      font-family: 'Cinzel', serif;
+      font-weight: 700; /* le da más fuerza */
+    }
+
+    /* --- ANIMACIONES --- */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease;
+    }
+    .fade-up.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* --- BOTONES --- */
+    .btn {
+      background: #800020;
+      color: white;
+      padding: 0.8rem 2rem;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: all 0.3s;
+    }
+    .btn:hover {
+      background: #b22222;
+      transform: scale(1.08);
+    }
+
+    /* PORTADA */
     header {
-      position: relative;
-      height: 100vh;
+      height: 75vh;
+      background: linear-gradient(rgba(120,0,40,0.7), rgba(120,0,40,0.7)), url("fondo.jpg") no-repeat center center/cover;
       display: flex;
-      align-items: center;
+      flex-direction: column;
       justify-content: center;
-      overflow: hidden;
-    }
-
-    header video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -1;
-      filter: brightness(0.6);
-    }
-
-    .header-content {
+      align-items: center;
       text-align: center;
       color: white;
     }
-
-    .header-content h1 {
+    header h1 {
       font-size: 3rem;
-      margin-bottom: 20px;
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+      font-family: 'Merriweather', serif; /* cambio */
+    }
+    header p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
     }
 
-    .header-content button {
-      background: var(--accent-pink);
-      color: var(--black);
-      padding: 15px 30px;
-      font-size: 1.1rem;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      transition: background 0.3s ease;
+    /* TESTIMONIOS */
+    .testimonios {
+      padding: 4rem 2rem;
+      text-align: center;
     }
-
-    .header-content button:hover {
-      background: var(--accent-beige);
+    .testimonios h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: #800020;
     }
-
-    section {
-      padding: 60px 20px;
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
     }
-
-    .carousel {
-      display: flex;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      gap: 20px;
-      padding-bottom: 20px;
+    .card {
+      background: white;
+      padding: 1rem;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
+    .card img {
+  width: 100%;
+  height: 350px; /* ajustá el número a lo que más te guste */
+  border-radius: 10px;
+  object-fit: cover;
+}
 
-    .carousel::-webkit-scrollbar {
-      display: none;
+
+    /* TARJETAS */
+    .tarjetas {
+      padding: 4rem 2rem;
+      background: linear-gradient(135deg, #fff5f7, #ebc3d1);
+      text-align: center;
     }
-
-    .carousel img {
-      width: 250px;
-      height: 500px;
-      object-fit: cover;
-      border-radius: 20px;
-      scroll-snap-align: start;
-      flex-shrink: 0;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    .tarjetas h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: #800020;
+    }
+    .tarjetas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .tarjeta-preview {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       transition: transform 0.3s;
     }
-
-    .carousel img:hover {
+    .tarjeta-preview:hover {
       transform: scale(1.05);
     }
+    .tarjeta-preview iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
+    }
+    .btn-ver-mas {
+      margin-top: 2rem;
+    }
 
-    .features {
-      background: var(--bg-light);
+    /* PLANES */
+    .planes {
+      padding: 4rem 2rem;
+      background: #fff;
       text-align: center;
     }
-
-    .features h2 {
+    .planes h2 {
       font-size: 2rem;
-      margin-bottom: 30px;
+      margin-bottom: 2rem;
+      color: #800020;
     }
-
-    .feature-grid {
+    .planes-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-      margin-top: 40px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
     }
-
-    .feature {
-      background: var(--accent-beige);
-      padding: 30px;
+    .plan-card {
+      background: #fff5f7;
+      padding: 2rem;
       border-radius: 15px;
-      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: all 0.3s;
+    }
+    .plan-card:hover {
+      transform: scale(1.05);
+    }
+    .plan-card h3 {
+      color: #800020;
+      margin-bottom: 1rem;
+      font-family: 'Merriweather', serif; /* cambio */
+    }
+    .plan-card p {
+      margin-bottom: 1rem;
+    }
+    .plan-card .price {
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      color: #280101;
     }
 
-    .feature:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    /* CARACTERISTICAS */
+    /* CARACTERISTICAS */
+.caracteristicas {
+  padding: 5rem 2rem;
+  background: linear-gradient(135deg, #fff5f7, #ebc3d1);
+  text-align: center;
+}
+.caracteristicas h2 {
+  font-size: 2.2rem;
+  margin-bottom: 2.5rem;
+  color: #800020;
+}
+.lista {
+  max-width: 1000px;
+  margin: auto;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+}
+.lista li {
+  background: white;
+  padding: 1.5rem 1rem;
+  border-radius: 15px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+  font-size: 0.95rem;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.3s ease;
+  position: relative;
+  text-align: center;
+}
+.lista li::before {
+  display: block;
+  font-size: 1.5rem;
+  margin-bottom: 0.6rem;
+  color: #b22222;
+}
+.lista li:hover {
+  transform: translateY(-6px);
+  background: #fff0f5;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+}
+
+
+    /* BENEFICIOS */
+    .beneficios {
+      padding: 4rem 2rem;
+      background: #fff;
+      text-align: center;
+    }
+    .beneficios h2 {
+      font-size: 2.2rem;
+      color: #800020;
+      margin-bottom: 2rem;
+    }
+    .beneficios p {
+      max-width: 800px;
+      margin: auto;
+      margin-bottom: 2rem;
+      font-size: 1.2rem;
     }
 
-    .feature i {
-      font-size: 2.5rem;
-      margin-bottom: 15px;
-      display: block;
+    /* FAQ */
+    .faq {
+      padding: 4rem 2rem;
+      background: #fdebee;
+    }
+    .faq h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #800020;
+      font-family: 'Raleway', sans-serif; /* cambio tipografía */
+      font-weight: 600;
+    }
+    details {
+      background: white;
+      margin: 1rem auto;
+      padding: 1rem;
+      border-radius: 10px;
+      max-width: 800px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      cursor: pointer;
+    }
+    details summary {
+      font-weight: bold;
+      font-size: 1.1rem;
+      list-style: none;
+    }
+    details[open] {
+      background: #ffe6eb;
     }
 
-    .feature h3 {
-      margin-bottom: 10px;
-      font-size: 1.3rem;
-    }
-
+    /* FOOTER */
     footer {
-      background: var(--black);
+      background: #222;
       color: white;
       text-align: center;
-      padding: 30px;
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .animated {
-      animation: fadeInUp 1s ease forwards;
+      padding: 1.5rem;
     }
   </style>
-  <script>
-    // Animaciones al hacer scroll
-    document.addEventListener("DOMContentLoaded", () => {
-      const elements = document.querySelectorAll('.feature');
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animated');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, {
-        threshold: 0.1
-      });
-
-      elements.forEach(el => observer.observe(el));
-    });
-  </script>
 </head>
 <body>
 
-  <header>
-    <video autoplay muted loop>
-      <source src="https://cdn.coverr.co/videos/coverr-card-reading-3210/1080p.mp4" type="video/mp4">
-    </video>
-    <div class="header-content">
-      <h1>Diseñá tu Tarjeta Online</h1>
-      <button onclick="location.href='#reserva'">Reservá la tuya</button>
-    </div>
+  <!-- PORTADA -->
+  <header class="fade-up">
+    <h1>Mi<span style="font-style:italic"> Tarjeta Online</span></h1>
+    <p><span style="color:#fef1f4;font-weight:bold">Impresioná</span> desde el <span style="font-style:italic">Primer momento💌</span></p> <!-- cambio color tipografía -->
+    <button class="btn" onclick="document.getElementById('planes').scrollIntoView({behavior:'smooth'})">Ver Precios</button>
   </header>
 
-  <section>
-    <h2 style="text-align:center; font-size:2rem; margin-bottom:30px;">Ejemplos de Diseños</h2>
-    <div class="carousel">
-      <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e" alt="Ejemplo 1">
-      <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e" alt="Ejemplo 2">
-      <img src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb" alt="Ejemplo 3">
-      <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330" alt="Ejemplo 4">
+  <!-- TESTIMONIOS -->
+  <section class="testimonios fade-up" id="testimonios">
+    <h2>Lo que dicen nuestras clientas 💬</h2>
+    <div class="grid">
+      <div class="card"><img src="Screenshot_20250921-185532_Gallery.jpg" alt="Cliente feliz"></div>
+      <div class="card"><img src="Screenshot_20250921-185556_Gallery.jpg" alt="Cliente feliz"></div>
+      <div class="card"><img src="Screenshot_20250921-185543_Gallery.jpg" alt="Cliente feliz"></div>
     </div>
   </section>
 
-  <section class="features" id="reserva">
-    <h2>¿Qué incluye tu tarjeta?</h2>
-    <div class="feature-grid">
-      <div class="feature">
-        <i>📱</i>
-        <h3>Adaptada a Celulares</h3>
-        <p>Diseño responsive, perfecto para compartir en redes y WhatsApp.</p>
+  <!-- TARJETAS DE EJEMPLO -->
+  <section class="tarjetas fade-up">
+    <h2>Ejemplos de Tarjetas:</h2>
+    <div class="tarjetas-grid">
+      <div class="tarjeta-preview"><iframe src="https://mitarjetaonline.com.ar/Ejemplosxv/ejemplo"></iframe></div>
+      <div class="tarjeta-preview"><iframe src="https://mitarjetaonline.com.ar/Ejemplosxv/ejemplo2"></iframe></div>
+      <div class="tarjeta-preview"><iframe src="https://mitarjetaonline.com.ar/Ejemplosxv/ejemplo3"></iframe></div>
+    </div>
+    <button class="btn btn-ver-mas" onclick="window.location.href='ejemplos.html'">Ver más ejemplos</button>
+  </section>
+
+  <!-- PLANES -->
+  <section class="planes fade-up" id="planes">
+    <h2>Nuestros Planes:</h2>
+    <div class="planes-grid">
+      <div class="plan-card">
+        <h3>Plan Básico</h3>
+        <p>Ofrece Diseño e informacion del evento, incluye:</p>
+        <p>Diseño personalizable + Fecha + Horario + lugar + Dress code + Frases + </p>
+        <p class="price">$15.000</p>
+        <button class="btn" onclick="window.location.href='https://mpago.la/link1'">Comprar</button>
       </div>
-      <div class="feature">
-        <i>🎥</i>
-        <h3>Video de bienvenida</h3>
-        <p>Podés incluir un mensaje animado o video corto personalizado.</p>
+      <div class="plan-card">
+        <h3>Plan Estándar</h3>
+        <p>El plan habitual y mas elegido por nuestros clientes, Ademas de estetico es practico, incluye:</p>
+        <p>TODO EL PLAN BASICO + Confirmacion de asistencia Whatsapp + ALbum de fotos (Hasta 10 fotos) + Musica + Ubicacion Google Maps + Contador regresivo</p>
+        <p class="price">$29.000</p>
+        <button class="btn" onclick="window.location.href='https://mpago.la/link2'">Comprar</button>
       </div>
-      <div class="feature">
-        <i>🎨</i>
-        <h3>Diseño único</h3>
-        <p>Personalizamos tu tarjeta con colores, estilo y tipografía a medida.</p>
-      </div>
-      <div class="feature">
-        <i>🗺️</i>
-        <h3>Ubicación interactiva</h3>
-        <p>Tu dirección con Google Maps integrada, para que nadie se pierda.</p>
-      </div>
-      <div class="feature">
-        <i>🎁</i>
-        <h3>Regalos</h3>
-        <p>Podés incluir una lista de regalos o links a tiendas elegidas.</p>
-      </div>
-      <div class="feature">
-        <i>🖼️</i>
-        <h3>Galería de fotos</h3>
-        <p>Mostrá tu historia con una sección de fotos animada y moderna.</p>
+      <div class="plan-card">
+        <h3>Plan Premium</h3>
+        <p>El plan mas completo y el que logra diferenciar cualquier evento, incluye:</p>
+        <p>TODOS LOS PLANES + 2 secciones de album + Juego interactivo + Menciones especiales + QR para subir fotos</p>
+        <p class="price">$35.000</p>
+        <button class="btn" onclick="window.location.href='https://mpago.la/link3'">Comprar</button>
       </div>
     </div>
   </section>
 
-  <footer>
-    <p>&copy; 2025 Mi Tarjeta Online. Diseñado con ❤️ por Gonza.</p>
+  <!-- CARACTERISTICAS -->
+  <section class="caracteristicas fade-up">
+    <h2>Características</h2>
+    <ul class="lista">
+      <li>🎵 Música personalizada</li>
+      <li>📸 Galería de fotos</li>
+      <li>📍 Ubicación en Google Maps</li>
+      <li>📱 Compartir fácil por WhatsApp</li>
+      <li>✨ Animaciones dinámicas</li>
+      <li>🎂 Cuenta regresiva</li>
+      <li>💌 Confirmación de asistencia</li>
+      <li>📖 Historia del evento</li>
+      <li>🖼️ Portada animada</li>
+      <li>🎥 Video destacado</li>
+    </ul>
+  </section>
+
+  <!-- BENEFICIOS -->
+  <section class="beneficios fade-up">
+    <h2>¿Por qué tener Mi Tarjeta Online?</h2>
+    <p>✅ Porque es <span style="color:#800020;font-weight:bold">Moderna</span>, <span style="font-style:italic">práctica</span> y <span style="color:#b22222;font-weight:bold">Personalizada</span>.</p>
+    <p>✅ Llega a todos tus <span style="color:#800020;font-weight:bold">Invitados</span> <span style="font-style:italic">de manera</span> <span style="color:#b22222;font-weight:bold">Instantánea.</span></p>
+    <p>✅ Se adapta a <span style="color:#800020;font-weight:bold">Cualquier</span> <span style="font-style:italic">tipo de</span> <span style="color:#b22222;font-weight:bold">Evento</span>.</p>
+    <p>✅ Te ahorra <span style="color:#800020;font-weight:bold">Tiempo</span> <span style="font-style:italic">y son</span> <span style="color:#b22222;font-weight:bold">Economicas</span>.</p>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq fade-up">
+    <h2>Preguntas Frecuentes</h2>
+    <details>
+      <summary>¿Cuánto tarda en estar lista mi tarjeta?</summary>
+      <p>Generalmente entre 24 y 48 horas después de recibir toda la información.</p>
+    </details>
+    <details>
+      <summary>¿Puedo hacer cambios luego de entregada?</summary>
+      <p>Sí, podés solicitar cambios dentro de los primeros 7 días sin costo adicional.</p>
+    </details>
+    <details>
+      <summary>¿Necesito descargar algo?</summary>
+      <p>No, tu tarjeta funciona directamente desde cualquier navegador y dispositivo.</p>
+    </details>
+    <details>
+      <summary>¿La pueden ver personas fuera de Argentina?</summary>
+      <p>Sí, funciona en cualquier parte del mundo siempre que tengan acceso a internet.</p>
+    </details>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="fade-up">
+    <p>© 2025 Mi Tarjeta Online - Todos los derechos reservados</p>
   </footer>
 
+  <!-- SCRIPT ANIMACIONES -->
+  <script>
+    const faders = document.querySelectorAll('.fade-up');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, {threshold: 0.2});
+
+    faders.forEach(fader => observer.observe(fader));
+  </script>
 </body>
 </html>
